@@ -3,11 +3,7 @@ import { motion } from 'framer-motion';
 const SectionHeading = ({ title, subtitle, align = 'center', light = false }) => {
   return (
     <motion.div
-<<<<<<< HEAD
       className={`mb-10 md:mb-16 ${align === 'center' ? 'text-center' : 'text-left'}`}
-=======
-      className={`mb-16 ${align === 'center' ? 'text-center' : 'text-left'}`}
->>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-100px' }}

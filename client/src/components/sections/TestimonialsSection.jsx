@@ -7,11 +7,7 @@ const testimonials = [
   {
     name: 'Arjun Mehta',
     role: 'Event Manager, Sparkle Events',
-<<<<<<< HEAD
     text: 'RoboWorkZ robots completely transformed our corporate event. The guests were amazed by the interactive experience. Absolutely recommend for any large-scale event!',
-=======
-    text: 'RoboWorkz robots completely transformed our corporate event. The guests were amazed by the interactive experience. Absolutely recommend for any large-scale event!',
->>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
     rating: 5,
     type: 'Event Organizer',
   },
@@ -32,22 +28,14 @@ const testimonials = [
   {
     name: 'Sneha Reddy',
     role: 'College Festival Coordinator',
-<<<<<<< HEAD
     text: 'We rented robots for our tech fest and it was the highlight of the entire event. The RoboWorkZ team was professional, punctual, and supportive throughout.',
-=======
-    text: 'We rented robots for our tech fest and it was the highlight of the entire event. The RoboWorkz team was professional, punctual, and supportive throughout.',
->>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
     rating: 5,
     type: 'Student',
   },
   {
     name: 'Rajesh Kumar',
     role: 'Director, NexGen Technologies',
-<<<<<<< HEAD
     text: 'Custom robotics solution from RoboWorkZ streamlined our warehouse operations. Their engineering team truly understands business needs.',
-=======
-    text: 'Custom robotics solution from RoboWorkz streamlined our warehouse operations. Their engineering team truly understands business needs.',
->>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
     rating: 5,
     type: 'Business',
   },
@@ -84,11 +72,7 @@ const TestimonialsSection = () => {
       <div className="max-w-4xl mx-auto relative">
         <SectionHeading 
           title="What People Say" 
-<<<<<<< HEAD
           subtitle="Hear from students, event organizers, and businesses who've experienced the RoboWorkZ difference."
-=======
-          subtitle="Hear from students, event organizers, and businesses who've experienced the RoboWorkz difference."
->>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
         />
 
         <div className="relative min-h-[280px]">

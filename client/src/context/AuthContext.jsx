@@ -10,11 +10,7 @@ axios.defaults.baseURL = API_URL;
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-<<<<<<< HEAD
   const [token, setToken] = useState(localStorage.getItem('RoboWorkZ_token'));
-=======
-  const [token, setToken] = useState(localStorage.getItem('roboworkz_token'));
->>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
   const [loading, setLoading] = useState(true);
 
   // Set auth header
@@ -47,11 +43,7 @@ export const AuthProvider = ({ children }) => {
     const res = await axios.post('/auth/signup', { username, email, password });
     setToken(res.data.token);
     setUser(res.data.user);
-<<<<<<< HEAD
     localStorage.setItem('RoboWorkZ_token', res.data.token);
-=======
-    localStorage.setItem('roboworkz_token', res.data.token);
->>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
     axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.token}`;
     return res.data;
   };
@@ -60,11 +52,7 @@ export const AuthProvider = ({ children }) => {
     const res = await axios.post('/auth/login', { email, password });
     setToken(res.data.token);
     setUser(res.data.user);
-<<<<<<< HEAD
     localStorage.setItem('RoboWorkZ_token', res.data.token);
-=======
-    localStorage.setItem('roboworkz_token', res.data.token);
->>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
     axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.token}`;
     return res.data;
   };
@@ -72,11 +60,7 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     setUser(null);
     setToken(null);
-<<<<<<< HEAD
     localStorage.removeItem('RoboWorkZ_token');
-=======
-    localStorage.removeItem('roboworkz_token');
->>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
     delete axios.defaults.headers.common['Authorization'];
   };
 

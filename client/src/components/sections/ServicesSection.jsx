@@ -52,11 +52,7 @@ const services = [
   },
 ];
 
-<<<<<<< HEAD
 const ServicesSection = ({ hideHeader = false }) => {
-=======
-const ServicesSection = () => {
->>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
   return (
     <section id="services" className="section-padding relative overflow-hidden">
       {/* Background neon accents */}
@@ -65,14 +61,9 @@ const ServicesSection = () => {
 
       <div className="max-w-7xl mx-auto relative">
         {/* Header */}
-<<<<<<< HEAD
         {!hideHeader && (
         <ScrollReveal>
           <div className="text-center mb-10 md:mb-16">
-=======
-        <ScrollReveal>
-          <div className="text-center mb-16">
->>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
             <motion.div
               className="inline-flex items-center gap-2 glass rounded-full px-5 py-2 mb-6"
               initial={{ opacity: 0, scale: 0.9 }}
@@ -91,10 +82,7 @@ const ServicesSection = () => {
             </p>
           </div>
         </ScrollReveal>
-<<<<<<< HEAD
         )}
-=======
->>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (

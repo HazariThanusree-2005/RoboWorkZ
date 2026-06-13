@@ -21,11 +21,7 @@ const focusAreas = [
   { icon: Shield, title: 'Automation Systems', desc: 'Building the infrastructure for tomorrow\'s automated world.' },
 ];
 
-<<<<<<< HEAD
 const AboutSection = ({ hideHeader = false }) => {
-=======
-const AboutSection = () => {
->>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
   return (
     <section id="about" className="section-padding relative overflow-hidden">
       {/* Background effects */}
@@ -34,14 +30,9 @@ const AboutSection = () => {
       
       <div className="max-w-7xl mx-auto relative">
         {/* Section Header */}
-<<<<<<< HEAD
         {!hideHeader && (
         <ScrollReveal>
           <div className="text-center mb-10 md:mb-16">
-=======
-        <ScrollReveal>
-          <div className="text-center mb-16">
->>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
             <motion.div
               className="inline-flex items-center gap-2 glass rounded-full px-5 py-2 mb-6"
               initial={{ opacity: 0, scale: 0.9 }}
@@ -53,21 +44,14 @@ const AboutSection = () => {
             </motion.div>
 
             <h2 className="font-space text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-<<<<<<< HEAD
               About <span className="text-gradient">RoboWorkZ</span>
-=======
-              About <span className="text-gradient">RoboWorkz</span>
->>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
             </h2>
             <p className="text-lg md:text-xl text-primary-300/70 font-inter max-w-2xl mx-auto">
               Building futuristic robotic solutions for businesses and daily life.
             </p>
           </div>
         </ScrollReveal>
-<<<<<<< HEAD
         )}
-=======
->>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
 
         {/* Main Content - Split Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
@@ -75,11 +59,7 @@ const AboutSection = () => {
           <ScrollReveal direction="left">
             <div>
               <p className="text-gray-300 font-inter text-lg leading-relaxed mb-6">
-<<<<<<< HEAD
                 RoboWorkZ creates intelligent robotic products and automation solutions for businesses, 
-=======
-                RoboWorkz creates intelligent robotic products and automation solutions for businesses, 
->>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
                 events, and domestic usage. We design and develop robots that help small businesses attract 
                 customers, improve engagement, automate tasks, and create futuristic experiences.
               </p>

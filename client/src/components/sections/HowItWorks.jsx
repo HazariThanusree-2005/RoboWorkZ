@@ -19,11 +19,7 @@ const steps = [
   {
     icon: HiTruck,
     step: '03',
-<<<<<<< HEAD
     title: 'RoboWorkZ Delivers & Supports',
-=======
-    title: 'RoboWorkz Delivers & Supports',
->>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
     desc: 'Our expert team delivers, sets up, and provides full support throughout your event or rental period.',
   },
 ];
@@ -36,11 +32,7 @@ const HowItWorks = () => {
       <div className="max-w-6xl mx-auto relative">
         <SectionHeading 
           title="How It Works" 
-<<<<<<< HEAD
           subtitle="Getting started with RoboWorkZ is simple. Three easy steps to bring robotics to your doorstep."
-=======
-          subtitle="Getting started with RoboWorkz is simple. Three easy steps to bring robotics to your doorstep."
->>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
         />
 
         <div className="relative">
