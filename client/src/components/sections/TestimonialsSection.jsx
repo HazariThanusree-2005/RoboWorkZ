@@ -2,12 +2,13 @@ import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SectionHeading from '../ui/SectionHeading';
 import { HiChevronLeft, HiChevronRight, HiStar } from 'react-icons/hi';
+import BrandText from '../ui/BrandText';
 
 const testimonials = [
   {
     name: 'Arjun Mehta',
     role: 'Event Manager, Sparkle Events',
-    text: 'RoboWorkZ robots completely transformed our corporate event. The guests were amazed by the interactive experience. Absolutely recommend for any large-scale event!',
+    text: <><BrandText className="text-lg font-normal leading-none" /> robots completely transformed our corporate event. The guests were amazed by the interactive experience. Absolutely recommend for any large-scale event!</>,
     rating: 5,
     type: 'Event Organizer',
   },
@@ -28,14 +29,14 @@ const testimonials = [
   {
     name: 'Sneha Reddy',
     role: 'College Festival Coordinator',
-    text: 'We rented robots for our tech fest and it was the highlight of the entire event. The RoboWorkZ team was professional, punctual, and supportive throughout.',
+    text: <>We rented robots for our tech fest and it was the highlight of the entire event. The <BrandText className="text-lg font-normal leading-none" /> team was professional, punctual, and supportive throughout.</>,
     rating: 5,
     type: 'Student',
   },
   {
     name: 'Rajesh Kumar',
     role: 'Director, NexGen Technologies',
-    text: 'Custom robotics solution from RoboWorkZ streamlined our warehouse operations. Their engineering team truly understands business needs.',
+    text: <>Custom robotics solution from <BrandText className="text-lg font-normal leading-none" /> streamlined our warehouse operations. Their engineering team truly understands business needs.</>,
     rating: 5,
     type: 'Business',
   },
@@ -72,7 +73,7 @@ const TestimonialsSection = () => {
       <div className="max-w-4xl mx-auto relative">
         <SectionHeading 
           title="What People Say" 
-          subtitle="Hear from students, event organizers, and businesses who've experienced the RoboWorkZ difference."
+          subtitle={<>Hear from students, event organizers, and businesses who've experienced the <BrandText className="text-lg font-normal leading-none" /> difference.</>}
         />
 
         <div className="relative min-h-[280px]">
@@ -95,9 +96,9 @@ const TestimonialsSection = () => {
               </div>
 
               {/* Quote */}
-              <p className="text-lg md:text-xl text-gray-300 font-inter leading-relaxed mb-8 italic">
+              <div className="text-lg md:text-xl text-gray-300 font-inter leading-relaxed mb-8 italic">
                 "{testimonials[current].text}"
-              </p>
+              </div>
 
               {/* Author */}
               <div>

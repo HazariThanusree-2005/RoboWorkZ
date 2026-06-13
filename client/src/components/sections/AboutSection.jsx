@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
+import SectionHeading from '../ui/SectionHeading';
 import ScrollReveal from '../ui/ScrollReveal';
+import BrandText from '../ui/BrandText';
 import GlassCard from '../ui/GlassCard';
 import { 
   Bot, Cpu, Zap, Users, Rocket, Settings, 
@@ -43,8 +45,8 @@ const AboutSection = ({ hideHeader = false }) => {
               <span className="text-xs font-manrope font-semibold text-primary-300 tracking-wider uppercase">Who We Are</span>
             </motion.div>
 
-            <h2 className="font-space text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-              About <span className="text-gradient">RoboWorkZ</span>
+            <h2 className="font-space text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 flex items-center justify-center gap-3">
+              About <BrandText className="text-4xl md:text-5xl lg:text-6xl" />
             </h2>
             <p className="text-lg md:text-xl text-primary-300/70 font-inter max-w-2xl mx-auto">
               Building futuristic robotic solutions for businesses and daily life.
@@ -59,19 +61,11 @@ const AboutSection = ({ hideHeader = false }) => {
           <ScrollReveal direction="left">
             <div>
               <p className="text-gray-300 font-inter text-lg leading-relaxed mb-6">
-                RoboWorkZ creates intelligent robotic products and automation solutions for businesses, 
-                events, and domestic usage. We design and develop robots that help small businesses attract 
-                customers, improve engagement, automate tasks, and create futuristic experiences.
-              </p>
-
-              <p className="text-gray-400 font-inter text-base leading-relaxed mb-6">
-                We also provide robot rental services based on business requirements, events, exhibitions, 
-                family functions, and commercial activities.
+                <BrandText className="text-xl font-normal leading-none" /> creates intelligent robotic products and automation solutions. We design robots that help businesses attract customers, improve engagement, and automate tasks.
               </p>
 
               <p className="text-gray-400 font-inter text-base leading-relaxed mb-10">
-                Our mission is to help businesses grow through innovative robotics, smart automation, 
-                and futuristic product experiences.
+                From robot rentals to custom automation, our mission is to help businesses grow through innovative robotics.
               </p>
 
               {/* Highlight cards */}

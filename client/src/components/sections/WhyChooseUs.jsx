@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import SectionHeading from '../ui/SectionHeading';
 import ScrollReveal from '../ui/ScrollReveal';
 import AnimatedCounter from '../ui/AnimatedCounter';
+import BrandText from '../ui/BrandText';
 import { HiLightningBolt, HiStar, HiClock, HiChip } from 'react-icons/hi';
 
 const stats = [
@@ -20,7 +21,7 @@ const WhyChooseUs = () => {
 
       <div className="max-w-6xl mx-auto relative">
         <SectionHeading 
-          title="Why Choose RoboWorkZ" 
+          title={<>Why Choose <BrandText className="text-4xl md:text-5xl lg:text-6xl" /></>} 
           subtitle="We don't just build robots — we create experiences that leave lasting impressions."
         />
 

@@ -75,7 +75,7 @@ const ContactSection = () => {
                   <div className="space-y-4">
                     {/* Email Link */}
                     <a 
-                      href="mailto:startupoperations.team@gmail.com" 
+                      href="mailto:roboworkz.in@gmail.com" 
                       className="flex items-center gap-3 sm:gap-4 group p-3 sm:p-4 rounded-xl border border-white/[0.04] bg-white/[0.02] hover:bg-primary-500/[0.03] hover:border-primary-500/25 transition-all duration-300 w-full hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(123,57,252,0.15)] cursor-pointer"
                     >
                       <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primary-500/10 flex items-center justify-center shrink-0 group-hover:bg-primary-500/20 group-hover:shadow-[0_0_15px_rgba(123,57,252,0.3)] transition-all duration-300">
@@ -84,7 +84,7 @@ const ContactSection = () => {
                       <div className="flex-1 min-w-0">
                         <div className="text-xs text-gray-500 font-manrope font-semibold uppercase tracking-wider mb-0.5">Email Us</div>
                         <div className="text-[11px] sm:text-sm font-inter text-white font-medium group-hover:text-primary-300 transition-colors break-words" style={{ wordBreak: 'break-word' }}>
-                          startupoperations.team@gmail.com
+                          roboworkz.in@gmail.com
                         </div>
                       </div>
                     </a>

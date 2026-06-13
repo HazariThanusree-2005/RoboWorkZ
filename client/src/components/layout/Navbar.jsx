@@ -45,6 +45,7 @@ const GearSymbol = ({ size = 22 }) => (
   </svg>
 );
 
+import BrandText from '../ui/BrandText';
 import MagneticButton from '../ui/MagneticButton';
 
 const Navbar = () => {
@@ -81,69 +82,14 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-20">
             {/* Logo Link */}
             <Link to="/" className="flex items-center gap-1.5 group">
-              {/* OZ Symbol Only - Animated Video */}
-              <motion.div
-                className="relative flex items-center"
-                whileHover={{ scale: 1.08 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-              >
-                <video 
-                  src="/logo-rotate.mp4" 
-                  className="h-[18px] md:h-[28px] lg:h-[35px] w-auto object-contain"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  controls={false}
-                  style={{
-                    mixBlendMode: 'screen',
-                    filter: 'drop-shadow(0 0 10px rgba(123, 57, 252, 0.5))',
-                  }}
-                />
-              </motion.div>
-
-              {/* RoboWorkZ Text — matching loading screen branding */}
+              {/* RoboWorkZ Text Logo Only */}
               <motion.div
                 className="relative flex items-center"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
               >
-                <span 
-                  className="text-[17px] sm:text-xl md:text-2xl font-extrabold tracking-wider flex items-baseline"
-                  style={{ fontFamily: '"Space Grotesk", sans-serif', letterSpacing: '0.06em' }}
-                >
-                  <span 
-                    className="text-white group-hover:text-gray-100 transition-colors duration-300"
-                    style={{ textShadow: '0 0 15px rgba(123, 57, 252, 0.3)' }}
-                  >R</span>
-                  {/* Gear symbol for the 'O' — matches loading screen gear */}
-                  <motion.span 
-                    className="inline-flex items-center justify-center mx-[-1px]"
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
-                    style={{
-                      filter: 'drop-shadow(0 0 6px rgba(123, 57, 252, 0.7))',
-                    }}
-                  >
-                    <GearSymbol size={18} />
-                  </motion.span>
-                  <span 
-                    className="text-white group-hover:text-gray-100 transition-colors duration-300"
-                    style={{ textShadow: '0 0 15px rgba(123, 57, 252, 0.3)' }}
-                  >boWork</span>
-                  <span 
-                    className="transition-colors duration-300" 
-                    style={{ 
-                      background: 'linear-gradient(135deg, #7b39fc, #ae82ff, #ccb3ff)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                      filter: 'drop-shadow(0 0 8px rgba(123, 57, 252, 0.6))',
-                    }}
-                  >
-                    Z
-                  </span>
-                </span>
+                <BrandText className="text-xl sm:text-2xl md:text-3xl" />
+
                 {/* Neon underline — matches loading screen glow bar */}
                 <motion.div
                   className="absolute -bottom-1.5 left-0 h-[2px] rounded-full"
@@ -159,7 +105,7 @@ const Navbar = () => {
             </Link>
 
             {/* Desktop Nav Links with enhanced hover */}
-            <div className="hidden lg:flex items-center gap-1">
+            <div className="hidden lg:flex items-center gap-2">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
@@ -167,7 +113,7 @@ const Navbar = () => {
                   className="relative group"
                 >
                   <motion.span
-                    className={`relative z-10 block px-4 py-2 text-sm font-manrope font-medium transition-all duration-300 rounded-lg
+                    className={`relative z-10 block px-5 py-2.5 text-base font-manrope font-medium transition-all duration-300 rounded-lg
                       ${location.pathname === link.path 
                         ? 'text-primary-300' 
                         : 'text-gray-400 group-hover:text-white'

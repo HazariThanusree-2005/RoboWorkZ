@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaTwitter, FaLinkedinIn, FaInstagram, FaYoutube } from 'react-icons/fa';
 import { HiMail, HiPhone, HiLocationMarker } from 'react-icons/hi';
+import BrandText from '../ui/BrandText';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -44,26 +45,16 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link to="/" className="inline-block mb-4">
-              <span className="text-2xl font-extrabold" style={{ fontFamily: '"Space Grotesk", sans-serif', letterSpacing: '0.04em' }}>
-                <span className="text-white">Robo</span>
-                <span 
-                  style={{ 
-                    background: 'linear-gradient(135deg, #7b39fc, #ae82ff, #ccb3ff)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                  }}
-                >WorkZ</span>
-              </span>
+              <BrandText className="text-2xl" />
             </Link>
             <p className="text-gray-400 font-inter text-sm leading-relaxed mb-6 max-w-sm">
               India's next generation robotics startup, creating smart solutions for businesses, 
               events, students, and the future of automation.
             </p>
             <div className="space-y-3">
-              <a href="mailto:hello@roboworkz.in" className="flex items-center gap-3 text-gray-400 hover:text-primary-400 transition-colors text-sm">
+              <a href="mailto:roboworkz.in@gmail.com" className="flex items-center gap-3 text-gray-400 hover:text-primary-400 transition-colors text-sm">
                 <HiMail className="text-primary-500" size={16} />
-                hello@roboworkz.in
+                roboworkz.in@gmail.com
               </a>
               <a href="tel:+919876543210" className="flex items-center gap-3 text-gray-400 hover:text-primary-400 transition-colors text-sm">
                 <HiPhone className="text-primary-500" size={16} />
@@ -103,8 +94,8 @@ const Footer = () => {
 
         {/* Bottom */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-gray-500 text-sm font-inter">
-            © {currentYear} RoboWorkZ. All rights reserved.
+          <p className="text-gray-500 text-sm font-inter flex items-center flex-wrap">
+            © {currentYear}&nbsp;<BrandText className="text-sm font-normal mx-1" />. All rights reserved.
           </p>
 
           {/* Social Links */}

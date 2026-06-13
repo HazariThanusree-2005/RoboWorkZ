@@ -3,52 +3,38 @@ import SectionHeading from '../ui/SectionHeading';
 import ScrollReveal from '../ui/ScrollReveal';
 import GlassCard from '../ui/GlassCard';
 import { 
-  Megaphone, CalendarDays, Package, Home, 
+  Megaphone, CalendarDays, Package, Lightbulb, 
   Wrench, BrainCircuit, ArrowRight 
 } from 'lucide-react';
 
 const services = [
   {
-    icon: Megaphone,
-    title: 'Business Promotion Robots',
-    desc: 'Deploy intelligent robots at your store or office to attract customers, provide information, and create memorable brand experiences that drive foot traffic.',
+    icon: BrainCircuit,
+    title: 'Robotics Workshops',
+    desc: 'Build, program, and experience real robots through hands-on workshops designed for schools, colleges, and future innovators.',
     gradient: 'from-violet-500/20 to-purple-600/20',
     borderGlow: 'rgba(139, 92, 246, 0.4)',
   },
   {
     icon: CalendarDays,
-    title: 'Event & Function Robots',
-    desc: 'Make your events unforgettable with interactive robots that greet guests, serve refreshments, perform dances, and entertain audiences at weddings and corporate functions.',
+    title: 'Event Robotics',
+    desc: 'Create unforgettable experiences with interactive robots for exhibitions, corporate events, weddings, and public showcases.',
     gradient: 'from-blue-500/20 to-cyan-600/20',
     borderGlow: 'rgba(59, 130, 246, 0.4)',
   },
   {
-    icon: Package,
-    title: 'Robot Rental Services',
-    desc: 'Affordable and flexible rental plans for robots of all types. Perfect for temporary events, business demos, exhibitions, and trial periods.',
+    icon: Wrench,
+    title: 'Industrial Automation',
+    desc: 'Increase efficiency and productivity through smart robotic systems, automation solutions, and custom engineering support.',
     gradient: 'from-emerald-500/20 to-teal-600/20',
     borderGlow: 'rgba(16, 185, 129, 0.4)',
   },
   {
-    icon: Home,
-    title: 'Domestic Utility Robots',
-    desc: 'Smart home robots designed for daily life — from automated cleaning to personal assistance, bringing futuristic convenience to your household.',
+    icon: Lightbulb,
+    title: 'Smart Business Solutions',
+    desc: 'Attract customers, automate tasks, and enhance engagement using intelligent robotic solutions tailored for modern businesses.',
     gradient: 'from-amber-500/20 to-orange-600/20',
     borderGlow: 'rgba(245, 158, 11, 0.4)',
-  },
-  {
-    icon: Wrench,
-    title: 'Custom Robotics Projects',
-    desc: 'Bespoke robotics solutions tailored to your specific industry needs. Full-cycle development from concept design to production-ready prototypes.',
-    gradient: 'from-pink-500/20 to-rose-600/20',
-    borderGlow: 'rgba(236, 72, 153, 0.4)',
-  },
-  {
-    icon: BrainCircuit,
-    title: 'AI & Automation Solutions',
-    desc: 'Advanced AI integration, machine learning models, and automation pipelines that supercharge your business operations and decision-making.',
-    gradient: 'from-indigo-500/20 to-blue-600/20',
-    borderGlow: 'rgba(99, 102, 241, 0.4)',
   },
 ];
 
@@ -84,11 +70,11 @@ const ServicesSection = ({ hideHeader = false }) => {
         </ScrollReveal>
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full mx-auto">
           {services.map((service, index) => (
             <ScrollReveal key={service.title} staggerIndex={index}>
               <GlassCard
-                className="h-full relative overflow-hidden flex flex-col group p-7"
+                className="h-full relative overflow-hidden flex flex-col group p-8 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(123,57,252,0.15)] transition-all duration-500"
                 hover={true}
                 glow={false}
                 tilt={true}

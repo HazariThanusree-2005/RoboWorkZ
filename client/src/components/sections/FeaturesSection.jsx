@@ -4,6 +4,7 @@ import {
   Cpu, BrainCircuit, Wrench, Package, 
   TrendingUp, Radio 
 } from 'lucide-react';
+import BrandText from '../ui/BrandText';
 
 const features = [
   {
@@ -75,8 +76,8 @@ const FeaturesSection = () => {
             <h2 className="font-instrument text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
               Powered by <span className="text-gradient">Innovation</span>
             </h2>
-            <p className="text-lg text-gray-400 font-inter max-w-2xl mx-auto">
-              Every RoboWorkZ solution is built on cutting-edge technology designed to deliver exceptional results.
+            <p className="text-lg text-gray-400 font-inter max-w-2xl mx-auto flex items-center justify-center flex-wrap gap-1.5">
+              Every <BrandText className="text-xl font-normal leading-none" /> solution is built on cutting-edge technology designed to deliver exceptional results.
             </p>
           </div>
         </ScrollReveal>

@@ -5,6 +5,9 @@ import axios from 'axios';
 import ScrollReveal from '../components/ui/ScrollReveal';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
 import { HiEye, HiCurrencyRupee, HiCheckCircle, HiSearch, HiFilter, HiExternalLink } from 'react-icons/hi';
+import armRoboImg from '../assets/arm-robo.png';
+import roboDogImg from '../assets/robo-dog.png';
+import tableRoboImg from '../assets/table-robo.png';
 
 const categories = [
   { value: '', label: 'All Categories' },
@@ -16,37 +19,37 @@ const categories = [
 const fallbackProducts = [
   {
     _id: 'arm-robo',
-    name: 'AI Robotic Exoskeleton Arm',
-    description: 'A wearable robotic assistance system designed to enhance human strength, rehabilitation, and industrial productivity. Built for healthcare, research, and advanced robotics applications.',
-    features: ['Motion Assistance', 'Smart Sensor Integration', 'Lightweight Design', 'AI-Powered Control'],
+    name: 'Industrial Automation Arm',
+    description: 'High-precision robotic arm designed for automation, manufacturing support, engineering demonstrations, research projects, and robotics training.',
+    features: ['Precision movement', 'Industrial automation support', 'Educational demonstrations', 'Customizable applications'],
     price: 150000,
     rentalAvailable: true,
     rentalPrice: 5000,
-    images: [{ url: '/arm-robo.png' }],
-    category: 'healthcare',
+    images: [{ url: armRoboImg }],
+    category: 'industrial',
     status: 'active'
   },
   {
     _id: 'robo-dog',
-    name: 'Quadruped Robot Dog',
-    description: 'An intelligent four-legged robotic platform capable of stable movement, obstacle navigation, research experimentation, and autonomous operations.',
-    features: ['Dynamic Walking System', 'Autonomous Navigation', 'Research Platform', 'Real-Time Control'],
+    name: 'Portable Quadruped Robot',
+    description: 'Advanced robotic dog platform built for research, educational demonstrations, autonomous navigation, smart mobility, and interactive robotics applications.',
+    features: ['Interactive movement', 'Smart navigation', 'Event attraction', 'Educational robotics'],
     price: 250000,
     rentalAvailable: true,
     rentalPrice: 8000,
-    images: [{ url: '/robo-dog.png' }],
+    images: [{ url: roboDogImg }],
     category: 'research',
     status: 'active'
   },
   {
     _id: 'table-robo',
-    name: 'Industrial Robotic Manipulator',
-    description: 'A precision robotic arm designed for automation, object handling, manufacturing, pick-and-place operations, and robotics education.',
-    features: ['Multi-Axis Movement', 'Precision Control', 'Industrial Automation', 'Educational Applications'],
+    name: 'Smart Service Assistant',
+    description: 'Intelligent service robot developed for customer interaction, exhibitions, hospitality support, smart delivery assistance, and business automation.',
+    features: ['Autonomous serving', 'Customer interaction', 'Event assistance', 'Smart business applications'],
     price: 180000,
     rentalAvailable: true,
     rentalPrice: 6000,
-    images: [{ url: '/table-robo.png' }],
+    images: [{ url: tableRoboImg }],
     category: 'industrial',
     status: 'active'
   }

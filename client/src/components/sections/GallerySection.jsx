@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SectionHeading from '../ui/SectionHeading';
 import ScrollReveal from '../ui/ScrollReveal';
+import BrandText from '../ui/BrandText';
 import { HiX } from 'react-icons/hi';
 
 const galleryItems = [
@@ -37,7 +38,7 @@ const GallerySection = () => {
       <div className="max-w-7xl mx-auto relative">
         <SectionHeading 
           title="Gallery & Showcase" 
-          subtitle="A glimpse into the world of RoboWorkZ — from events to exhibitions, see our robots in action."
+          subtitle={<>A glimpse into the world of <BrandText className="text-base font-normal leading-none" /> — from events to exhibitions, see our robots in action.</>}
         />
 
         {/* Filters */}
