@@ -80,13 +80,19 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo Link */}
+<<<<<<< HEAD
             <Link to="/" className="flex items-center gap-1.5 group">
               {/* OZ Symbol Only - Animated Video */}
+=======
+            <Link to="/" className="flex items-center gap-2.5 group">
+              {/* OZ Symbol Only */}
+>>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
               <motion.div
                 className="relative flex items-center"
                 whileHover={{ scale: 1.08 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
               >
+<<<<<<< HEAD
                 <video 
                   src="/logo-rotate.mp4" 
                   className="h-[18px] md:h-[28px] lg:h-[35px] w-auto object-contain"
@@ -98,18 +104,36 @@ const Navbar = () => {
                   style={{
                     mixBlendMode: 'screen',
                     filter: 'drop-shadow(0 0 10px rgba(123, 57, 252, 0.5))',
+=======
+                <img 
+                  src="/oz-logo.png" 
+                  alt="OZ Logo" 
+                  className="h-9 sm:h-10 w-auto object-contain"
+                  style={{
+                    filter: 'drop-shadow(0 0 10px rgba(123, 57, 252, 0.5)) drop-shadow(0 0 20px rgba(123, 57, 252, 0.2))',
+>>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
                   }}
                 />
               </motion.div>
 
+<<<<<<< HEAD
               {/* RoboWorkZ Text — matching loading screen branding */}
               <motion.div
                 className="relative flex items-center"
+=======
+              {/* RoboWorkz Text — matching loading screen branding */}
+              <motion.div
+                className="relative hidden sm:flex items-center"
+>>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
               >
                 <span 
+<<<<<<< HEAD
                   className="text-[17px] sm:text-xl md:text-2xl font-extrabold tracking-wider flex items-baseline"
+=======
+                  className="text-xl md:text-2xl font-extrabold tracking-wider flex items-baseline"
+>>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
                   style={{ fontFamily: '"Space Grotesk", sans-serif', letterSpacing: '0.06em' }}
                 >
                   <span 

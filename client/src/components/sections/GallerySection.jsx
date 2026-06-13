@@ -37,7 +37,11 @@ const GallerySection = () => {
       <div className="max-w-7xl mx-auto relative">
         <SectionHeading 
           title="Gallery & Showcase" 
+<<<<<<< HEAD
           subtitle="A glimpse into the world of RoboWorkZ — from events to exhibitions, see our robots in action."
+=======
+          subtitle="A glimpse into the world of RoboWorkz — from events to exhibitions, see our robots in action."
+>>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
         />
 
         {/* Filters */}

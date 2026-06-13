@@ -150,7 +150,11 @@
 
   /* Section Spacing */
   .section-padding {
+<<<<<<< HEAD
     @apply py-16 md:py-24 px-6 md:px-12 lg:px-20;
+=======
+    @apply py-24 px-6 md:px-12 lg:px-20;
+>>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
   }
 
   /* Card hover effect */
@@ -231,6 +235,7 @@
   pointer-events: none;
   z-index: 1;
 }
+<<<<<<< HEAD
 
 /* ==================== LOADING SCREEN — CINEMATIC ==================== */
 
@@ -281,3 +286,5 @@
     max-height: 75vh;
   }
 }
+=======
+>>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897

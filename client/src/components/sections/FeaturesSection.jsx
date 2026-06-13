@@ -76,7 +76,11 @@ const FeaturesSection = () => {
               Powered by <span className="text-gradient">Innovation</span>
             </h2>
             <p className="text-lg text-gray-400 font-inter max-w-2xl mx-auto">
+<<<<<<< HEAD
               Every RoboWorkZ solution is built on cutting-edge technology designed to deliver exceptional results.
+=======
+              Every RoboWorkz solution is built on cutting-edge technology designed to deliver exceptional results.
+>>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
             </p>
           </div>
         </ScrollReveal>

@@ -53,7 +53,11 @@ const Footer = () => {
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text',
                   }}
+<<<<<<< HEAD
                 >WorkZ</span>
+=======
+                >Workz</span>
+>>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
               </span>
             </Link>
             <p className="text-gray-400 font-inter text-sm leading-relaxed mb-6 max-w-sm">
@@ -104,7 +108,11 @@ const Footer = () => {
         {/* Bottom */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-gray-500 text-sm font-inter">
+<<<<<<< HEAD
             © {currentYear} RoboWorkZ. All rights reserved.
+=======
+            © {currentYear} RoboWorkz. All rights reserved.
+>>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
           </p>
 
           {/* Social Links */}

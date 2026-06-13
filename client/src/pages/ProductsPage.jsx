@@ -8,13 +8,18 @@ import { HiEye, HiCurrencyRupee, HiCheckCircle, HiSearch, HiFilter, HiExternalLi
 
 const categories = [
   { value: '', label: 'All Categories' },
+<<<<<<< HEAD
   { value: 'healthcare', label: 'Healthcare & Rehab' },
   { value: 'research', label: 'Research & Development' },
   { value: 'industrial', label: 'Industrial Automation' },
+=======
+  { value: 'creative', label: 'Creative Robotics' },
+>>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
 ];
 
 const fallbackProducts = [
   {
+<<<<<<< HEAD
     _id: 'arm-robo',
     name: 'AI Robotic Exoskeleton Arm',
     description: 'A wearable robotic assistance system designed to enhance human strength, rehabilitation, and industrial productivity. Built for healthcare, research, and advanced robotics applications.',
@@ -48,6 +53,17 @@ const fallbackProducts = [
     rentalPrice: 6000,
     images: [{ url: '/table-robo.png' }],
     category: 'industrial',
+=======
+    _id: 'robocam',
+    name: 'RoboCam',
+    description: 'RoboCam is a state-of-the-art smart camera assistant focused mainly on influencers, vlogger teams, and event filmmakers. By tracking movement natively and automating gimbal orientation, it provides seamless hands-free recording.',
+    features: ['AI Smart Tracking', 'Automated Camera Motion', 'Cinematic Video Capture', 'Smart Motion Recording', 'Creator-Friendly Setup', 'Smooth Content Creation'],
+    price: 89999,
+    rentalAvailable: true,
+    rentalPrice: 2500,
+    images: [{ url: '/robocam.png' }],
+    category: 'creative',
+>>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
     status: 'active'
   }
 ];
@@ -59,6 +75,10 @@ const ProductsPage = () => {
   const [category, setCategory] = useState('');
 
   useEffect(() => {
+<<<<<<< HEAD
+=======
+    // Enforce RoboCam as the exclusive flagship product on the site
+>>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
     setProducts(fallbackProducts);
     setLoading(false);
   }, [search, category]);
@@ -73,7 +93,11 @@ const ProductsPage = () => {
   return (
     <div className="pt-20 min-h-screen">
       {/* Header */}
+<<<<<<< HEAD
       <section className="pt-16 md:pt-24 pb-8 px-6 text-center relative">
+=======
+      <section className="section-padding pb-8 text-center relative">
+>>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
         <div className="absolute inset-0 bg-gradient-to-b from-primary-500/5 to-transparent" />
         <div className="relative max-w-4xl mx-auto">
           <motion.h1
@@ -154,7 +178,11 @@ const ProductsPage = () => {
                   >
                     <div className="relative h-52 bg-gradient-to-br from-primary-900/30 to-dark-800 overflow-hidden">
                       {product.images?.length > 0 ? (
+<<<<<<< HEAD
                         <img src={product.images[0].url} alt={product.name} className="w-full h-full object-contain p-6 group-hover:scale-110 transition-transform duration-700" />
+=======
+                        <img src={product.images[0].url} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+>>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
                       ) : (
                         <div className="w-full h-full flex items-center justify-center">
                           <motion.div className="text-7xl opacity-20" animate={{ rotateY: [0, 360] }} transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}>🤖</motion.div>

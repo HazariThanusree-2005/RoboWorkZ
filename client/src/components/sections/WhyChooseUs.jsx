@@ -20,7 +20,11 @@ const WhyChooseUs = () => {
 
       <div className="max-w-6xl mx-auto relative">
         <SectionHeading 
+<<<<<<< HEAD
           title="Why Choose RoboWorkZ" 
+=======
+          title="Why Choose RoboWorkz" 
+>>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
           subtitle="We don't just build robots — we create experiences that leave lasting impressions."
         />
 

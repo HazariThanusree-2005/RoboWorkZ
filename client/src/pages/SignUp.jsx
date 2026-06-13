@@ -45,7 +45,11 @@ const SignUp = () => {
           <Link to="/" className="inline-block mb-6">
             <span className="text-3xl font-manrope font-extrabold">
               <span className="text-white">Robo</span>
+<<<<<<< HEAD
               <span className="text-primary-500">WorkZ</span>
+=======
+              <span className="text-primary-500">Workz</span>
+>>>>>>> cd29dd68eba5b55581778bfcbe115cd7bf860897
             </span>
           </Link>
           <h1 className="text-2xl font-instrument font-bold text-white mb-2">Create Account</h1>
