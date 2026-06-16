@@ -52,7 +52,7 @@ function App() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: loading ? 0 : 1 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
+        transition={{ duration: 0.8, delay: 0.15, ease: [0.4, 0, 0.2, 1] }}
       >
         <Layout>
           <AnimatePresence mode="wait">

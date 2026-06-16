@@ -18,7 +18,7 @@ const GlowButton = ({ children, variant = 'primary', className = '', floating = 
     <motion.button
       ref={ref}
       onMouseMove={handleMouseMove}
-      className={`${base} relative group transition-all duration-300 shadow-none hover:shadow-[0_0_25px_rgba(123,57,252,0.45)] ${className}`}
+      className={`${base} relative group transition-all duration-300 shadow-none hover:shadow-[0_0_25px_rgba(139,92,246,0.45)] ${className}`}
       whileHover={{ y: -2, scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       animate={floating ? {
@@ -35,7 +35,7 @@ const GlowButton = ({ children, variant = 'primary', className = '', floating = 
       <div 
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-xl"
         style={{
-          background: `radial-gradient(120px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(123, 57, 252, 0.25), transparent 80%)`,
+          background: `radial-gradient(120px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(139, 92, 246, 0.25), transparent 80%)`,
         }}
       />
       
@@ -43,7 +43,7 @@ const GlowButton = ({ children, variant = 'primary', className = '', floating = 
       <div 
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-xl border border-transparent"
         style={{
-          background: `radial-gradient(80px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(174, 130, 255, 0.7), transparent 70%) border-box`,
+          background: `radial-gradient(80px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(192, 132, 252, 0.7), transparent 70%) border-box`,
           WebkitMask: 'linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)',
           WebkitMaskComposite: 'xor',
           maskComposite: 'exclude',

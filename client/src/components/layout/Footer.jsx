@@ -36,7 +36,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-dark-900 border-t border-white/5">
+    <footer className="relative bg-[#050312] border-t border-white/5">
       {/* Glow accent */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-px bg-gradient-to-r from-transparent via-primary-500/50 to-transparent" />
 

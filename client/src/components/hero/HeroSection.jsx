@@ -1,98 +1,156 @@
-import { motion } from 'framer-motion';
+import { useRef, useEffect } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { HiArrowRight } from 'react-icons/hi';
 import FloatingParticles from './FloatingParticles';
 import GlowButton from '../ui/GlowButton';
 import MagneticButton from '../ui/MagneticButton';
 import BrandText from '../ui/BrandText';
 
+// Premium easing curve used throughout
+const EASE_OUT_EXPO = [0.16, 1, 0.3, 1];
+
 const HeroSection = () => {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(err => {
+        console.log("Video play failed:", err);
+      });
+    }
+  }, []);
+
+  const { scrollY } = useScroll();
+  const leftY = useTransform(scrollY, [0, 500], [0, -100]);
+  const leftOpacity = useTransform(scrollY, [0, 400], [1, 0]);
+  const rightY = useTransform(scrollY, [0, 500], [0, -60]);
+  const rightOpacity = useTransform(scrollY, [0, 400], [1, 0]);
+
   return (
-    <section id="hero" className="relative w-full min-h-screen flex items-center overflow-hidden bg-dark-950">
-      {/* Futuristic Background Gradients (Replacing the full screen video) */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary-600/[0.08] rounded-full blur-3xl mix-blend-screen pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-600/[0.06] rounded-full blur-3xl mix-blend-screen pointer-events-none" />
+    <section id="hero" className="relative w-full min-h-screen flex items-center overflow-hidden bg-dark-950 hero-grid">
+      {/* Deep background layer */}
+      <div className="absolute inset-0 bg-[#050312]" />
+
+      {/* Futuristic Background Gradients */}
+      <div className="absolute top-[-200px] right-[-200px] w-[900px] h-[900px] bg-primary-600/[0.06] rounded-full blur-3xl mix-blend-screen pointer-events-none" />
+      <div className="absolute bottom-[-100px] left-[-100px] w-[600px] h-[600px] bg-accent/[0.04] rounded-full blur-3xl mix-blend-screen pointer-events-none" />
+      <div className="absolute top-1/2 left-1/3 w-[400px] h-[400px] bg-glow/[0.03] rounded-full blur-3xl pointer-events-none" />
+
+      {/* Grid pattern overlay */}
+      <div className="absolute inset-0 hero-grid opacity-60 pointer-events-none" />
 
       {/* Floating Particles */}
-      <FloatingParticles count={25} />
+      <FloatingParticles count={30} />
 
-      {/* Bottom gradient for smooth transition to next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-dark-900 to-transparent z-10 pointer-events-none" />
+      {/* Bottom gradient — smooth transition to next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-dark-900 to-transparent z-10 pointer-events-none" />
 
-      {/* Centered Layout Container */}
-      <div className="relative z-20 max-w-4xl mx-auto w-full flex flex-col items-center justify-center px-6 pt-32 pb-24 text-center min-h-[80vh]">
-        
-        {/* Hero Content */}
-        <div className="flex flex-col items-center w-full">
-          {/* Glassmorphism Tag */}
-          <motion.div
-            className="glass rounded-full px-6 py-2.5 mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <span className="text-sm md:text-base font-manrope font-medium text-primary-300 tracking-wide">
-              ✦ India's Next Generation Robotics Startup
-            </span>
-          </motion.div>
+      {/* ═══ SPLIT LAYOUT: Left Content (50%) + Right Robot (50%) ═══ */}
+      <div className="relative z-20 max-w-[1400px] mx-auto w-full flex flex-col lg:flex-row items-center justify-between px-6 lg:px-12 pt-20 pb-12 gap-8 lg:gap-4">
 
-          {/* Headline */}
+        {/* ─── LEFT SIDE: Content ─── */}
+        <motion.div 
+          className="flex flex-col items-start text-left w-full lg:w-[50%] max-w-2xl"
+          style={{ y: leftY, opacity: leftOpacity }}
+        >
+
+          {/* ═══ HEADLINE ═══ */}
           <motion.h1
-            className="font-space text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.15] mb-6 text-balance"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            className="font-space text-3xl sm:text-4xl md:text-5xl lg:text-[2.75rem] xl:text-[3.25rem] font-bold text-white leading-[1.15] mb-6 tracking-tight"
+            initial={{ opacity: 0, y: 40, filter: 'blur(6px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 0.9, delay: 0.35, ease: EASE_OUT_EXPO }}
           >
-            Building Interactive{' '}
-            <span className="text-gradient">Robots</span>{' '}
-            for Businesses & Events
+            BUILDING <span className="text-gradient glow-text">INTELLIGENT</span>{' '}
+            <br className="hidden md:block" />
+            ROBOTICS FOR <span className="text-gradient glow-text">THE FUTURE</span>
           </motion.h1>
 
+          {/* ═══ SUBTEXT ═══ */}
           <motion.p
-            className="text-base md:text-lg lg:text-xl text-gray-300 max-w-2xl mb-10 font-inter leading-relaxed flex flex-wrap items-center justify-center gap-1.5"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.7 }}
+            className="text-sm sm:text-base md:text-lg text-gray-400 max-w-md md:max-w-xl mb-10 font-inter leading-relaxed tracking-wide opacity-90"
+            initial={{ opacity: 0, y: 24, filter: 'blur(3px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 0.7, delay: 0.55, ease: EASE_OUT_EXPO }}
           >
-            <span><BrandText className="text-xl md:text-2xl font-normal leading-none -translate-y-px" /> creates smart robotics solutions for businesses, events, and interactive experiences across India.</span>
+            Custom robots, automation solutions, rentals, and AI-powered experiences for businesses, events, and innovation.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* ═══ CTA BUTTONS ═══ */}
           <motion.div
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
+            className="flex flex-col sm:flex-row items-start gap-4 w-full sm:w-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.9 }}
+            transition={{ duration: 0.7, delay: 0.72, ease: EASE_OUT_EXPO }}
           >
             <Link to="/products" className="w-full sm:w-auto">
               <MagneticButton className="w-full">
-                <GlowButton variant="primary" floating className="w-full">
+                <GlowButton variant="primary" className="w-full text-base px-8 py-3.5">
                   Explore Products
+                  <HiArrowRight className="inline ml-2" size={16} />
                 </GlowButton>
               </MagneticButton>
             </Link>
+
             <Link to="/contact" className="w-full sm:w-auto">
               <MagneticButton className="w-full">
-                <GlowButton variant="outline" floating className="w-full">
-                  Book a Demo
+                <GlowButton variant="outline" className="w-full text-base px-8 py-3.5">
+                  Book Demo
                 </GlowButton>
               </MagneticButton>
             </Link>
           </motion.div>
-        </div>
-        
+        </motion.div>
+
+        {/* ─── RIGHT SIDE: RoboWorkZ AI Assistant Video ─── */}
+        <motion.div
+          className="w-full lg:w-[50%] flex items-center justify-center relative"
+          initial={{ opacity: 0, scale: 0.9, x: 60 }}
+          animate={{ opacity: 1, scale: 1, x: 0 }}
+          transition={{ duration: 1, delay: 0.5, ease: EASE_OUT_EXPO }}
+          style={{ y: rightY, opacity: rightOpacity }}
+        >
+          {/* Subtle radial light and soft purple ambient glow behind the robot body */}
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] pointer-events-none rounded-full"
+            style={{
+              background: 'radial-gradient(circle, rgba(139, 92, 246, 0.22) 0%, rgba(168, 85, 247, 0.08) 40%, transparent 70%)',
+              filter: 'blur(70px)',
+            }}
+          />
+
+          {/* Sizing wrapper without borders, backgrounds, card outlines, or card shadows */}
+          <div className="relative w-full max-w-[420px] lg:max-w-[480px]">
+            <video
+              ref={videoRef}
+              src="/robo-animate.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              controls={false}
+              className="w-full h-auto object-contain block pointer-events-none mix-blend-screen"
+            />
+          </div>
+        </motion.div>
       </div>
 
-      {/* Scroll indicator - fixed at bottom center */}
+      {/* Scroll indicator */}
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 hidden md:block"
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, y: [0, 8, 0] }}
+        transition={{
+          opacity: { duration: 0.5, delay: 1.2 },
+          y: { duration: 2, repeat: Infinity, ease: 'easeInOut' },
+        }}
       >
         <div className="w-6 h-10 rounded-full border-2 border-white/20 flex items-start justify-center p-1.5">
           <motion.div
             className="w-1.5 h-1.5 bg-primary-400 rounded-full"
             animate={{ y: [0, 16, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
           />
         </div>
       </motion.div>

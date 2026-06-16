@@ -23,7 +23,7 @@ const Layout = ({ children }) => {
   const isAdminRoute = location.pathname.startsWith('/admin');
 
   return (
-    <div className="min-h-screen bg-dark-900 relative">
+    <div className="min-h-screen bg-[#050312] relative">
       {!isAdminRoute && <Navbar />}
       
       <main>

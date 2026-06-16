@@ -51,7 +51,7 @@ const GlassCard = ({ children, className = '', hover = true, glow = false, tilt 
       className={`
         glass rounded-2xl relative overflow-hidden group transition-shadow duration-500
         ${className.match(/\bp-\d+\b|\bp-0\b/) ? '' : 'p-6'}
-        ${hover ? 'cursor-pointer hover:shadow-[0_0_30px_rgba(123,57,252,0.25)]' : ''}
+        ${hover ? 'cursor-pointer hover:shadow-[0_0_30px_rgba(139,92,246,0.25)]' : ''}
         ${glow ? 'glow-border' : ''}
         ${className}
       `}
@@ -64,7 +64,7 @@ const GlassCard = ({ children, className = '', hover = true, glow = false, tilt 
         <div 
           className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
           style={{
-            background: `radial-gradient(150px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(123, 57, 252, 0.12), transparent 85%)`,
+            background: `radial-gradient(150px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(139, 92, 246, 0.12), transparent 85%)`,
           }}
         />
       )}
@@ -74,7 +74,7 @@ const GlassCard = ({ children, className = '', hover = true, glow = false, tilt 
         <div 
           className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl border border-transparent"
           style={{
-            background: `radial-gradient(120px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(174, 130, 255, 0.4), transparent 75%) border-box`,
+            background: `radial-gradient(120px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(192, 132, 252, 0.4), transparent 75%) border-box`,
             WebkitMask: 'linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)',
             WebkitMaskComposite: 'xor',
             maskComposite: 'exclude',

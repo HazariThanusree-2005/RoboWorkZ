@@ -2,9 +2,9 @@ import { motion } from 'framer-motion';
 import SectionHeading from '../ui/SectionHeading';
 import ScrollReveal from '../ui/ScrollReveal';
 import GlassCard from '../ui/GlassCard';
-import { 
-  Megaphone, CalendarDays, Package, Lightbulb, 
-  Wrench, BrainCircuit, ArrowRight 
+import {
+  Megaphone, CalendarDays, Package, Lightbulb,
+  Wrench, BrainCircuit, ArrowRight
 } from 'lucide-react';
 
 const services = [
@@ -43,38 +43,48 @@ const ServicesSection = ({ hideHeader = false }) => {
     <section id="services" className="section-padding relative overflow-hidden">
       {/* Background neon accents */}
       <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-primary-500/[0.04] rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-primary-500/[0.03] rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-accent/[0.03] rounded-full blur-3xl" />
 
       <div className="max-w-7xl mx-auto relative">
-        {/* Header */}
+        {/* Header slides up from below */}
         {!hideHeader && (
-        <ScrollReveal>
-          <div className="text-center mb-10 md:mb-16">
-            <motion.div
-              className="inline-flex items-center gap-2 glass rounded-full px-5 py-2 mb-6"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-            >
-              <Wrench size={16} className="text-primary-400" />
-              <span className="text-xs font-manrope font-semibold text-primary-300 tracking-wider uppercase">What We Offer</span>
-            </motion.div>
+          <ScrollReveal direction="up">
+            <div className="text-center mb-10 md:mb-16">
+              <motion.div
+                className="inline-flex items-center gap-2 glass rounded-full px-5 py-2 mb-6"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <Wrench size={16} className="text-primary-400" />
+                <span className="text-xs font-manrope font-semibold text-primary-300 tracking-wider uppercase">What We Offer</span>
+              </motion.div>
 
-            <h2 className="font-space text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-              Our <span className="text-gradient">Services</span>
-            </h2>
-            <p className="text-lg text-gray-400 font-inter max-w-2xl mx-auto">
-              Comprehensive robotics solutions designed for every need — from business automation to immersive event experiences.
-            </p>
-          </div>
-        </ScrollReveal>
+              <h2 className="font-space text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+                Our <span className="text-gradient">Services</span>
+              </h2>
+              <p className="text-lg text-gray-400 font-inter max-w-2xl mx-auto">
+                Comprehensive robotics solutions designed for every need — from business automation to immersive event experiences.
+              </p>
+            </div>
+          </ScrollReveal>
         )}
 
+        {/* Cards: alternating left / right entrance with parallax */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full mx-auto">
           {services.map((service, index) => (
-            <ScrollReveal key={service.title} staggerIndex={index}>
+            <ScrollReveal
+              key={service.title}
+              direction={index % 2 === 0 ? 'left' : 'right'}
+              staggerIndex={index}
+              delay={0}
+              parallax={true}
+              parallaxDirection={index % 2 === 0 ? 'left' : 'right'}
+              parallaxAmount={8}
+            >
               <GlassCard
-                className="h-full relative overflow-hidden flex flex-col group p-8 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(123,57,252,0.15)] transition-all duration-500"
+                className="h-full relative overflow-hidden flex flex-col group p-8 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(139,92,246,0.15)] transition-all duration-500"
                 hover={true}
                 glow={false}
                 tilt={true}
@@ -92,13 +102,13 @@ const ServicesSection = ({ hideHeader = false }) => {
                 {/* Content */}
                 <div className="relative z-10 flex-1 flex flex-col">
                   <motion.div
-                    className="w-14 h-14 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center mb-5 group-hover:border-primary-500/20 group-hover:shadow-[0_0_20px_rgba(123,57,252,0.15)] transition-all duration-300"
+                    className="w-14 h-14 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center mb-5 group-hover:border-primary-500/20 group-hover:shadow-[0_0_20px_rgba(139,92,246,0.15)] transition-all duration-300"
                     whileHover={{ scale: 1.1, rotate: [0, -8, 8, 0] }}
                     transition={{ duration: 0.5 }}
                   >
-                    <service.icon 
-                      size={26} 
-                      className="text-primary-400 group-hover:text-primary-300 transition-colors duration-300" 
+                    <service.icon
+                      size={26}
+                      className="text-primary-400 group-hover:text-primary-300 transition-colors duration-300"
                       strokeWidth={1.5}
                     />
                   </motion.div>

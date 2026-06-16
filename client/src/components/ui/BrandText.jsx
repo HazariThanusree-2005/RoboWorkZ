@@ -1,23 +1,27 @@
 import React from 'react';
 
-const BrandText = ({ className = '' }) => {
+const BrandText = ({ className = '', size = 'default' }) => {
+  const sizeClasses = {
+    default: '',
+    hero: 'text-5xl sm:text-6xl md:text-7xl',
+    nav: 'text-xl sm:text-2xl md:text-3xl',
+  };
+
   return (
     <span 
-      className={`font-bold tracking-widest inline-flex items-baseline ${className}`}
-      style={{ fontFamily: '"Ethnocentric", sans-serif' }}
+      className={`font-semibold tracking-[0.18em] inline-flex items-baseline ${sizeClasses[size] || ''} ${className}`}
+      style={{ fontFamily: '"Orbitron", sans-serif' }}
     >
       <span 
-        className="text-white group-hover:text-gray-100 transition-colors duration-300"
-        style={{ textShadow: '0 0 15px rgba(123, 57, 252, 0.3)' }}
-      >RoboWork</span>
+        className="text-white group-hover:text-gray-200 transition-colors duration-300"
+      >
+        RoboWork
+      </span>
       <span 
-        className="transition-colors duration-300" 
+        className="transition-colors duration-300 font-bold" 
         style={{ 
-          background: 'linear-gradient(135deg, #7b39fc, #ae82ff, #ccb3ff)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
-          filter: 'drop-shadow(0 0 8px rgba(123, 57, 252, 0.6))',
+          color: '#A855F7',
+          textShadow: '0 0 10px rgba(168, 85, 247, 0.65)',
         }}
       >
         Z

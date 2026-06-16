@@ -36,41 +36,45 @@ const RentalsSection = () => {
     <section id="rentals-preview" className="section-padding relative overflow-hidden">
       {/* Background gradients */}
       <div className="absolute top-1/4 left-0 w-[600px] h-[600px] bg-primary-600/[0.03] rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-600/[0.02] rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-accent/[0.02] rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative px-6 md:px-8">
-        <SectionHeading
-          title="Robot Rentals"
-          subtitle={<>Bring cutting-edge automation to your events, exhibitions, or business promotions with <BrandText className="text-base font-normal leading-none" />.</>}
-        />
+        {/* Heading slides up from below */}
+        <ScrollReveal direction="up">
+          <SectionHeading
+            title="Robot Rentals"
+            subtitle={<>Bring cutting-edge automation to your events, exhibitions, or business promotions with <BrandText className="text-base font-normal leading-none" />.</>}
+          />
+        </ScrollReveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mt-12">
-          {/* Left Column: Brand Statement & CTA */}
+
+          {/* Left Column: Brand Statement & CTA — slides in from the left with parallax */}
           <div className="lg:col-span-5 flex flex-col items-start text-left">
-            <ScrollReveal>
+            <ScrollReveal direction="left" delay={0.05} parallax={true} parallaxDirection="left" parallaxAmount={10}>
               <div className="inline-flex items-center gap-2 glass rounded-full px-5 py-2 mb-6">
                 <HiTruck size={16} className="text-primary-400" />
                 <span className="text-xs font-manrope font-semibold text-primary-300 tracking-wider uppercase">On-Demand Deployment</span>
               </div>
             </ScrollReveal>
 
-            <ScrollReveal delay={0.1}>
+            <ScrollReveal direction="left" delay={0.15} parallax={true} parallaxDirection="left" parallaxAmount={10}>
               <h3 className="font-space text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
                 Bring Tomorrow's Tech to <span className="text-gradient">Your Event</span>
               </h3>
             </ScrollReveal>
 
-            <ScrollReveal delay={0.2}>
+            <ScrollReveal direction="left" delay={0.25} parallax={true} parallaxDirection="left" parallaxAmount={10}>
               <p className="text-gray-300 font-inter text-base md:text-lg leading-relaxed mb-8 max-w-lg">
                 Create unforgettable experiences and massive engagement at your next exhibition, corporate meet, or campaign. We offer short-term rentals of advanced quadruped robot dogs, interactive AI bots, and custom robotic arms.
               </p>
             </ScrollReveal>
 
-            <ScrollReveal delay={0.3}>
+            <ScrollReveal direction="left" delay={0.35}>
               <MagneticButton>
                 <Link
                   to="/rentals"
-                  className="inline-flex items-center gap-2.5 px-8 py-4 text-sm font-manrope font-semibold text-white bg-primary-500 rounded-xl transition-all duration-300 hover:bg-primary-600 hover:shadow-[0_0_25px_rgba(123,57,252,0.4)] group"
+                  className="inline-flex items-center gap-2.5 px-8 py-4 text-sm font-manrope font-semibold text-white bg-primary-500 rounded-xl transition-all duration-300 hover:bg-primary-600 hover:shadow-[0_0_25px_rgba(139,92,246,0.4)] group"
                 >
                   Explore Rental Fleet
                   <HiArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
@@ -79,12 +83,20 @@ const RentalsSection = () => {
             </ScrollReveal>
           </div>
 
-          {/* Right Column: Perks Grid */}
+          {/* Right Column: Perks Grid — each perk slides from right with stagger and parallax */}
           <div className="lg:col-span-7 flex flex-col gap-6">
             {RentalPerks.map((perk, index) => (
-              <ScrollReveal key={perk.title} delay={index * 0.15}>
+              <ScrollReveal
+                key={perk.title}
+                direction="right"
+                delay={index * 0.15}
+                staggerIndex={0}
+                parallax={true}
+                parallaxDirection="right"
+                parallaxAmount={10}
+              >
                 <GlassCard
-                  className="relative overflow-hidden flex flex-col sm:flex-row items-start sm:items-center gap-6 p-6 group hover:scale-[1.01] hover:shadow-[0_0_25px_rgba(123,57,252,0.1)] transition-all duration-500"
+                  className="relative overflow-hidden flex flex-col sm:flex-row items-start sm:items-center gap-6 p-6 group hover:scale-[1.01] hover:shadow-[0_0_25px_rgba(139,92,246,0.1)] transition-all duration-500"
                   hover={true}
                   glow={false}
                   tilt={false}
@@ -94,7 +106,7 @@ const RentalsSection = () => {
                   <div className="absolute inset-0 bg-dark-900/95 group-hover:bg-dark-900/85 transition-colors duration-300" />
 
                   {/* Icon */}
-                  <div className="relative z-10 w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center shrink-0 group-hover:border-primary-500/20 group-hover:shadow-[0_0_15px_rgba(123,57,252,0.2)] transition-all duration-300">
+                  <div className="relative z-10 w-12 h-12 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center shrink-0 group-hover:border-primary-500/20 group-hover:shadow-[0_0_15px_rgba(139,92,246,0.2)] transition-all duration-300">
                     <perk.icon className="text-primary-400 group-hover:text-primary-300 transition-colors" size={24} />
                   </div>
 
@@ -111,6 +123,7 @@ const RentalsSection = () => {
               </ScrollReveal>
             ))}
           </div>
+
         </div>
       </div>
     </section>
