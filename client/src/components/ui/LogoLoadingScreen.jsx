@@ -36,7 +36,7 @@ const LogoLoadingScreen = ({ onComplete }) => {
         initial={{ opacity: 1 }}
         animate={{ opacity: isFading ? 0 : 1 }}
         transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
-        style={{ background: '#050312' }}
+        style={{ background: '#000000' }}
       >
         <video
           ref={videoRef}

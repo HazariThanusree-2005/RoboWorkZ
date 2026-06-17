@@ -284,13 +284,14 @@
 
 /* ==================== LOADING SCREEN — CINEMATIC ==================== */
 
-/* ─── Full-screen black backdrop ──────────────────────────────────── */
+/* ─── Full-screen backdrop — colour matches the video background ──── */
 .lls-overlay {
   position: fixed;
   inset: 0;
   width: 100vw;
   height: 100vh;
-  background: #050312;
+  height: 100svh;                /* mobile-safe viewport height */
+  background: #000000;           /* matches video's native background */
   z-index: 9999;
   display: flex;
   align-items: center;
@@ -299,40 +300,23 @@
   will-change: opacity;
 }
 
-/* ─── Loading Video — full viewport, aspect-ratio preserved ───────── */
+/* ─── Loading Video — centred, never zoomed/cropped ──────────────── */
 .lls-video {
-  /* Fill the screen without cropping — letterbox/pillarbox as needed */
-  width: 100vw;
-  height: 100vh;
-  object-fit: contain;
+  max-width: 100vw;
+  max-height: 100vh;
+  max-height: 100svh;
+  width: auto;
+  height: auto;
+  object-fit: contain;           /* preserve original size & aspect ratio */
   object-position: center center;
   pointer-events: none;
-  background-color: #050312;
   display: block;
-  /* GPU hint for compositing */
+  /* Ensure no visible container / box */
+  background: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
   will-change: opacity;
-}
-
-/* ─── Responsive — maintain contain behaviour on all screens ─────── */
-@media (max-width: 1024px) {
-  .lls-video {
-    width: 100vw;
-    height: 100vh;
-  }
-}
-
-@media (max-width: 768px) {
-  .lls-video {
-    width: 100vw;
-    height: 100svh; /* safe-area aware on modern mobile browsers */
-  }
-}
-
-@media (max-width: 480px) {
-  .lls-video {
-    width: 100vw;
-    height: 100svh;
-  }
 }
 
 /* ==================== PREMIUM SECTION ANIMATIONS ==================== */
