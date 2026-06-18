@@ -1,4 +1,3 @@
-import { useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { HiArrowRight } from 'react-icons/hi';
@@ -6,21 +5,12 @@ import FloatingParticles from './FloatingParticles';
 import GlowButton from '../ui/GlowButton';
 import MagneticButton from '../ui/MagneticButton';
 import BrandText from '../ui/BrandText';
+import { SplineScene } from '../ui/splite';
 
 // Premium easing curve used throughout
 const EASE_OUT_EXPO = [0.16, 1, 0.3, 1];
 
 const HeroSection = () => {
-  const videoRef = useRef(null);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(err => {
-        console.log("Video play failed:", err);
-      });
-    }
-  }, []);
-
   const { scrollY } = useScroll();
   const leftY = useTransform(scrollY, [0, 500], [0, -100]);
   const leftOpacity = useTransform(scrollY, [0, 400], [1, 0]);
@@ -103,7 +93,7 @@ const HeroSection = () => {
           </motion.div>
         </motion.div>
 
-        {/* ─── RIGHT SIDE: RoboWorkZ AI Assistant Video ─── */}
+        {/* ─── RIGHT SIDE: Premium Interactive 3D Spline Robot ─── */}
         <motion.div
           className="w-full lg:w-[50%] flex items-center justify-center relative"
           initial={{ opacity: 0, scale: 0.9, x: 60 }}
@@ -115,23 +105,36 @@ const HeroSection = () => {
           <div
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] pointer-events-none rounded-full"
             style={{
-              background: 'radial-gradient(circle, rgba(139, 92, 246, 0.22) 0%, rgba(168, 85, 247, 0.08) 40%, transparent 70%)',
-              filter: 'blur(70px)',
+              background: 'radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, rgba(168, 85, 247, 0.08) 45%, transparent 75%)',
+              filter: 'blur(80px)',
             }}
           />
 
           {/* Sizing wrapper without borders, backgrounds, card outlines, or card shadows */}
-          <div className="relative w-full max-w-[420px] lg:max-w-[480px]">
-            <video
-              ref={videoRef}
-              src="/robo-animate.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              controls={false}
-              className="w-full h-auto object-contain block pointer-events-none mix-blend-screen"
+          <div className="relative w-full max-w-[420px] lg:max-w-[480px] aspect-[4/5] sm:aspect-square flex items-center justify-center overflow-visible">
+            <SplineScene 
+              scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+              className="w-full h-full object-contain pointer-events-auto"
             />
+            
+            {/* Chest Logo Overlay */}
+            <div 
+              className="absolute top-[57%] left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none z-30 flex items-center justify-center"
+              style={{
+                width: '6.5%', // responsive scale relative to the container width
+                maxWidth: '32px',
+                minWidth: '20px',
+              }}
+            >
+              <img 
+                src="/oz-logo.png" 
+                alt="RoboWorkZ Chest Logo" 
+                className="w-full h-auto object-contain brightness-[2] drop-shadow-[0_0_8px_rgba(168,85,247,0.95)] contrast-[1.2]"
+                style={{
+                  animation: 'chestGlow 4s ease-in-out infinite, robotBreathing 6s ease-in-out infinite'
+                }}
+              />
+            </div>
           </div>
         </motion.div>
       </div>
