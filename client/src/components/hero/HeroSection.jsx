@@ -119,19 +119,24 @@ const HeroSection = () => {
             
             {/* Chest Logo Overlay */}
             <div 
-              className="absolute top-[57%] left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none z-30 flex items-center justify-center"
+              className="absolute pointer-events-none select-none z-30 flex items-center justify-center"
               style={{
-                width: '6.5%', // responsive scale relative to the container width
-                maxWidth: '32px',
-                minWidth: '20px',
+                top: '44%',
+                left: '42%',
+                transform: 'translate(-50%, -50%)',
+                width: '6%',
+                maxWidth: '30px',
+                minWidth: '18px',
               }}
             >
               <img 
                 src="/oz-logo.png" 
                 alt="RoboWorkZ Chest Logo" 
-                className="w-full h-auto object-contain brightness-[2] drop-shadow-[0_0_8px_rgba(168,85,247,0.95)] contrast-[1.2]"
+                className="w-full h-auto object-contain brightness-[1.8] contrast-[1.15]"
                 style={{
-                  animation: 'chestGlow 4s ease-in-out infinite, robotBreathing 6s ease-in-out infinite'
+                  filter: 'drop-shadow(0 0 5px rgba(168,85,247,0.7)) brightness(1.8) contrast(1.15)',
+                  animation: 'chestGlow 4s ease-in-out infinite, robotBreathing 6s ease-in-out infinite',
+                  opacity: 0.92,
                 }}
               />
             </div>

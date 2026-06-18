@@ -81,7 +81,7 @@ const Navbar = () => {
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-20">
             {/* Logo Link — Large, Premium */}
-            <Link to="/" className="flex items-center gap-1.5 group">
+            <Link to="/" className="flex flex-col items-start group">
               <motion.div
                 className="relative flex items-center"
                 whileHover={{ scale: 1.02 }}
@@ -101,6 +101,20 @@ const Navbar = () => {
                   transition={{ duration: 0.4 }}
                 />
               </motion.div>
+              {/* Subtitle */}
+              <span
+                style={{
+                  fontFamily: '"Orbitron", sans-serif',
+                  fontSize: '0.55rem',
+                  fontWeight: 500,
+                  letterSpacing: '0.1em',
+                  color: '#FFFFFF',
+                  marginTop: '4px',
+                  display: 'block',
+                }}
+              >
+                Powered by Vijay InFc
+              </span>
             </Link>
 
             {/* Desktop Nav Links with enhanced hover */}
