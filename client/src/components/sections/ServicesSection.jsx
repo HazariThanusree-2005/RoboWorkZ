@@ -10,6 +10,13 @@ import {
 
 const serviceCards = [
   {
+    icon: Lightbulb,
+    title: 'Smart Business Solutions',
+    desc: 'Attract customers, automate tasks, and enhance engagement using intelligent robotic solutions tailored for modern businesses.',
+    gradient: 'from-amber-500/20 to-orange-600/20',
+    borderGlow: 'rgba(245, 158, 11, 0.4)',
+  },
+  {
     icon: BrainCircuit,
     title: 'Robotics Workshops',
     desc: 'Build, program, and experience real robots through hands-on workshops designed for schools, colleges, and future innovators.',
@@ -29,13 +36,6 @@ const serviceCards = [
     desc: 'Increase efficiency and productivity through smart robotic systems, automation solutions, and custom engineering support.',
     gradient: 'from-emerald-500/20 to-teal-600/20',
     borderGlow: 'rgba(16, 185, 129, 0.4)',
-  },
-  {
-    icon: Lightbulb,
-    title: 'Smart Business Solutions',
-    desc: 'Attract customers, automate tasks, and enhance engagement using intelligent robotic solutions tailored for modern businesses.',
-    gradient: 'from-amber-500/20 to-orange-600/20',
-    borderGlow: 'rgba(245, 158, 11, 0.4)',
   },
 ];
 
