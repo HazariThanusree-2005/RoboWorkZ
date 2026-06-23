@@ -56,9 +56,9 @@ const Footer = () => {
                 <HiMail className="text-primary-500" size={16} />
                 roboworkz.in@gmail.com
               </a>
-              <a href="tel:+919876543210" className="flex items-center gap-3 text-gray-400 hover:text-primary-400 transition-colors text-sm">
+              <a href="tel:+919381103776" className="flex items-center gap-3 text-gray-400 hover:text-primary-400 transition-colors text-sm">
                 <HiPhone className="text-primary-500" size={16} />
-                +91 98765 43210
+                +91 93811 03776
               </a>
               <div className="flex items-center gap-3 text-gray-400 text-sm">
                 <HiLocationMarker className="text-primary-500 flex-shrink-0" size={16} />

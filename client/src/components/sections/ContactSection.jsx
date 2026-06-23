@@ -93,7 +93,7 @@ const ContactSection = () => {
 
                     {/* Phone Link */}
                     <a 
-                      href="tel:+919345XXXXXX" 
+                      href="tel:+919381103776" 
                       className="flex items-center gap-3 sm:gap-4 group p-3 sm:p-4 rounded-xl border border-white/[0.04] bg-white/[0.02] hover:bg-primary-500/[0.03] hover:border-primary-500/25 transition-all duration-300 w-full hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(139,92,246,0.15)] cursor-pointer"
                     >
                       <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primary-500/10 flex items-center justify-center shrink-0 group-hover:bg-primary-500/20 group-hover:shadow-[0_0_15px_rgba(139,92,246,0.3)] transition-all duration-300">
@@ -102,7 +102,7 @@ const ContactSection = () => {
                       <div className="flex-1 min-w-0">
                         <div className="text-xs text-gray-500 font-manrope font-semibold uppercase tracking-wider mb-0.5">Call Directly</div>
                         <div className="text-sm font-inter text-white font-medium group-hover:text-primary-300 transition-colors">
-                          +91 9345XXXXXX
+                          +91 93811 03776
                         </div>
                       </div>
                     </a>
