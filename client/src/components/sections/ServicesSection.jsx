@@ -79,7 +79,7 @@ const ServicesSection = ({ hideHeader = false }) => {
             >
               <video
                 ref={videoRef}
-                src="/RoboWorkZ_Smart_Jewelry_Assistant_202606232019.mp4"
+                src="/new_jewelry_video.mp4"
                 style={{ display: 'block', width: '100%', height: 'auto' }}
                 autoPlay
                 loop
