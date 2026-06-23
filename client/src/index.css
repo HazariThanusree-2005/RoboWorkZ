@@ -16,6 +16,8 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    width: 100vw;
   }
 
   /* Hide Spline Logo */
@@ -34,8 +36,10 @@
   body {
     font-family: 'Inter', sans-serif;
     background-color: #050312;
-    color: #e2e0ea;
+    color: #f3f4f6;
     overflow-x: hidden;
+    width: 100%;
+    position: relative;
     line-height: 1.6;
   }
 
