@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import TextType from './TextType';
 
 const SectionHeading = ({ title, subtitle, align = 'center', light = false, titleX, subtitleX }) => {
   return (
@@ -23,13 +24,24 @@ const SectionHeading = ({ title, subtitle, align = 'center', light = false, titl
         style={{ x: titleX }}
         className={`font-space text-4xl md:text-5xl lg:text-6xl font-bold mb-6 ${light ? 'text-white' : 'text-white'}`}
       >
-        {title}
+        {typeof title === 'string' ? (
+          <TextType 
+            text={title} 
+            typingSpeed={50} 
+            initialDelay={600}
+            startOnVisible={true} 
+            loop={false}
+            cursorClassName="text-primary-500"
+          />
+        ) : (
+          title
+        )}
       </motion.h2>
 
       {subtitle && (
         <motion.p 
           style={{ x: subtitleX }}
-          className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto font-inter leading-relaxed"
+          className={`text-lg md:text-xl text-gray-400 max-w-2xl font-inter leading-relaxed ${align === 'center' ? 'mx-auto' : ''}`}
         >
           {subtitle}
         </motion.p>

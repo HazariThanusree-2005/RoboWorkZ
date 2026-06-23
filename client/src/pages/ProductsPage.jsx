@@ -8,6 +8,9 @@ import { HiEye, HiCurrencyRupee, HiCheckCircle, HiSearch, HiFilter, HiExternalLi
 import armRoboImg from '../assets/arm-robo.png';
 import roboDogImg from '../assets/robo-dog.png';
 import tableRoboImg from '../assets/table-robo.png';
+import { InteractiveRobotSpline } from '../components/ui/interactive-3d-robot';
+
+const ROBOT_SCENE_URL = "https://prod.spline.design/PyzDhpQ9E5f1E3MT/scene.splinecode";
 
 const categories = [
   { value: '', label: 'All Categories' },
@@ -77,18 +80,27 @@ const ProductsPage = () => {
   return (
     <div className="pt-20 min-h-screen">
       {/* Header */}
-      <section className="pt-16 md:pt-24 pb-8 px-6 text-center relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary-500/5 to-transparent" />
-        <div className="relative max-w-4xl mx-auto">
+      <section className="relative w-full h-[70vh] md:h-[80vh] overflow-hidden flex items-center justify-center -mt-20">
+        
+        {/* Interactive 3D Robot Background */}
+        <InteractiveRobotSpline
+          scene={ROBOT_SCENE_URL}
+          className="absolute inset-0 z-0" 
+        />
+        
+        {/* Gradient overlay to ensure text is readable and blends into page */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#050312]/10 via-[#050312]/30 to-[#050312] pointer-events-none z-10" />
+
+        <div className="relative z-20 max-w-4xl w-full mx-auto px-6 text-center mt-20">
           <motion.h1
-            className="font-space text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6"
+            className="font-space text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 drop-shadow-2xl pointer-events-none"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
           >
             Our <span className="text-gradient">Products</span>
           </motion.h1>
           <motion.p
-            className="text-lg text-gray-400 font-inter max-w-2xl mx-auto mb-10"
+            className="text-lg text-gray-200 font-inter max-w-2xl mx-auto mb-10 drop-shadow-lg pointer-events-none"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -98,30 +110,30 @@ const ProductsPage = () => {
 
           {/* Search & Filter */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto"
+            className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto relative z-30"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <div className="relative flex-1">
-              <HiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
+            <div className="relative flex-1 group">
+              <HiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-primary-400 transition-colors" size={18} />
               <input
                 type="text"
                 placeholder="Search robots..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full px-5 py-3 pl-12 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 font-inter text-sm focus:outline-none focus:border-primary-500/50 transition-all"
+                className="w-full px-5 py-3 pl-12 bg-[#050312]/60 backdrop-blur-md border border-white/20 rounded-xl text-white placeholder-gray-400 font-inter text-sm focus:outline-none focus:border-primary-500/80 focus:bg-[#050312]/80 transition-all shadow-glass"
               />
             </div>
-            <div className="relative">
-              <HiFilter className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
+            <div className="relative group">
+              <HiFilter className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-primary-400 transition-colors pointer-events-none" size={18} />
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="w-full sm:w-48 px-5 py-3 pl-12 bg-white/5 border border-white/10 rounded-xl text-white font-inter text-sm focus:outline-none focus:border-primary-500/50 transition-all appearance-none cursor-pointer"
+                className="w-full sm:w-48 px-5 py-3 pl-12 bg-[#050312]/60 backdrop-blur-md border border-white/20 rounded-xl text-white font-inter text-sm focus:outline-none focus:border-primary-500/80 focus:bg-[#050312]/80 transition-all appearance-none cursor-pointer shadow-glass"
               >
                 {categories.map(c => (
-                  <option key={c.value} value={c.value} className="bg-dark-800">{c.label}</option>
+                  <option key={c.value} value={c.value} className="bg-[#050312]">{c.label}</option>
                 ))}
               </select>
             </div>
@@ -130,7 +142,7 @@ const ProductsPage = () => {
       </section>
 
       {/* Products Grid */}
-      <section className="px-6 md:px-12 lg:px-20 pb-24">
+      <section className="relative z-30 bg-[#050312] px-6 md:px-12 lg:px-20 pb-24">
         <div className="max-w-7xl mx-auto">
           {loading ? (
             <LoadingSpinner />

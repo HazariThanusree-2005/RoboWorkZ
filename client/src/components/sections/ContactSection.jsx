@@ -56,7 +56,7 @@ const ContactSection = () => {
       <div className="max-w-5xl mx-auto relative">
         <ScrollReveal direction="up" delay={0}>
           <SectionHeading
-            title="Get In Touch"
+            title="Get Started"
             subtitle="Ready to bring robotics to your business or event? Let's talk about how we can help."
           />
         </ScrollReveal>
@@ -213,12 +213,10 @@ const ContactSection = () => {
                     )}
 
                     {/* Submit */}
-                    <motion.button
+                    <button
                       type="submit"
                       disabled={loading}
-                      className="w-full py-4 bg-primary-500 text-white font-manrope font-bold text-lg rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 relative overflow-hidden group"
-                      whileHover={{ y: -2, scale: 1.01, boxShadow: '0 0 25px rgba(139, 92, 246, 0.5)' }}
-                      whileTap={{ scale: 0.99 }}
+                      className="btn-primary w-full py-4 text-lg"
                     >
                       {loading ? (
                         <motion.div
@@ -229,10 +227,10 @@ const ContactSection = () => {
                       ) : (
                         <>
                           <HiPaperAirplane className="rotate-90" size={20} />
-                          Send Message
+                          <span>Send Message</span>
                         </>
                       )}
-                    </motion.button>
+                    </button>
                   </form>
                 )}
               </div>

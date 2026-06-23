@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
-const MobileMenu = ({ links, onClose }) => {
+const MobileMenu = ({ links, onClose, openAuthModal }) => {
   const location = useLocation();
   const { isAuthenticated, isAdmin, logout } = useAuth();
 
@@ -87,20 +87,12 @@ const MobileMenu = ({ links, onClose }) => {
             </>
           ) : (
             <>
-              <Link
-                to="/signin"
-                onClick={onClose}
-                className="w-full py-3 text-center text-lg font-manrope font-semibold text-gray-300 border border-white/10 rounded-xl hover:bg-white/5 transition-colors"
-              >
-                Sign In
-              </Link>
-              <Link
-                to="/signup"
-                onClick={onClose}
+              <button
+                onClick={() => { onClose(); openAuthModal('signup'); }}
                 className="w-full py-3 text-center text-lg font-manrope font-semibold text-white bg-primary-500 rounded-xl hover:bg-primary-600 transition-colors"
               >
                 Get Started
-              </Link>
+              </button>
             </>
           )}
         </motion.div>

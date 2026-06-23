@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 import HeroSection from '../components/hero/HeroSection';
+import RobotVideoSection from '../components/sections/RobotVideoSection';
 import FeaturedProducts from '../components/sections/FeaturedProducts';
-import ServicesSection from '../components/sections/ServicesSection';
 import RentalsSection from '../components/sections/RentalsSection';
-import ContactSection from '../components/sections/ContactSection';
 
 const HomePage = () => {
   // Scroll lock during initial load for premium feel
@@ -23,10 +22,9 @@ const HomePage = () => {
   return (
     <div className="relative w-full">
       <HeroSection />
+      <RobotVideoSection />
       <FeaturedProducts />
-      <ServicesSection />
       <RentalsSection />
-      <ContactSection />
     </div>
   );
 };

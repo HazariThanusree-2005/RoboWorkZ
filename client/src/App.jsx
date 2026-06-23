@@ -13,8 +13,6 @@ import ProductsPage from './pages/ProductsPage';
 import RentalsPage from './pages/RentalsPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
-import SignIn from './pages/SignIn';
-import SignUp from './pages/SignUp';
 
 // User Pages
 import UserDashboard from './pages/user/UserDashboard';
@@ -53,6 +51,7 @@ function App() {
         initial={{ opacity: 0 }}
         animate={{ opacity: loading ? 0 : 1 }}
         transition={{ duration: 0.8, delay: 0.15, ease: [0.4, 0, 0.2, 1] }}
+        className="relative min-h-screen"
       >
         <Layout>
           <AnimatePresence mode="wait">
@@ -65,8 +64,6 @@ function App() {
               <Route path="/rentals" element={<PageTransition><RentalsPage /></PageTransition>} />
               <Route path="/about" element={<PageTransition><AboutPage /></PageTransition>} />
               <Route path="/contact" element={<PageTransition><ContactPage /></PageTransition>} />
-              <Route path="/signin" element={<PageTransition><SignIn /></PageTransition>} />
-              <Route path="/signup" element={<PageTransition><SignUp /></PageTransition>} />
 
               {/* Protected User Routes */}
               <Route path="/dashboard" element={

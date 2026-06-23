@@ -5,6 +5,8 @@ import FloatingParticles from './FloatingParticles';
 import GlowButton from '../ui/GlowButton';
 import MagneticButton from '../ui/MagneticButton';
 import BrandText from '../ui/BrandText';
+import RotatingText from '../ui/RotatingText';
+import { ColorBends } from '../ui/ColorBends';
 import { SplineScene } from '../ui/splite';
 
 // Premium easing curve used throughout
@@ -21,6 +23,29 @@ const HeroSection = () => {
     <section id="hero" className="relative w-full min-h-screen flex items-center overflow-hidden bg-dark-950 hero-grid">
       {/* Deep background layer */}
       <div className="absolute inset-0 bg-[#050312]" />
+
+      {/* Dotted Neon Aurora Background */}
+      <div 
+        className="absolute inset-0 z-0 opacity-80 mix-blend-screen"
+        style={{
+          maskImage: 'radial-gradient(circle, black 2px, transparent 2px)',
+          maskSize: '24px 24px',
+          WebkitMaskImage: 'radial-gradient(circle, black 2px, transparent 2px)',
+          WebkitMaskSize: '24px 24px'
+        }}
+      >
+        <ColorBends
+          color="#A855F7"
+          speed={0.2}
+          frequency={1.0}
+          noise={0.15}
+          bandWidth={0.14}
+          rotation={90}
+          fadeTop={0.75}
+          iterations={1}
+          intensity={1.3}
+        />
+      </div>
 
       {/* Futuristic Background Gradients */}
       <div className="absolute top-[-200px] right-[-200px] w-[900px] h-[900px] bg-primary-600/[0.06] rounded-full blur-3xl mix-blend-screen pointer-events-none" />
@@ -52,9 +77,33 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ duration: 0.9, delay: 0.35, ease: EASE_OUT_EXPO }}
           >
-            BUILDING <span className="text-gradient glow-text">INTELLIGENT</span>{' '}
+            BUILDING{' '}
+            <RotatingText
+              texts={['INTELLIGENT', 'ADVANCED', 'AUTONOMOUS', 'INNOVATIVE']}
+              elementLevelClassName="rotate-gradient-char"
+              splitBy="characters"
+              staggerFrom="last"
+              initial={{ y: '110%', opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: '-110%', opacity: 0 }}
+              staggerDuration={0.025}
+              transition={{ type: 'spring', damping: 22, stiffness: 300 }}
+              rotationInterval={2400}
+            />{' '}
             <br className="hidden md:block" />
-            ROBOTICS FOR <span className="text-gradient glow-text">THE FUTURE</span>
+            ROBOTICS FOR{' '}
+            <RotatingText
+              texts={['THE FUTURE', 'TOMORROW', 'INDUSTRY', 'RESEARCH']}
+              elementLevelClassName="rotate-gradient-char"
+              splitBy="characters"
+              staggerFrom="first"
+              initial={{ y: '110%', opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: '-110%', opacity: 0 }}
+              staggerDuration={0.025}
+              transition={{ type: 'spring', damping: 22, stiffness: 300 }}
+              rotationInterval={2400}
+            />
           </motion.h1>
 
           {/* ═══ SUBTEXT ═══ */}
@@ -69,26 +118,21 @@ const HeroSection = () => {
 
           {/* ═══ CTA BUTTONS ═══ */}
           <motion.div
-            className="flex flex-col sm:flex-row items-start gap-4 w-full sm:w-auto"
+            className="flex flex-col sm:flex-row items-start gap-4 w-full sm:w-auto pt-4 relative z-20"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.72, ease: EASE_OUT_EXPO }}
           >
-            <Link to="/products" className="w-full sm:w-auto">
-              <MagneticButton className="w-full">
-                <GlowButton variant="primary" className="w-full text-base px-8 py-3.5">
-                  Explore Products
-                  <HiArrowRight className="inline ml-2" size={16} />
-                </GlowButton>
-              </MagneticButton>
+            <Link to="/products">
+              <button className="btn-primary">
+                <span>Explore Products</span> <HiArrowRight className="w-4 h-4" />
+              </button>
             </Link>
 
-            <Link to="/contact" className="w-full sm:w-auto">
-              <MagneticButton className="w-full">
-                <GlowButton variant="outline" className="w-full text-base px-8 py-3.5">
-                  Book Demo
-                </GlowButton>
-              </MagneticButton>
+            <Link to="/contact">
+              <button className="btn-outline">
+                <span>Book Demo</span>
+              </button>
             </Link>
           </motion.div>
         </motion.div>
@@ -101,29 +145,31 @@ const HeroSection = () => {
           transition={{ duration: 1, delay: 0.5, ease: EASE_OUT_EXPO }}
           style={{ y: rightY, opacity: rightOpacity }}
         >
-          {/* Subtle radial light and soft purple ambient glow behind the robot body */}
+          {/* Ambient glow behind robot */}
           <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] pointer-events-none rounded-full"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] pointer-events-none rounded-full"
             style={{
-              background: 'radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, rgba(168, 85, 247, 0.08) 45%, transparent 75%)',
-              filter: 'blur(80px)',
+              background: 'radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, rgba(168, 85, 247, 0.1) 50%, transparent 75%)',
+              filter: 'blur(60px)',
             }}
           />
 
           {/* Sizing wrapper without borders, backgrounds, card outlines, or card shadows */}
-          <div className="relative w-full max-w-[420px] lg:max-w-[480px] aspect-[4/5] sm:aspect-square flex items-center justify-center overflow-visible">
+          <div className="relative w-full max-w-[500px] lg:max-w-[650px] aspect-[4/5] sm:aspect-[4/5] md:aspect-square flex items-center justify-center overflow-visible">
             <SplineScene 
               scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
               className="w-full h-full object-contain pointer-events-auto"
             />
             
             {/* Chest Logo Overlay */}
-            <div 
+            <motion.div 
               className="absolute pointer-events-none select-none z-30 flex items-center justify-center"
+              initial={{ opacity: 0, scale: 0, x: "-50%", y: "-50%", filter: 'blur(8px)' }}
+              animate={{ opacity: 1, scale: 1, x: "-50%", y: "-50%", filter: 'blur(0px)' }}
+              transition={{ duration: 1.2, delay: 4.5, ease: [0.16, 1, 0.3, 1] }}
               style={{
                 top: '44%',
                 left: '42%',
-                transform: 'translate(-50%, -50%)',
                 width: '6%',
                 maxWidth: '30px',
                 minWidth: '18px',
@@ -139,7 +185,7 @@ const HeroSection = () => {
                   opacity: 0.92,
                 }}
               />
-            </div>
+            </motion.div>
           </div>
         </motion.div>
       </div>

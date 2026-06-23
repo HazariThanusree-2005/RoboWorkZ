@@ -1,9 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
 import { useAuth } from '../../context/AuthContext';
 import MobileMenu from './MobileMenu';
+import BrandText from '../ui/BrandText';
+import MagneticButton from '../ui/MagneticButton';
+import AuthModal from '../ui/AuthModal';
 
 const navLinks = [
   { name: 'Home', path: '/' },
@@ -14,50 +17,36 @@ const navLinks = [
   { name: 'Contact', path: '/contact' },
 ];
 
-// Inline SVG gear symbol for the OZ logo mark — matches loading screen gear
-const GearSymbol = ({ size = 22 }) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 100 100"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className="inline-block"
-  >
-    {/* Gear teeth ring */}
-    <path
-      d="M50 8 L55 2 L60 2 L63 12 L72 6 L76 10 L70 20 L80 18 L82 24 L73 30 L82 37 L80 43 L70 39 L75 49 L70 53 L62 46 L63 57 L57 58 L53 48 L50 59 L45 59 L43 48 L38 57 L32 53 L38 44 L27 49 L24 43 L33 36 L22 34 L22 28 L33 27 L24 19 L28 14 L38 20 L35 10 L40 7 L46 16 L48 5 L53 5 Z"
-      fill="url(#navGearGrad)"
-      stroke="rgba(192, 132, 252, 0.5)"
-      strokeWidth="0.8"
-    />
-    {/* Inner circle hole */}
-    <circle cx="50" cy="32" r="11" fill="#050312" stroke="rgba(139, 92, 246, 0.5)" strokeWidth="1.5" />
-    {/* Inner highlight ring */}
-    <circle cx="50" cy="32" r="7" fill="none" stroke="rgba(192, 132, 252, 0.15)" strokeWidth="0.5" />
-    <defs>
-      <linearGradient id="navGearGrad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stopColor="#C084FC" />
-        <stop offset="50%" stopColor="#A855F7" />
-        <stop offset="100%" stopColor="#8B5CF6" />
-      </linearGradient>
-    </defs>
-  </svg>
-);
-
-import BrandText from '../ui/BrandText';
-import MagneticButton from '../ui/MagneticButton';
-
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [authModalOpen, setAuthModalOpen] = useState(false);
+  const [authModalMode, setAuthModalMode] = useState('signin');
   const location = useLocation();
   const navigate = useNavigate();
   const { user, isAuthenticated, isAdmin, logout } = useAuth();
+  
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Add background when scrolled
+      setScrolled(currentScrollY > 50);
+
+      // Hide navbar when scrolling down, show when scrolling up
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        setHidden(true);
+      } else {
+        setHidden(false);
+      }
+      
+      lastScrollY.current = currentScrollY;
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -66,20 +55,22 @@ const Navbar = () => {
     setMobileOpen(false);
   }, [location]);
 
+  const openAuthModal = (mode) => {
+    setAuthModalMode(mode);
+    setAuthModalOpen(true);
+  };
+
   return (
     <>
       <motion.nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled 
-            ? 'bg-dark-950/75 backdrop-blur-3xl border-b border-primary-500/15 shadow-[0_4px_30px_rgba(139,92,246,0.1)]' 
-            : 'bg-transparent'
+        className={`fixed left-0 right-0 z-40 transition-all duration-300 flex justify-center top-0 px-0 ${
+          scrolled ? 'bg-[#050312]/80 backdrop-blur-lg border-b border-white/5' : 'bg-transparent border-transparent'
         }`}
         initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
+        animate={{ y: hidden ? -100 : 0 }}
+        transition={{ duration: 0.3, ease: 'easeOut' }}
       >
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between w-full max-w-[1400px] px-6 lg:px-12 h-20">
             {/* Logo Link — Large, Premium */}
             <Link to="/" className="flex flex-col items-start group">
               <motion.div
@@ -117,8 +108,8 @@ const Navbar = () => {
               </span>
             </Link>
 
-            {/* Desktop Nav Links with enhanced hover */}
-            <div className="hidden lg:flex items-center gap-2">
+            {/* Desktop Nav Links */}
+            <div className="hidden lg:flex flex-1 items-center justify-center gap-6 xl:gap-8">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
@@ -126,7 +117,7 @@ const Navbar = () => {
                   className="relative group"
                 >
                   <motion.span
-                    className={`relative z-10 block px-5 py-2.5 text-base font-manrope font-medium transition-all duration-300 rounded-lg
+                    className={`relative z-10 block px-3 py-2 text-[15px] whitespace-nowrap font-manrope font-medium transition-all duration-300 rounded-lg
                       ${location.pathname === link.path 
                         ? 'text-primary-300' 
                         : 'text-gray-400 group-hover:text-white'
@@ -137,9 +128,6 @@ const Navbar = () => {
                   >
                     {link.name}
                   </motion.span>
-
-                  {/* Hover glow background */}
-                  <div className="absolute inset-0 rounded-lg bg-primary-500/0 group-hover:bg-primary-500/[0.06] transition-all duration-300" />
 
                   {/* Active indicator with gradient underline and glow */}
                   {location.pathname === link.path && (
@@ -164,7 +152,7 @@ const Navbar = () => {
               ))}
             </div>
 
-            {/* Desktop Buttons with neon style */}
+            {/* Desktop CTA Buttons */}
             <div className="hidden lg:flex items-center gap-3">
               {isAuthenticated ? (
                 <>
@@ -176,7 +164,7 @@ const Navbar = () => {
                   </Link>
                   <motion.button
                     onClick={() => { logout(); navigate('/'); }}
-                    className="px-5 py-2.5 text-sm font-manrope font-semibold text-white bg-white/5 hover:bg-white/10 rounded-xl transition-all duration-300 border border-white/10 hover:border-primary-500/30"
+                    className="px-5 py-2.5 text-sm font-manrope font-semibold text-white bg-white/5 hover:bg-white/10 rounded-full transition-all duration-300 border border-white/10 hover:border-primary-500/30"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -185,23 +173,13 @@ const Navbar = () => {
                 </>
               ) : (
                 <>
-                  <Link
-                    to="/signin"
-                    className="px-5 py-2 text-sm font-manrope font-semibold text-gray-300 hover:text-primary-300 transition-colors duration-300"
-                  >
-                    Sign In
-                  </Link>
                   <MagneticButton>
-                    <Link
-                      to="/signup"
-                      className="relative block px-6 py-2.5 text-sm font-manrope font-semibold text-white bg-primary-500 rounded-xl transition-all duration-300 overflow-hidden group"
-                      style={{
-                        boxShadow: '0 0 15px rgba(139, 92, 246, 0.3), inset 0 1px 0 rgba(255,255,255,0.1)',
-                      }}
+                    <button
+                      onClick={() => openAuthModal('signup')}
+                      className="btn-primary px-6 py-2.5 text-sm whitespace-nowrap rounded-full"
                     >
-                      <span className="relative z-10">Get Started</span>
-                      <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-primary-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </Link>
+                      <span>Get Started</span>
+                    </button>
                   </MagneticButton>
                 </>
               )}
@@ -216,9 +194,14 @@ const Navbar = () => {
             >
               {mobileOpen ? <HiX size={28} /> : <HiMenuAlt3 size={28} />}
             </motion.button>
-          </div>
         </div>
       </motion.nav>
+
+      <AuthModal 
+        isOpen={authModalOpen} 
+        onClose={() => setAuthModalOpen(false)} 
+        defaultMode={authModalMode} 
+      />
 
       {/* Mobile Menu */}
       <AnimatePresence>
@@ -226,6 +209,7 @@ const Navbar = () => {
           <MobileMenu 
             links={navLinks} 
             onClose={() => setMobileOpen(false)} 
+            openAuthModal={openAuthModal}
           />
         )}
       </AnimatePresence>
