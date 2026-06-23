@@ -18,6 +18,19 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  /* Hide Spline Logo */
+  spline-viewer::part(logo) {
+    display: none !important;
+  }
+  .spline-watermark,
+  div > a[href*="spline.design"],
+  canvas + a[href*="spline.design"],
+  canvas + div > a {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+
   body {
     font-family: 'Inter', sans-serif;
     background-color: #050312;
