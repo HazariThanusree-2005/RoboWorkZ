@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Logo Inspector - Visual Check</title>
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      font-family: monospace;
+      padding: 20px;
+    }
+    .img-container {
+      position: relative;
+      display: inline-block;
+      margin: 10px;
+      border: 1px solid #444;
+      background: #000;
+    }
+    img {
+      display: block;
+      opacity: 0.8;
+    }
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Visual Coordinate Verification</h1>
+  
+  <div>
+    <h3>oz-logo.png with Proposed Gear Circle and Z Bounding Box</h3>
+    <div class="img-container">
+      <img src="/oz-logo.png" width="1024" height="512">
+      <canvas id="ozCanvas" width="1024" height="512"></canvas>
+    </div>
+  </div>
+
+  <div>
+    <h3>roboworkz-logo.png with Proposed GearO, Z, and Tagline Boxes</h3>
+    <div class="img-container">
+      <img src="/roboworkz-logo.png" width="1024" height="512">
+      <canvas id="rwzCanvas" width="1024" height="512"></canvas>
+    </div>
+  </div>
+
+  <script>
+    // oz-logo coordinates
+    const oz_gear_cx = 405;
+    const oz_gear_cy = 265;
+    const oz_gear_r = 183;
+
+    const oz_z_left = 459;
+    const oz_z_top = 83;
+    const oz_z_w = 394;
+    const oz_z_h = 372;
+
+    // roboworkz-logo coordinates
+    const rwz_gear_cx = 154;
+    const rwz_gear_cy = 264.5;
+    const rwz_gear_r = 54.5; // (half of 109px height)
+
+    const rwz_z_left = 794;
+    const rwz_z_top = 199;
+    const rwz_z_w = 158;
+    const rwz_z_h = 120;
+
+    const rwz_tagline_top = 390;
+
+    window.onload = () => {
+      // Draw OZ overlays
+      const ozCvs = document.getElementById('ozCanvas');
+      const ozCtx = ozCvs.getContext('2d');
+      
+      // Draw Gear Circle
+      ozCtx.strokeStyle = 'cyan';
+      ozCtx.lineWidth = 3;
+      ozCtx.beginPath();
+      ozCtx.arc(oz_gear_cx, oz_gear_cy, oz_gear_r, 0, Math.PI * 2);
+      ozCtx.stroke();
+      
+      // Draw Z bounding box
+      ozCtx.strokeStyle = 'lime';
+      ozCtx.strokeRect(oz_z_left, oz_z_top, oz_z_w, oz_z_h);
+
+      // Draw RWZ overlays
+      const rwzCvs = document.getElementById('rwzCanvas');
+      const rwzCtx = rwzCvs.getContext('2d');
+
+      // Draw GearO Circle
+      rwzCtx.strokeStyle = 'cyan';
+      rwzCtx.lineWidth = 3;
+      rwzCtx.beginPath();
+      rwzCtx.arc(rwz_gear_cx, rwz_gear_cy, rwz_gear_r, 0, Math.PI * 2);
+      rwzCtx.stroke();
+
+      // Draw Z bounding box
+      rwzCtx.strokeStyle = 'lime';
+      rwzCtx.strokeRect(rwz_z_left, rwz_z_top, rwz_z_w, rwz_z_h);
+
+      // Draw Tagline cutoff line
+      rwzCtx.strokeStyle = 'yellow';
+      rwzCtx.beginPath();
+      rwzCtx.moveTo(0, rwz_tagline_top);
+      rwzCtx.lineTo(1024, rwz_tagline_top);
+      rwzCtx.stroke();
+    };
+  </script>
+</body>
+</html>

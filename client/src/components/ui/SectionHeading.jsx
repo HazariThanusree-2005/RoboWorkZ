@@ -1,0 +1,53 @@
+import { motion } from 'framer-motion';
+import TextType from './TextType';
+
+const SectionHeading = ({ title, subtitle, align = 'center', light = false, titleX, subtitleX }) => {
+  return (
+    <motion.div
+      className={`mb-10 md:mb-16 ${align === 'center' ? 'text-center' : 'text-left'}`}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-100px' }}
+      transition={{ duration: 0.6 }}
+    >
+      <motion.div
+        className="inline-block mb-4"
+        initial={{ width: 0 }}
+        whileInView={{ width: '60px' }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      >
+        <div className="h-1 bg-gradient-to-r from-primary-500 to-glow rounded-full" style={{ width: '60px' }} />
+      </motion.div>
+
+      <motion.h2 
+        style={{ x: titleX }}
+        className={`font-space text-4xl md:text-5xl lg:text-6xl font-bold mb-6 ${light ? 'text-white' : 'text-white'}`}
+      >
+        {typeof title === 'string' ? (
+          <TextType 
+            text={title} 
+            typingSpeed={50} 
+            initialDelay={600}
+            startOnVisible={true} 
+            loop={false}
+            cursorClassName="text-primary-500"
+          />
+        ) : (
+          title
+        )}
+      </motion.h2>
+
+      {subtitle && (
+        <motion.p 
+          style={{ x: subtitleX }}
+          className={`text-lg md:text-xl text-gray-400 max-w-2xl font-inter leading-relaxed ${align === 'center' ? 'mx-auto' : ''}`}
+        >
+          {subtitle}
+        </motion.p>
+      )}
+    </motion.div>
+  );
+};
+
+export default SectionHeading;
