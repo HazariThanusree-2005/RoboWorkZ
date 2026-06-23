@@ -88,11 +88,11 @@ const ServicesSection = ({ hideHeader = false }) => {
               />
 
               {/* Logo Overlay to hide Gemini watermark */}
-              <div className="absolute bottom-16 right-4 z-20 w-12 h-12 bg-black/40 rounded-full backdrop-blur-md flex items-center justify-center border border-white/10 shadow-lg">
+              <div className="absolute bottom-[60px] right-[65px] z-20 w-[60px] h-[60px] bg-black/90 rounded-full backdrop-blur-xl flex items-center justify-center border border-white/10 shadow-[0_0_15px_rgba(0,0,0,0.8)]">
                 <img 
                   src="/oz-logo.png" 
                   alt="OZ Logo" 
-                  className="w-8 h-8 object-contain"
+                  className="w-10 h-10 object-contain"
                 />
               </div>
 
