@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Lightbulb, Wrench, Volume2, VolumeX } from 'lucide-react';
+import { Lightbulb, Volume2, VolumeX } from 'lucide-react';
 
 const ServicesSection = ({ hideHeader = false }) => {
   const [muted, setMuted] = useState(true);
@@ -18,97 +18,68 @@ const ServicesSection = ({ hideHeader = false }) => {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 md:py-24">
 
         {/* ── Two-column layout ── */}
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-center">
 
-          {/* ── LEFT COLUMN ── */}
-          <div className="flex flex-col justify-between lg:w-[38%] h-full min-h-[340px] lg:min-h-[480px]">
-
-            {/* Top: "Our Services" heading */}
+          {/* ── LEFT COLUMN — Smart Business Solutions only ── */}
+          <div className="flex flex-col justify-center lg:w-[38%]">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             >
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-4 py-2 mb-6">
-                <Wrench size={13} className="text-primary-400" />
-                <span className="text-xs font-semibold text-primary-300 tracking-widest uppercase font-manrope">
-                  What We Offer
-                </span>
-              </div>
-
-              {/* "Our Services" title */}
-              <h2
-                className="text-white font-bold leading-tight mb-4"
-                style={{
-                  fontFamily: '"Orbitron", sans-serif',
-                  fontSize: 'clamp(2rem, 4vw, 3.2rem)',
-                  textShadow: '0 0 30px rgba(139,92,246,0.3)',
-                }}
-              >
-                Our{' '}
-                <span
-                  style={{
-                    background: 'linear-gradient(135deg, #C084FC, #A855F7, #7C3AED)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                  }}
-                >
-                  Services
-                </span>
-              </h2>
-              <p className="text-gray-400 text-sm md:text-base font-inter leading-relaxed max-w-xs">
-                Comprehensive robotics solutions designed for every need — from business automation to immersive experiences.
-              </p>
-            </motion.div>
-
-            {/* Bottom: "Smart Business Solution" */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-10 lg:mt-auto pt-8 border-t border-white/[0.06]"
-            >
               {/* Icon */}
-              <div className="w-11 h-11 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-4">
-                <Lightbulb size={20} className="text-amber-400" strokeWidth={1.5} />
-              </div>
-
-              {/* Heading */}
-              <h3
-                className="font-bold text-white leading-tight mb-3"
+              <div
+                className="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
                 style={{
-                  fontFamily: '"Orbitron", sans-serif',
-                  fontSize: 'clamp(1.2rem, 2.5vw, 1.8rem)',
-                  textShadow: '0 2px 20px rgba(245,158,11,0.3)',
+                  background: 'rgba(139,92,246,0.12)',
+                  border: '1px solid rgba(139,92,246,0.3)',
+                  boxShadow: '0 0 18px rgba(139,92,246,0.2)',
                 }}
               >
-                Smart Business
+                <Lightbulb size={22} className="text-primary-400" strokeWidth={1.5} />
+              </div>
+
+              {/* Heading — white + neon purple */}
+              <h2
+                className="font-bold leading-tight mb-4"
+                style={{
+                  fontFamily: '"Orbitron", sans-serif',
+                  fontSize: 'clamp(1.6rem, 3.5vw, 2.8rem)',
+                }}
+              >
+                <span
+                  className="text-white"
+                  style={{ textShadow: '0 0 20px rgba(255,255,255,0.15)' }}
+                >
+                  Smart Business
+                </span>
                 <br />
                 <span
                   style={{
-                    background: 'linear-gradient(90deg, #F59E0B, #FBBF24, #FDE68A)',
+                    background: 'linear-gradient(90deg, #C084FC, #A855F7, #818CF8)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text',
+                    filter: 'drop-shadow(0 0 12px rgba(168,85,247,0.7))',
                   }}
                 >
                   Solutions
                 </span>
-              </h3>
+              </h2>
 
               {/* Description */}
-              <p className="text-gray-400 text-sm font-inter leading-relaxed max-w-xs">
+              <p className="text-gray-400 text-sm md:text-base font-inter leading-relaxed max-w-xs mb-6">
                 Attract customers, automate tasks, and enhance engagement using intelligent robotic solutions tailored for modern businesses.
               </p>
 
-              {/* Amber accent line */}
+              {/* Neon purple accent line */}
               <div
-                className="mt-4 h-[2px] w-16 rounded-full bg-gradient-to-r from-amber-400 to-orange-500"
-                style={{ boxShadow: '0 0 8px rgba(245,158,11,0.6)' }}
+                className="h-[2px] w-16 rounded-full"
+                style={{
+                  background: 'linear-gradient(90deg, #C084FC, #7C3AED)',
+                  boxShadow: '0 0 10px rgba(139,92,246,0.7)',
+                }}
               />
             </motion.div>
           </div>
@@ -121,17 +92,16 @@ const ServicesSection = ({ hideHeader = false }) => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            {/* Video container with glowing border */}
             <div
-              className="relative w-full rounded-2xl overflow-hidden group"
+              className="relative w-full rounded-2xl overflow-hidden"
               style={{
                 boxShadow: '0 0 0 1px rgba(139,92,246,0.15), 0 0 40px rgba(139,92,246,0.08), 0 20px 60px rgba(0,0,0,0.5)',
               }}
             >
-              {/* Subtle top glow bar */}
+              {/* Top glow bar */}
               <div
                 className="absolute top-0 left-0 right-0 h-[1px] z-10"
-                style={{ background: 'linear-gradient(90deg, transparent, rgba(192,132,252,0.4), transparent)' }}
+                style={{ background: 'linear-gradient(90deg, transparent, rgba(192,132,252,0.5), transparent)' }}
               />
 
               <video
@@ -149,12 +119,8 @@ const ServicesSection = ({ hideHeader = false }) => {
                 onClick={toggleSound}
                 className="absolute bottom-4 right-4 z-20 flex items-center gap-2 px-3 py-2 rounded-full text-xs font-semibold font-manrope transition-all duration-300"
                 style={{
-                  background: muted
-                    ? 'rgba(0,0,0,0.55)'
-                    : 'rgba(139,92,246,0.25)',
-                  border: muted
-                    ? '1px solid rgba(255,255,255,0.15)'
-                    : '1px solid rgba(139,92,246,0.5)',
+                  background: muted ? 'rgba(0,0,0,0.55)' : 'rgba(139,92,246,0.25)',
+                  border: muted ? '1px solid rgba(255,255,255,0.15)' : '1px solid rgba(139,92,246,0.5)',
                   backdropFilter: 'blur(10px)',
                   color: muted ? '#9ca3af' : '#c084fc',
                   boxShadow: muted ? 'none' : '0 0 14px rgba(139,92,246,0.4)',
@@ -162,15 +128,9 @@ const ServicesSection = ({ hideHeader = false }) => {
                 title={muted ? 'Unmute video' : 'Mute video'}
               >
                 {muted ? (
-                  <>
-                    <VolumeX size={15} />
-                    <span>Unmute</span>
-                  </>
+                  <><VolumeX size={15} /><span>Unmute</span></>
                 ) : (
-                  <>
-                    <Volume2 size={15} />
-                    <span>Mute</span>
-                  </>
+                  <><Volume2 size={15} /><span>Mute</span></>
                 )}
               </button>
             </div>
@@ -179,9 +139,9 @@ const ServicesSection = ({ hideHeader = false }) => {
         </div>
       </div>
 
-      {/* Ambient background glows */}
+      {/* Ambient glows */}
       <div className="absolute top-1/3 left-0 w-[400px] h-[400px] bg-primary-500/[0.03] rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-amber-500/[0.03] rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-violet-500/[0.03] rounded-full blur-3xl pointer-events-none" />
     </section>
   );
 };
