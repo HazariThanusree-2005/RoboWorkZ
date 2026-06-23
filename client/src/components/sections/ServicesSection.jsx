@@ -87,6 +87,15 @@ const ServicesSection = ({ hideHeader = false }) => {
                 playsInline
               />
 
+              {/* Logo Overlay to hide Gemini watermark */}
+              <div className="absolute bottom-16 right-4 z-20 w-12 h-12 bg-black/40 rounded-full backdrop-blur-md flex items-center justify-center border border-white/10 shadow-lg">
+                <img 
+                  src="/oz-logo.png" 
+                  alt="OZ Logo" 
+                  className="w-8 h-8 object-contain"
+                />
+              </div>
+
               {/* Sound Toggle Button */}
               <button
                 onClick={toggleSound}
