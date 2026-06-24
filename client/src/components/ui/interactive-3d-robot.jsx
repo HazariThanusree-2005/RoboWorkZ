@@ -16,13 +16,13 @@ export function InteractiveRobotSpline({ scene, className }) {
           </div>
         }
       >
-        <div className="relative w-full h-full">
-          <Spline
-            scene={scene}
-            className={className} 
-          />
-          {/* Universal overlay to hide "Built with Spline" logo */}
-          <div className="absolute bottom-0 right-0 w-[160px] h-[50px] bg-[#050312] z-[99] pointer-events-none" />
+        <div className="relative w-full h-full overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-[calc(100%+50px)]">
+            <Spline
+              scene={scene}
+              className={className} 
+            />
+          </div>
         </div>
       </Suspense>
     </ErrorBoundary>
