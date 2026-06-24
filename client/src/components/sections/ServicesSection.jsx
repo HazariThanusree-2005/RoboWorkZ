@@ -61,7 +61,7 @@ const ServicesSection = ({ hideHeader = false }) => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="relative w-full rounded-3xl overflow-hidden"
+            <div className="relative w-full rounded-[40px] overflow-hidden"
               style={{
                 boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
               }}
