@@ -16,10 +16,21 @@ export function InteractiveRobotSpline({ scene, className }) {
           </div>
         }
       >
-        <Spline
-          scene={scene}
-          className={className} 
-        />
+        <div className="relative w-full h-full">
+          <Spline
+            scene={scene}
+            className={className} 
+          />
+          {/* Soft, blurred overlay to elegantly hide the Spline logo without sharp edges */}
+          <div 
+            className="absolute bottom-2 right-2 w-[140px] h-[40px] z-[99] pointer-events-none rounded-xl" 
+            style={{ 
+              background: '#050312',
+              filter: 'blur(10px)',
+              opacity: 0.95
+            }} 
+          />
+        </div>
       </Suspense>
     </ErrorBoundary>
   );
