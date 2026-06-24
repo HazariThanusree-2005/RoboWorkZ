@@ -1,17 +1,6 @@
-import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Volume2, VolumeX } from 'lucide-react';
 
 const ServicesSection = ({ hideHeader = false }) => {
-  const [muted, setMuted] = useState(true);
-  const videoRef = useRef(null);
-
-  const toggleSound = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !videoRef.current.muted;
-      setMuted(videoRef.current.muted);
-    }
-  };
 
   return (
     <section id="services" className="relative w-full overflow-hidden bg-[#050312]">
@@ -72,13 +61,12 @@ const ServicesSection = ({ hideHeader = false }) => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="relative w-full rounded-2xl overflow-hidden"
+            <div className="relative w-full rounded-3xl overflow-hidden"
               style={{
                 boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
               }}
             >
               <video
-                ref={videoRef}
                 src="/new_jewelry_video.mp4"
                 style={{ display: 'block', width: '100%', height: 'auto' }}
                 autoPlay
@@ -86,27 +74,6 @@ const ServicesSection = ({ hideHeader = false }) => {
                 muted
                 playsInline
               />
-
-
-
-              {/* Sound Toggle Button */}
-              <button
-                onClick={toggleSound}
-                className="absolute bottom-4 right-4 z-20 flex items-center gap-2 px-3 py-2 rounded-full text-xs font-semibold font-manrope transition-all duration-300"
-                style={{
-                  background: muted ? 'rgba(0,0,0,0.55)' : 'rgba(139,92,246,0.25)',
-                  border: muted ? '1px solid rgba(255,255,255,0.15)' : '1px solid rgba(139,92,246,0.5)',
-                  backdropFilter: 'blur(10px)',
-                  color: muted ? '#9ca3af' : '#c084fc',
-                  boxShadow: muted ? 'none' : '0 0 14px rgba(139,92,246,0.4)',
-                }}
-              >
-                {muted ? (
-                  <><VolumeX size={15} /><span>Unmute</span></>
-                ) : (
-                  <><Volume2 size={15} /><span>Mute</span></>
-                )}
-              </button>
             </div>
           </motion.div>
 
