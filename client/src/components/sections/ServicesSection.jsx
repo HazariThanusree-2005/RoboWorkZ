@@ -68,10 +68,10 @@ const ServicesSection = ({ hideHeader = false }) => {
                 transform: 'translateZ(0)',
               }}
             >
-              <div className="absolute inset-0 bg-primary-500/10 mix-blend-overlay group-hover:bg-transparent transition-colors duration-700 z-10 pointer-events-none" />
+
               <video
                 src="/new_jewelry_video.mp4"
-                className="w-full h-full object-cover rounded-[40px] group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover rounded-[40px] scale-105"
                 style={{ display: 'block', width: '100%', height: 'auto' }}
                 autoPlay
                 loop
