@@ -16,7 +16,7 @@ export function InteractiveRobotSpline({ scene, className }) {
           </div>
         }
       >
-        <div className="relative w-full h-full">
+        <>
           <Spline
             scene={scene}
             className={className} 
@@ -30,7 +30,7 @@ export function InteractiveRobotSpline({ scene, className }) {
               opacity: 0.95
             }} 
           />
-        </div>
+        </>
       </Suspense>
     </ErrorBoundary>
   );

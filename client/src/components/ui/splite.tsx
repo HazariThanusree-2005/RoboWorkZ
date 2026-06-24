@@ -19,7 +19,7 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
           </div>
         }
       >
-        <div className="relative w-full h-full">
+        <>
           <Spline
             scene={scene}
             className={className}
@@ -33,7 +33,7 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
               opacity: 0.95
             }} 
           />
-        </div>
+        </>
       </Suspense>
     </ErrorBoundary>
   )
