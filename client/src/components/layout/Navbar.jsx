@@ -207,6 +207,7 @@ const Navbar = () => {
       <AnimatePresence>
         {mobileOpen && (
           <MobileMenu 
+            key="mobile-menu"
             links={navLinks} 
             onClose={() => setMobileOpen(false)} 
             openAuthModal={openAuthModal}
