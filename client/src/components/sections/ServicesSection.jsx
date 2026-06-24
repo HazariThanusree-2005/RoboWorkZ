@@ -78,6 +78,12 @@ const ServicesSection = ({ hideHeader = false }) => {
                 muted
                 playsInline
               />
+              {/* Cover Gemini Logo */}
+              <img 
+                src="/oz-logo.png" 
+                alt="OZ Logo" 
+                className="absolute bottom-[44px] right-[38px] w-9 h-9 md:w-10 md:h-10 z-20 rounded-md object-contain shadow-[0_0_10px_rgba(0,0,0,0.8)] bg-[#050312]" 
+              />
             </div>
           </motion.div>
 
