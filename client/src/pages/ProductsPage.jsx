@@ -91,7 +91,7 @@ const ProductsPage = () => {
         {/* Gradient overlay to ensure text is readable and blends into page */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#050312]/10 via-[#050312]/30 to-[#050312] pointer-events-none z-10" />
 
-        <div className="relative z-20 max-w-4xl w-full mx-auto px-6 text-center mt-20">
+        <div className="relative z-20 max-w-4xl w-full mx-auto px-6 text-center mt-40 md:mt-56">
           <motion.h1
             className="font-space text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 drop-shadow-2xl pointer-events-none"
             initial={{ opacity: 0, y: 30 }}
