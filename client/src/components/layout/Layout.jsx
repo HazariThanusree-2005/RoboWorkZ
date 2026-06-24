@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
 
   // Scroll to top on route change
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'auto' });
   }, [location.pathname]);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const Layout = ({ children }) => {
       <AnimatePresence>
         {showScrollTop && (
           <motion.button
-            className="fixed bottom-8 right-8 z-40 w-12 h-12 rounded-xl bg-primary-500/90 backdrop-blur-sm text-white flex items-center justify-center shadow-glow hover:bg-primary-500 transition-colors"
+            className="hidden md:flex fixed bottom-8 right-8 z-40 w-12 h-12 rounded-xl bg-primary-500/90 backdrop-blur-sm text-white items-center justify-center shadow-glow hover:bg-primary-500 transition-colors"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

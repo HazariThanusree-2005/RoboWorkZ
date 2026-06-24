@@ -26,11 +26,11 @@ const MobileMenu = ({ links, onClose, openAuthModal }) => {
 
   return (
     <motion.div
-      className="fixed inset-0 z-40 bg-dark-900/98 backdrop-blur-xl flex flex-col justify-center"
-      initial={{ opacity: 0, clipPath: 'circle(0% at calc(100% - 2rem) 2rem)' }}
-      animate={{ opacity: 1, clipPath: 'circle(150% at calc(100% - 2rem) 2rem)' }}
-      exit={{ opacity: 0, clipPath: 'circle(0% at calc(100% - 2rem) 2rem)' }}
-      transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+      className="fixed inset-0 z-40 bg-[#050312]/98 backdrop-blur-2xl flex flex-col justify-center"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.3 }}
     >
       {/* Background Glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl" />
