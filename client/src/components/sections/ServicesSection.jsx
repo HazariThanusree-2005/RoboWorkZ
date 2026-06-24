@@ -70,7 +70,7 @@ const ServicesSection = ({ hideHeader = false }) => {
             >
 
               <video
-                src="/whatsapp-video.mp4"
+                src={`${import.meta.env.BASE_URL}whatsapp-video.mp4`}
                 className="w-full h-full object-cover rounded-[40px]"
                 style={{ display: 'block', width: '100%', height: 'auto' }}
                 autoPlay
@@ -80,7 +80,7 @@ const ServicesSection = ({ hideHeader = false }) => {
               />
               {/* Cover Gemini Logo */}
               <img 
-                src="/oz-logo.png" 
+                src={`${import.meta.env.BASE_URL}oz-logo.png`}
                 alt="OZ Logo" 
                 className="absolute bottom-[44px] right-[54px] w-9 h-9 md:w-10 md:h-10 z-20 rounded-md object-contain shadow-[0_0_10px_rgba(0,0,0,0.8)] bg-[#050312]" 
               />
@@ -109,7 +109,7 @@ const ServicesSection = ({ hideHeader = false }) => {
             >
               <div className="absolute inset-0 bg-primary-500/10 mix-blend-overlay group-hover:bg-transparent transition-colors duration-700 z-10 pointer-events-none" />
               <video
-                src="/workshop-video.mp4"
+                src={`${import.meta.env.BASE_URL}workshop-video.mp4`}
                 className="w-full h-full object-cover rounded-[40px]"
                 style={{ display: 'block', width: '100%', height: 'auto' }}
                 autoPlay
@@ -119,7 +119,7 @@ const ServicesSection = ({ hideHeader = false }) => {
               />
               {/* Cover Gemini Logo */}
               <img 
-                src="/oz-logo.png" 
+                src={`${import.meta.env.BASE_URL}oz-logo.png`}
                 alt="OZ Logo" 
                 className="absolute bottom-[44px] right-[54px] w-9 h-9 md:w-10 md:h-10 z-20 rounded-md object-contain shadow-[0_0_10px_rgba(0,0,0,0.8)] bg-[#050312]" 
               />

@@ -50,12 +50,11 @@ const RentalsSection = () => {
                   </div>
                   
                   {/* Robot Image Overlay (Takes up bottom space) */}
-                  <div className="absolute left-[-30%] right-[-30%] bottom-[-5%] top-[100px] pointer-events-none flex items-end justify-center">
+                  <div className="absolute inset-0 z-10 flex justify-center items-end pb-8 group-hover:pb-12 transition-all duration-700">
                     <img 
-                      src="/robot (2).png" 
-                      alt="Rental Robot" 
-                      className="w-full h-[160%] object-contain object-bottom translate-y-0 group-hover:-translate-y-4 transition-transform duration-700 opacity-100"
-                      style={{ filter: 'drop-shadow(0 15px 35px rgba(139,92,246,0.4))' }}
+                      src={`${import.meta.env.BASE_URL}robot (2).png`} 
+                      alt="Robot Preview" 
+                      className="w-4/5 h-auto object-contain object-bottom drop-shadow-[0_20px_30px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-700"
                     />
                   </div>
                 </div>

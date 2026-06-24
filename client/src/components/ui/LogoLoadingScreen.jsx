@@ -40,7 +40,7 @@ const LogoLoadingScreen = ({ onComplete }) => {
       >
         <video
           ref={videoRef}
-          src="/logo-video.mp4"
+          src={`${import.meta.env.BASE_URL}logo-video.mp4`}
           className="lls-video"
           muted
           autoPlay
