@@ -22,7 +22,7 @@ const AboutPage = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-[#050312]/10 via-[#050312]/30 to-[#050312] pointer-events-none z-10" />
 
         {/* Heading Content */}
-        <div className="relative z-20 max-w-4xl mx-auto px-6 text-center pointer-events-none mt-32">
+        <div className="relative z-20 max-w-4xl mx-auto px-6 text-center pointer-events-none mt-56 md:mt-64">
           <motion.h1
             className="font-instrument text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 flex items-center justify-center gap-4 drop-shadow-2xl"
             initial={{ opacity: 0, y: 30 }}
