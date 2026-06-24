@@ -71,7 +71,7 @@ const ServicesSection = ({ hideHeader = false }) => {
 
               <video
                 src="/new_jewelry_video.mp4"
-                className="w-full h-full object-cover rounded-[40px] scale-105"
+                className="w-full h-full object-cover rounded-[40px]"
                 style={{ display: 'block', width: '100%', height: 'auto' }}
                 autoPlay
                 loop
