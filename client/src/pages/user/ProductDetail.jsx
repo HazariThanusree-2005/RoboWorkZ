@@ -130,26 +130,7 @@ const ProductDetail = () => {
               </div>
             </div>
 
-            {/* Pricing */}
-            <div className="glass rounded-xl p-6 mb-8">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-xs text-gray-500 font-inter mb-1">Purchase Price</p>
-                  <div className="flex items-center gap-1 text-white font-manrope font-bold text-2xl">
-                    <HiCurrencyRupee size={24} />
-                    {product.price?.toLocaleString('en-IN')}
-                  </div>
-                </div>
-                {product.rentalAvailable && (
-                  <div className="text-right">
-                    <p className="text-xs text-gray-500 font-inter mb-1">Rental Price</p>
-                    <div className="text-primary-400 font-manrope font-bold text-lg">
-                      ₹{product.rentalPrice?.toLocaleString('en-IN')}/day
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
+
 
             {/* Actions */}
             <div className="flex flex-col sm:flex-row gap-4">

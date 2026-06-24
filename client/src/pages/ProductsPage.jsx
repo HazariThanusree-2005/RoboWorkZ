@@ -206,12 +206,7 @@ const ProductsPage = () => {
                           </span>
                         ))}
                       </div>
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="flex items-center gap-1 text-white font-manrope font-bold">
-                          <HiCurrencyRupee size={18} />
-                          <span className="text-lg">{product.price?.toLocaleString('en-IN')}</span>
-                        </div>
-                      </div>
+
                       {isExternal ? (
                         <a href={externalUrl} target="_blank" rel="noopener noreferrer" className="block" onClick={(e) => e.stopPropagation()}>
                           <motion.button className="w-full py-2.5 text-sm font-manrope font-semibold text-primary-400 border border-primary-500/30 rounded-xl hover:bg-primary-500/10 transition-all duration-300 flex items-center justify-center gap-2" whileHover={{ borderColor: 'rgba(123, 57, 252, 0.6)' }}>
