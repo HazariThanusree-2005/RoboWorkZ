@@ -103,7 +103,7 @@ const ServicesSection = ({ hideHeader = false }) => {
             >
               <div className="absolute inset-0 bg-primary-500/10 mix-blend-overlay group-hover:bg-transparent transition-colors duration-700 z-10 pointer-events-none" />
               <video
-                src="/Teacher_demonstrating_robot_to_c._202606241113.mp4"
+                src="/workshop-video.mp4"
                 className="w-full h-full object-cover rounded-[40px] group-hover:scale-105 transition-transform duration-700"
                 style={{ display: 'block', width: '100%', height: 'auto' }}
                 autoPlay
