@@ -11,17 +11,12 @@ const MobileMenu = ({ links, onClose, openAuthModal }) => {
     visible: {
       opacity: 1,
       transition: { staggerChildren: 0.08, delayChildren: 0.1 },
-    },
-    exit: { 
-      opacity: 0,
-      transition: { staggerChildren: 0.05, staggerDirection: -1 },
-    },
+    }
   };
 
   const itemVariants = {
     hidden: { x: -40, opacity: 0 },
-    visible: { x: 0, opacity: 1, transition: { type: 'spring', stiffness: 200, damping: 20 } },
-    exit: { x: 40, opacity: 0 },
+    visible: { x: 0, opacity: 1, transition: { type: 'spring', stiffness: 200, damping: 20 } }
   };
 
   return (
@@ -33,14 +28,13 @@ const MobileMenu = ({ links, onClose, openAuthModal }) => {
       transition={{ duration: 0.3 }}
     >
       {/* Background Glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl pointer-events-none" />
       
       <motion.div 
         className="px-8 space-y-2"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        exit="exit"
       >
         {links.map((link) => (
           <motion.div key={link.name} variants={itemVariants}>
