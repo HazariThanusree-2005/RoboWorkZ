@@ -24,11 +24,11 @@ const AboutPage = () => {
         {/* Heading Content */}
         <div className="relative z-20 max-w-4xl mx-auto px-6 text-center pointer-events-none mt-56 md:mt-64">
           <motion.h1
-            className="font-instrument text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 flex items-center justify-center gap-4 drop-shadow-2xl"
+            className="font-instrument text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 flex flex-wrap items-center justify-center gap-2 md:gap-4 drop-shadow-2xl"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            About <BrandText className="text-5xl md:text-6xl lg:text-7xl" />
+            About <BrandText className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl" />
           </motion.h1>
           <motion.p
             className="text-lg md:text-xl text-gray-200 font-inter max-w-2xl mx-auto drop-shadow-lg"
