@@ -61,14 +61,16 @@ const ServicesSection = ({ hideHeader = false }) => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="relative w-full rounded-[40px] overflow-hidden"
+            <div className="relative w-full rounded-[40px] overflow-hidden isolate"
               style={{
                 boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
+                WebkitMaskImage: '-webkit-radial-gradient(white, black)',
+                transform: 'translateZ(0)',
               }}
             >
               <video
                 src="/new_jewelry_video.mp4"
-                className="w-full rounded-[40px]"
+                className="w-full h-full object-cover rounded-[40px]"
                 style={{ display: 'block', width: '100%', height: 'auto' }}
                 autoPlay
                 loop
