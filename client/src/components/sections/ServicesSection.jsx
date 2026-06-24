@@ -114,7 +114,7 @@ const ServicesSection = ({ hideHeader = false }) => {
               <img 
                 src="/oz-logo.png" 
                 alt="OZ Logo" 
-                className="absolute bottom-[20px] right-[20px] w-12 h-12 md:w-14 md:h-14 z-20 rounded object-cover shadow-lg" 
+                className="absolute bottom-[24px] right-[24px] w-9 h-9 md:w-10 md:h-10 z-20 rounded-full object-cover shadow-lg" 
               />
             </div>
           </motion.div>
