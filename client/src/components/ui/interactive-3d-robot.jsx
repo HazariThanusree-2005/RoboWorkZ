@@ -16,14 +16,10 @@ export function InteractiveRobotSpline({ scene, className }) {
           </div>
         }
       >
-        <div className="relative w-full h-full overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-[calc(100%+50px)]">
-            <Spline
-              scene={scene}
-              className={className} 
-            />
-          </div>
-        </div>
+        <Spline
+          scene={scene}
+          className={className} 
+        />
       </Suspense>
     </ErrorBoundary>
   );
