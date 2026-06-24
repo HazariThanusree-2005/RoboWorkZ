@@ -82,7 +82,7 @@ const ServicesSection = ({ hideHeader = false }) => {
               <img 
                 src={`${import.meta.env.BASE_URL}oz-logo.png`}
                 alt="OZ Logo" 
-                className="absolute bottom-[20px] right-[30px] md:bottom-[44px] md:right-[54px] w-9 h-9 md:w-10 md:h-10 z-20 rounded-md object-contain shadow-[0_0_10px_rgba(0,0,0,0.8)] bg-[#050312]" 
+                className="absolute bottom-[20px] right-[30px] md:bottom-[44px] md:right-[54px] w-8 h-8 md:w-10 md:h-10 z-20 rounded-md object-contain shadow-[0_0_10px_rgba(0,0,0,0.8)] bg-[#050312]" 
               />
             </div>
           </motion.div>
@@ -121,7 +121,7 @@ const ServicesSection = ({ hideHeader = false }) => {
               <img 
                 src={`${import.meta.env.BASE_URL}oz-logo.png`}
                 alt="OZ Logo" 
-                className="absolute bottom-[20px] right-[30px] md:bottom-[44px] md:right-[54px] w-9 h-9 md:w-10 md:h-10 z-20 rounded-md object-contain shadow-[0_0_10px_rgba(0,0,0,0.8)] bg-[#050312]" 
+                className="absolute bottom-[20px] right-[30px] md:bottom-[44px] md:right-[54px] w-8 h-8 md:w-10 md:h-10 z-20 rounded-md object-contain shadow-[0_0_10px_rgba(0,0,0,0.8)] bg-[#050312]" 
               />
             </div>
           </motion.div>
