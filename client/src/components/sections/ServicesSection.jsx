@@ -94,23 +94,26 @@ const ServicesSection = ({ hideHeader = false }) => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="relative w-full rounded-[40px] overflow-hidden isolate shadow-2xl group cursor-pointer"
+            <div className="relative w-full overflow-hidden isolate shadow-2xl group cursor-pointer"
               style={{
                 boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
-                WebkitMaskImage: '-webkit-radial-gradient(white, black)',
                 transform: 'translateZ(0)',
               }}
             >
               <div className="absolute inset-0 bg-primary-500/10 mix-blend-overlay group-hover:bg-transparent transition-colors duration-700 z-10 pointer-events-none" />
               <video
                 src="/workshop-video.mp4"
-                className="w-full h-full object-cover rounded-[40px] group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 style={{ display: 'block', width: '100%', height: 'auto' }}
                 autoPlay
                 loop
                 muted
                 playsInline
               />
+              {/* Cover Gemini Logo */}
+              <div className="absolute bottom-3 right-3 w-14 h-14 md:w-16 md:h-16 z-20 rounded-lg overflow-hidden flex items-center justify-center backdrop-blur-md bg-black/40 border border-white/10 shadow-lg">
+                <img src="/oz-logo.png" alt="OZ Logo" className="w-full h-full object-contain p-2" />
+              </div>
             </div>
           </motion.div>
 
