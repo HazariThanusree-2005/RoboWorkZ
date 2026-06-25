@@ -61,28 +61,21 @@ const ServicesSection = ({ hideHeader = false }) => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="relative w-full rounded-[40px] overflow-hidden isolate shadow-2xl group cursor-pointer"
+            <div className="relative w-full rounded-[40px] overflow-hidden isolate shadow-[0_0_40px_rgba(192,132,252,0.3)] hover:shadow-[0_0_60px_rgba(192,132,252,0.6)] hover:scale-[1.02] transition-all duration-500 ease-out group cursor-pointer"
               style={{
-                boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
                 WebkitMaskImage: '-webkit-radial-gradient(white, black)',
                 transform: 'translateZ(0)',
               }}
             >
-
+              <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/20 to-transparent mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
               <video
-                src={`${import.meta.env.BASE_URL}whatsapp-video.mp4`}
+                src={`${import.meta.env.BASE_URL}services-business.mp4`}
                 className="w-full h-full object-cover rounded-[40px]"
                 style={{ display: 'block', width: '100%', height: 'auto' }}
                 autoPlay
                 loop
                 muted
                 playsInline
-              />
-              {/* Cover Gemini Logo */}
-              <img 
-                src={`${import.meta.env.BASE_URL}oz-logo.png`}
-                alt="OZ Logo" 
-                className="absolute bottom-[20px] right-[30px] md:bottom-[44px] md:right-[54px] w-8 h-8 md:w-10 md:h-10 z-20 rounded-md object-contain shadow-[0_0_10px_rgba(0,0,0,0.8)] bg-[#050312]" 
               />
             </div>
           </motion.div>
@@ -100,28 +93,21 @@ const ServicesSection = ({ hideHeader = false }) => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="relative w-full rounded-[40px] overflow-hidden isolate shadow-2xl group cursor-pointer"
+            <div className="relative w-full rounded-[40px] overflow-hidden isolate shadow-[0_0_40px_rgba(139,92,246,0.3)] hover:shadow-[0_0_60px_rgba(139,92,246,0.6)] hover:scale-[1.02] transition-all duration-500 ease-out group cursor-pointer"
               style={{
-                boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
                 WebkitMaskImage: '-webkit-radial-gradient(white, black)',
                 transform: 'translateZ(0)',
               }}
             >
-              <div className="absolute inset-0 bg-primary-500/10 mix-blend-overlay group-hover:bg-transparent transition-colors duration-700 z-10 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-tl from-purple-500/20 to-transparent mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
               <video
-                src={`${import.meta.env.BASE_URL}workshop-video.mp4`}
+                src={`${import.meta.env.BASE_URL}workshop-new.mp4`}
                 className="w-full h-full object-cover rounded-[40px]"
                 style={{ display: 'block', width: '100%', height: 'auto' }}
                 autoPlay
                 loop
                 muted
                 playsInline
-              />
-              {/* Cover Gemini Logo */}
-              <img 
-                src={`${import.meta.env.BASE_URL}oz-logo.png`}
-                alt="OZ Logo" 
-                className="absolute bottom-[20px] right-[30px] md:bottom-[44px] md:right-[54px] w-8 h-8 md:w-10 md:h-10 z-20 rounded-md object-contain shadow-[0_0_10px_rgba(0,0,0,0.8)] bg-[#050312]" 
               />
             </div>
           </motion.div>
