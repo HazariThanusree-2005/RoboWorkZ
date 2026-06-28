@@ -100,7 +100,7 @@ const ServicesSection = ({ hideHeader = false }) => {
             >
               <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/20 to-transparent mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
               <video
-                src={`${import.meta.env.BASE_URL}flower-shower.mp4`}
+                src={`${import.meta.env.BASE_URL}flower-video-new.mp4`}
                 className="w-full h-full object-cover rounded-[40px]"
                 style={{ display: 'block', width: '100%', height: 'auto' }}
                 autoPlay
