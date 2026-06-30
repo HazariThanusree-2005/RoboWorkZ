@@ -47,22 +47,13 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, title, description, tag, i
     };
   }, [index, totalCards]);
 
-  // Play video when in view
+  // Play video reliably
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          video.play().catch(() => {});
-        } else {
-          video.pause();
-        }
-      },
-      { threshold: 0.3 }
-    );
-    observer.observe(video);
-    return () => observer.disconnect();
+    if (video) {
+      // Ensure video plays even if browser policies try to block it
+      video.play().catch(() => {});
+    }
   }, []);
 
   return (
@@ -122,6 +113,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, title, description, tag, i
             boxShadow: `0 8px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.2)`,
             overflow: 'hidden',
             display: 'flex',
+            flexDirection: index % 2 !== 0 ? 'row-reverse' : 'row',
           }}
         >
           {/* Video side (left 60%) */}
@@ -131,7 +123,9 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, title, description, tag, i
               src={video}
               muted
               loop
+              autoPlay
               playsInline
+              preload="auto"
               style={{
                 width: '100%',
                 height: '100%',
@@ -143,7 +137,9 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, title, description, tag, i
               style={{
                 position: 'absolute',
                 inset: 0,
-                background: `linear-gradient(to right, transparent 70%, rgba(5,3,18,0.9) 100%)`,
+                background: index % 2 !== 0 
+                  ? `linear-gradient(to left, transparent 70%, rgba(5,3,18,0.9) 100%)`
+                  : `linear-gradient(to right, transparent 70%, rgba(5,3,18,0.9) 100%)`,
               }}
             />
             {/* Live badge */}
@@ -151,7 +147,8 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, title, description, tag, i
               style={{
                 position: 'absolute',
                 top: '16px',
-                left: '16px',
+                left: index % 2 !== 0 ? 'auto' : '16px',
+                right: index % 2 !== 0 ? '16px' : 'auto',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '6px',
