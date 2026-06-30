@@ -18,7 +18,10 @@ const VideoModal: React.FC<{ video: VideoItem; onClose: () => void }> = ({ video
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    videoRef.current?.play().catch(() => {});
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+      videoRef.current.play().catch(() => {});
+    }
     // lock scroll
     document.body.style.overflow = 'hidden';
     return () => { document.body.style.overflow = ''; };
