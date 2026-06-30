@@ -108,7 +108,7 @@ const HeroSection = () => {
                 </Link>
                 <Link to="/services">
                   <button className="btn-outline">
-                    <span>Explore Services</span>
+                    <span>Explore Services</span> <HiArrowRight className="w-4 h-4" />
                   </button>
                 </Link>
               </motion.div>
