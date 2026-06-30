@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { HiArrowRight, HiCalendar, HiTruck, HiClock } from 'react-icons/hi';
+import Spline from '@splinetool/react-spline';
 import SectionHeading from '../ui/SectionHeading';
 import ScrollReveal from '../ui/ScrollReveal';
 import MagneticButton from '../ui/MagneticButton';
@@ -14,68 +15,50 @@ const RentalsSection = () => {
 
       <div className="max-w-[1400px] mx-auto relative px-6 md:px-8">
         
+        {/* Heading Right Aligned */}
+        <div className="flex flex-col items-end text-right mb-10">
+          <ScrollReveal direction="up">
+            <SectionHeading
+              title="Robot Rentals"
+              align="right"
+              subtitle={<>Bring tomorrow's tech to your events, exhibitions, or business promotions with <BrandText className="text-base font-normal leading-none" />.</>}
+            />
+          </ScrollReveal>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
           
-          {/* Left Tall Card - Robot Image */}
-          <div className="lg:col-span-5 h-full">
-            <ScrollReveal direction="up" delay={0.1} className="h-full">
-              <div className="bg-[#0e0e11] border border-white/5 rounded-3xl overflow-hidden flex flex-col group h-full hover:border-primary-500/30 transition-colors duration-500 p-6 md:p-8 relative min-h-[500px] lg:min-h-full">
-                {/* Subtle background glow */}
-                <div className="absolute top-0 right-0 w-96 h-96 bg-primary-600/10 rounded-full blur-[80px] pointer-events-none group-hover:bg-primary-500/20 transition-colors duration-700" />
-                
-                <div className="relative z-10 flex flex-col h-full w-full">
-                  <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 mb-5 border border-white/5 w-max">
-                    <HiTruck size={14} className="text-primary-400" />
-                    <span className="text-[11px] font-manrope font-semibold text-primary-300 tracking-wider uppercase">On-Demand Deployment</span>
-                  </div>
-
-                  <h3 className="font-space text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
-                    Bring Tomorrow's Tech to <span className="text-gradient">Your Event</span>
-                  </h3>
-
-                  <p className="text-gray-400 font-inter text-sm md:text-base leading-relaxed mb-6">
-                    Create unforgettable experiences and massive engagement at your next exhibition, corporate meet, or campaign.
-                  </p>
-
-                  <div className="mt-auto pt-2 z-20">
-                    <MagneticButton>
-                      <Link
-                        to="/rentals"
-                        className="inline-flex items-center gap-2 px-6 py-3 text-sm font-manrope font-semibold text-white bg-white/5 border border-white/10 rounded-xl transition-all duration-300 hover:bg-primary-500 hover:border-primary-400 hover:shadow-[0_0_25px_rgba(139,92,246,0.4)] group-button"
-                      >
-                        Explore Rental Fleet
-                        <HiArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
-                      </Link>
-                    </MagneticButton>
-                  </div>
-                  
-                  {/* Robot Image Overlay (Takes up bottom space) */}
-                  <div className="absolute inset-0 z-10 flex justify-center items-end pb-8 group-hover:pb-12 transition-all duration-700">
-                    <img 
-                      src={`${import.meta.env.BASE_URL}robot (2).png`} 
-                      alt="Robot Preview" 
-                      className="w-4/5 h-auto object-contain object-bottom drop-shadow-[0_20px_30px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-700"
-                    />
-                  </div>
-                </div>
+          {/* Left Column - Spline Robot */}
+          <div className="lg:col-span-4 h-full min-h-[400px] lg:min-h-full rounded-3xl overflow-hidden relative border border-white/5 bg-[#0e0e11] hero-grid">
+            {/* Subtle background glow from previous design */}
+            <div className="absolute top-0 right-0 w-96 h-96 bg-violet-600/10 rounded-full blur-[80px] pointer-events-none" />
+            
+            <ScrollReveal direction="up" delay={0.1} className="w-full h-full absolute inset-0 z-10">
+              <style>{`
+                .spline-hide-logo a {
+                  display: none !important;
+                  opacity: 0 !important;
+                  pointer-events: none !important;
+                }
+              `}</style>
+              <div className="w-full h-full relative spline-hide-logo">
+                <Spline 
+                  scene="https://prod.spline.design/J5jdB1z34B7OO0A0/scene.splinecode" 
+                  className="w-full h-full" 
+                />
+                <div 
+                  className="absolute bottom-0 left-0 w-full h-[100px] z-[99] pointer-events-none" 
+                  style={{ 
+                    background: 'linear-gradient(to top, #0e0e11 0%, #0e0e11 50%, transparent 100%)',
+                  }} 
+                />
               </div>
             </ScrollReveal>
           </div>
 
-          {/* Right Column - Heading and Grid */}
-          <div className="lg:col-span-7 flex flex-col justify-between gap-8">
+          {/* Right Column - Grid */}
+          <div className="lg:col-span-8 flex flex-col gap-6 lg:gap-8">
             
-            {/* Heading Right Aligned */}
-            <div className="flex flex-col items-end text-right mt-4 lg:mt-0">
-              <ScrollReveal direction="up">
-                <SectionHeading
-                  title="Robot Rentals"
-                  align="right"
-                  subtitle={<>Bring tomorrow's tech to your events, exhibitions, or business promotions with <BrandText className="text-base font-normal leading-none" />.</>}
-                />
-              </ScrollReveal>
-            </div>
-
             {/* Sub-grid for features */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 h-full flex-1">
               

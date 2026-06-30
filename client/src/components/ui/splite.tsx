@@ -19,21 +19,19 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
           </div>
         }
       >
-        <>
+        <div className="relative w-full h-full">
           <Spline
             scene={scene}
             className={className}
           />
-          {/* Soft, blurred overlay to elegantly hide the Spline logo without sharp edges */}
+          {/* Full-width bottom cover to hide the watermark smoothly without disturbing the robot */}
           <div 
-            className="absolute bottom-2 right-2 w-[140px] h-[40px] z-[99] pointer-events-none rounded-xl" 
+            className="absolute bottom-0 left-0 w-full h-[100px] z-[99999] pointer-events-none" 
             style={{ 
-              background: '#050312',
-              filter: 'blur(10px)',
-              opacity: 0.95
+              background: 'linear-gradient(to top, #050312 0%, #050312 50%, transparent 100%)',
             }} 
           />
-        </>
+        </div>
       </Suspense>
     </ErrorBoundary>
   )
