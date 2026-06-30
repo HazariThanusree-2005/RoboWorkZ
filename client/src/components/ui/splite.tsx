@@ -24,11 +24,12 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
             scene={scene}
             className={className}
           />
-          {/* Full-width bottom cover to hide the watermark smoothly without disturbing the robot */}
+          {/* Solid overlay to hide the Spline logo without cutting the 3D model */}
           <div 
-            className="absolute bottom-0 left-0 w-full h-[100px] z-[99999] pointer-events-none" 
+            className="absolute bottom-4 right-4 w-[160px] h-[50px] z-[99999] pointer-events-none rounded-lg" 
             style={{ 
-              background: 'linear-gradient(to top, #050312 0%, #050312 50%, transparent 100%)',
+              background: '#050312',
+              boxShadow: '0 0 20px 10px #050312',
             }} 
           />
         </div>

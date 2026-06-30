@@ -42,10 +42,7 @@ const RentalsSection = () => {
                 }
               `}</style>
               <div className="w-full h-full relative spline-hide-logo">
-                <Spline 
-                  scene="https://prod.spline.design/J5jdB1z34B7OO0A0/scene.splinecode" 
-                  className="w-full h-full" 
-                />
+                <Spline scene="https://prod.spline.design/J5jdB1z34B7OO0A0/scene.splinecode" className="w-full h-full" />
                 <div 
                   className="absolute bottom-0 left-0 w-full h-[100px] z-[99] pointer-events-none" 
                   style={{ 
