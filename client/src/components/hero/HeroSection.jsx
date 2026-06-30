@@ -106,9 +106,9 @@ const HeroSection = () => {
                     <span>Explore Products</span> <HiArrowRight className="w-4 h-4" />
                   </button>
                 </Link>
-                <Link to="/contact">
+                <Link to="/services">
                   <button className="btn-outline">
-                    <span>Book Demo</span>
+                    <span>Explore Services</span>
                   </button>
                 </Link>
               </motion.div>
@@ -129,7 +129,7 @@ const HeroSection = () => {
                   filter: 'blur(60px)',
                 }}
               />
-              <div className="relative w-full max-w-[500px] lg:max-w-[650px] aspect-[4/5] sm:aspect-[4/5] md:aspect-square flex items-center justify-center overflow-visible">
+              <div className="relative w-full max-w-[600px] lg:max-w-[800px] xl:max-w-[900px] aspect-[4/5] sm:aspect-[4/5] md:aspect-square flex items-center justify-center overflow-visible">
                 <SplineScene
                   scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
                   className="w-full h-full object-contain pointer-events-auto"
