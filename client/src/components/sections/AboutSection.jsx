@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
+import SectionHeading from '../ui/SectionHeading';
 import ScrollReveal from '../ui/ScrollReveal';
+import BrandText from '../ui/BrandText';
 import GlassCard from '../ui/GlassCard';
 import { 
   Bot, Cpu, Zap, Users, Rocket, Settings, 
@@ -21,7 +23,7 @@ const focusAreas = [
   { icon: Shield, title: 'Automation Systems', desc: 'Building the infrastructure for tomorrow\'s automated world.' },
 ];
 
-const AboutSection = () => {
+const AboutSection = ({ hideHeader = false }) => {
   return (
     <section id="about" className="section-padding relative overflow-hidden">
       {/* Background effects */}
@@ -30,8 +32,9 @@ const AboutSection = () => {
       
       <div className="max-w-7xl mx-auto relative">
         {/* Section Header */}
+        {!hideHeader && (
         <ScrollReveal>
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 md:mb-16">
             <motion.div
               className="inline-flex items-center gap-2 glass rounded-full px-5 py-2 mb-6"
               initial={{ opacity: 0, scale: 0.9 }}
@@ -42,14 +45,15 @@ const AboutSection = () => {
               <span className="text-xs font-manrope font-semibold text-primary-300 tracking-wider uppercase">Who We Are</span>
             </motion.div>
 
-            <h2 className="font-space text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-              About <span className="text-gradient">RoboWorkz</span>
+            <h2 className="font-space text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 flex items-center justify-center gap-3">
+              About <BrandText className="text-4xl md:text-5xl lg:text-6xl" />
             </h2>
             <p className="text-lg md:text-xl text-primary-300/70 font-inter max-w-2xl mx-auto">
               Building futuristic robotic solutions for businesses and daily life.
             </p>
           </div>
         </ScrollReveal>
+        )}
 
         {/* Main Content - Split Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-20">
@@ -57,19 +61,11 @@ const AboutSection = () => {
           <ScrollReveal direction="left">
             <div>
               <p className="text-gray-300 font-inter text-lg leading-relaxed mb-6">
-                RoboWorkz creates intelligent robotic products and automation solutions for businesses, 
-                events, and domestic usage. We design and develop robots that help small businesses attract 
-                customers, improve engagement, automate tasks, and create futuristic experiences.
-              </p>
-
-              <p className="text-gray-400 font-inter text-base leading-relaxed mb-6">
-                We also provide robot rental services based on business requirements, events, exhibitions, 
-                family functions, and commercial activities.
+                <BrandText className="text-xl font-normal leading-none" /> creates intelligent robotic products and automation solutions. We design robots that help businesses attract customers, improve engagement, and automate tasks.
               </p>
 
               <p className="text-gray-400 font-inter text-base leading-relaxed mb-10">
-                Our mission is to help businesses grow through innovative robotics, smart automation, 
-                and futuristic product experiences.
+                From robot rentals to custom automation, our mission is to help businesses grow through innovative robotics.
               </p>
 
               {/* Highlight cards */}

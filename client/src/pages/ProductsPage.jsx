@@ -5,23 +5,55 @@ import axios from 'axios';
 import ScrollReveal from '../components/ui/ScrollReveal';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
 import { HiEye, HiCurrencyRupee, HiCheckCircle, HiSearch, HiFilter, HiExternalLink } from 'react-icons/hi';
+import armRoboImg from '../assets/arm-robo.png';
+import roboDogImg from '../assets/robo-dog.png';
+import tableRoboImg from '../assets/table-robo.png';
+import { InteractiveRobotSpline } from '../components/ui/interactive-3d-robot';
+
+const ROBOT_SCENE_URL = "https://prod.spline.design/PyzDhpQ9E5f1E3MT/scene.splinecode";
 
 const categories = [
   { value: '', label: 'All Categories' },
-  { value: 'creative', label: 'Creative Robotics' },
+  { value: 'healthcare', label: 'Healthcare & Rehab' },
+  { value: 'research', label: 'Research & Development' },
+  { value: 'industrial', label: 'Industrial Automation' },
 ];
 
 const fallbackProducts = [
   {
-    _id: 'robocam',
-    name: 'RoboCam',
-    description: 'RoboCam is a state-of-the-art smart camera assistant focused mainly on influencers, vlogger teams, and event filmmakers. By tracking movement natively and automating gimbal orientation, it provides seamless hands-free recording.',
-    features: ['AI Smart Tracking', 'Automated Camera Motion', 'Cinematic Video Capture', 'Smart Motion Recording', 'Creator-Friendly Setup', 'Smooth Content Creation'],
-    price: 89999,
+    _id: 'arm-robo',
+    name: 'Industrial Automation Arm',
+    description: 'High-precision robotic arm designed for automation, manufacturing support, engineering demonstrations, research projects, and robotics training.',
+    features: ['Precision movement', 'Industrial automation support', 'Educational demonstrations', 'Customizable applications'],
+    price: 150000,
     rentalAvailable: true,
-    rentalPrice: 2500,
-    images: [{ url: '/robocam.png' }],
-    category: 'creative',
+    rentalPrice: 5000,
+    images: [{ url: armRoboImg }],
+    category: 'industrial',
+    status: 'active'
+  },
+  {
+    _id: 'robo-dog',
+    name: 'Portable Quadruped Robot',
+    description: 'Advanced robotic dog platform built for research, educational demonstrations, autonomous navigation, smart mobility, and interactive robotics applications.',
+    features: ['Interactive movement', 'Smart navigation', 'Event attraction', 'Educational robotics'],
+    price: 250000,
+    rentalAvailable: true,
+    rentalPrice: 8000,
+    images: [{ url: roboDogImg }],
+    category: 'research',
+    status: 'active'
+  },
+  {
+    _id: 'table-robo',
+    name: 'Smart Service Assistant',
+    description: 'Intelligent service robot developed for customer interaction, exhibitions, hospitality support, smart delivery assistance, and business automation.',
+    features: ['Autonomous serving', 'Customer interaction', 'Event assistance', 'Smart business applications'],
+    price: 180000,
+    rentalAvailable: true,
+    rentalPrice: 6000,
+    images: [{ url: tableRoboImg }],
+    category: 'industrial',
     status: 'active'
   }
 ];
@@ -33,7 +65,7 @@ const ProductsPage = () => {
   const [category, setCategory] = useState('');
 
   useEffect(() => {
-    // Enforce RoboCam as the exclusive flagship product on the site
+
     setProducts(fallbackProducts);
     setLoading(false);
   }, [search, category]);
@@ -48,18 +80,27 @@ const ProductsPage = () => {
   return (
     <div className="pt-20 min-h-screen">
       {/* Header */}
-      <section className="section-padding pb-8 text-center relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary-500/5 to-transparent" />
-        <div className="relative max-w-4xl mx-auto">
+      <section className="relative w-full h-[70vh] md:h-[80vh] overflow-hidden flex items-center justify-center -mt-20">
+        
+        {/* Interactive 3D Robot Background */}
+        <InteractiveRobotSpline
+          scene={ROBOT_SCENE_URL}
+          className="absolute inset-0 z-0" 
+        />
+        
+        {/* Gradient overlay to ensure text is readable and blends into page */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#050312]/10 via-[#050312]/30 to-[#050312] pointer-events-none z-10" />
+
+        <div className="relative z-20 max-w-4xl w-full mx-auto px-6 text-center mt-40 md:mt-56">
           <motion.h1
-            className="font-space text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6"
+            className="font-space text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 drop-shadow-2xl pointer-events-none"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
           >
             Our <span className="text-gradient">Products</span>
           </motion.h1>
           <motion.p
-            className="text-lg text-gray-400 font-inter max-w-2xl mx-auto mb-10"
+            className="text-lg text-gray-200 font-inter max-w-2xl mx-auto mb-10 drop-shadow-lg pointer-events-none"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -69,30 +110,30 @@ const ProductsPage = () => {
 
           {/* Search & Filter */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto"
+            className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto relative z-30"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            <div className="relative flex-1">
-              <HiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
+            <div className="relative flex-1 group">
+              <HiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-primary-400 transition-colors" size={18} />
               <input
                 type="text"
                 placeholder="Search robots..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full px-5 py-3 pl-12 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 font-inter text-sm focus:outline-none focus:border-primary-500/50 transition-all"
+                className="w-full px-5 py-3 pl-12 bg-[#050312]/60 backdrop-blur-md border border-white/20 rounded-xl text-white placeholder-gray-400 font-inter text-sm focus:outline-none focus:border-primary-500/80 focus:bg-[#050312]/80 transition-all shadow-glass"
               />
             </div>
-            <div className="relative">
-              <HiFilter className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" size={18} />
+            <div className="relative group">
+              <HiFilter className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-primary-400 transition-colors pointer-events-none" size={18} />
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="w-full sm:w-48 px-5 py-3 pl-12 bg-white/5 border border-white/10 rounded-xl text-white font-inter text-sm focus:outline-none focus:border-primary-500/50 transition-all appearance-none cursor-pointer"
+                className="w-full sm:w-48 px-5 py-3 pl-12 bg-[#050312]/60 backdrop-blur-md border border-white/20 rounded-xl text-white font-inter text-sm focus:outline-none focus:border-primary-500/80 focus:bg-[#050312]/80 transition-all appearance-none cursor-pointer shadow-glass"
               >
                 {categories.map(c => (
-                  <option key={c.value} value={c.value} className="bg-dark-800">{c.label}</option>
+                  <option key={c.value} value={c.value} className="bg-[#050312]">{c.label}</option>
                 ))}
               </select>
             </div>
@@ -101,7 +142,7 @@ const ProductsPage = () => {
       </section>
 
       {/* Products Grid */}
-      <section className="px-6 md:px-12 lg:px-20 pb-24">
+      <section className="relative z-30 bg-[#050312] px-6 md:px-12 lg:px-20 pb-24">
         <div className="max-w-7xl mx-auto">
           {loading ? (
             <LoadingSpinner />
@@ -129,7 +170,7 @@ const ProductsPage = () => {
                   >
                     <div className="relative h-52 bg-gradient-to-br from-primary-900/30 to-dark-800 overflow-hidden">
                       {product.images?.length > 0 ? (
-                        <img src={product.images[0].url} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                        <img src={product.images[0].url} alt={product.name} className="w-full h-full object-contain p-6 group-hover:scale-110 transition-transform duration-700" />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center">
                           <motion.div className="text-7xl opacity-20" animate={{ rotateY: [0, 360] }} transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}>🤖</motion.div>
@@ -165,12 +206,7 @@ const ProductsPage = () => {
                           </span>
                         ))}
                       </div>
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="flex items-center gap-1 text-white font-manrope font-bold">
-                          <HiCurrencyRupee size={18} />
-                          <span className="text-lg">{product.price?.toLocaleString('en-IN')}</span>
-                        </div>
-                      </div>
+
                       {isExternal ? (
                         <a href={externalUrl} target="_blank" rel="noopener noreferrer" className="block" onClick={(e) => e.stopPropagation()}>
                           <motion.button className="w-full py-2.5 text-sm font-manrope font-semibold text-primary-400 border border-primary-500/30 rounded-xl hover:bg-primary-500/10 transition-all duration-300 flex items-center justify-center gap-2" whileHover={{ borderColor: 'rgba(123, 57, 252, 0.6)' }}>

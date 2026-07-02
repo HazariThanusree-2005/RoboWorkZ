@@ -32,8 +32,8 @@ const ContactPage = () => {
             transition={{ delay: 0.4 }}
           >
             {[
-              { icon: HiMail, title: 'Email', info: 'startupoperations.team@gmail.com', href: 'mailto:startupoperations.team@gmail.com' },
-              { icon: HiPhone, title: 'Phone', info: '+91 9345XXXXXX', href: 'tel:+919345XXXXXX' },
+              { icon: HiMail, title: 'Email', info: 'roboworkz.in@gmail.com', href: 'mailto:roboworkz.in@gmail.com' },
+              { icon: HiPhone, title: 'Phone', info: '+91 93811 03776', href: 'tel:+919381103776' },
               { icon: HiLocationMarker, title: 'Location', info: 'Hyderabad, India', href: '#' },
             ].map(({ icon: Icon, title, info, href }) => (
               <a 

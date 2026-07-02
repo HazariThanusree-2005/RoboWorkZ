@@ -25,6 +25,9 @@ const FloatingParticles = ({ count = 30 }) => {
       pulse: Math.random() * Math.PI * 2,
     }));
 
+    // Connection distance threshold
+    const connectionDistance = 120;
+
     let animationId;
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -42,17 +45,37 @@ const FloatingParticles = ({ count = 30 }) => {
 
         const currentOpacity = p.opacity * (0.5 + 0.5 * Math.sin(p.pulse));
 
+        // Particle dot
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(123, 57, 252, ${currentOpacity})`;
+        ctx.fillStyle = `rgba(139, 92, 246, ${currentOpacity})`;
         ctx.fill();
 
-        // Glow
+        // Glow halo
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(123, 57, 252, ${currentOpacity * 0.15})`;
+        ctx.fillStyle = `rgba(139, 92, 246, ${currentOpacity * 0.12})`;
         ctx.fill();
       });
+
+      // Draw connections between nearby particles (neural network effect)
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < connectionDistance) {
+            const lineOpacity = (1 - dist / connectionDistance) * 0.08;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(139, 92, 246, ${lineOpacity})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
 
       animationId = requestAnimationFrame(animate);
     };

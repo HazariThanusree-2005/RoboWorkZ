@@ -34,7 +34,7 @@ const AdminDashboard = () => {
     <div>
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <h1 className="font-instrument text-3xl font-bold text-white mb-2">Dashboard</h1>
-        <p className="text-gray-500 font-inter text-sm mb-8">Overview of your RoboWorkz platform</p>
+        <p className="text-gray-500 font-inter text-sm mb-8">Overview of your RoboWorkZ platform</p>
       </motion.div>
 
       {/* Stats Cards */}

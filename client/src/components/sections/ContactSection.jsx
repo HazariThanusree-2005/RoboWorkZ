@@ -51,15 +51,17 @@ const ContactSection = () => {
   return (
     <section id="contact" className="section-padding relative overflow-hidden">
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary-500/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-500/3 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/[0.03] rounded-full blur-3xl" />
 
       <div className="max-w-5xl mx-auto relative">
-        <SectionHeading 
-          title="Get In Touch" 
-          subtitle="Ready to bring robotics to your business or event? Let's talk about how we can help."
-        />
+        <ScrollReveal direction="up" delay={0}>
+          <SectionHeading
+            title="Get Started"
+            subtitle="Ready to bring robotics to your business or event? Let's talk about how we can help."
+          />
+        </ScrollReveal>
 
-        <ScrollReveal>
+        <ScrollReveal direction="up" delay={0.1}>
           <GlassCard className="p-8 md:p-10 lg:p-12" hover={false} glow={true} tilt={false}>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
               {/* Left Column: Direct Contacts */}
@@ -75,32 +77,32 @@ const ContactSection = () => {
                   <div className="space-y-4">
                     {/* Email Link */}
                     <a 
-                      href="mailto:startupoperations.team@gmail.com" 
-                      className="flex items-center gap-3 sm:gap-4 group p-3 sm:p-4 rounded-xl border border-white/[0.04] bg-white/[0.02] hover:bg-primary-500/[0.03] hover:border-primary-500/25 transition-all duration-300 w-full hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(123,57,252,0.15)] cursor-pointer"
+                      href="mailto:roboworkz.in@gmail.com" 
+                      className="flex items-center gap-3 sm:gap-4 group p-3 sm:p-4 rounded-xl border border-white/[0.04] bg-white/[0.02] hover:bg-primary-500/[0.03] hover:border-primary-500/25 transition-all duration-300 w-full hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(139,92,246,0.15)] cursor-pointer"
                     >
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primary-500/10 flex items-center justify-center shrink-0 group-hover:bg-primary-500/20 group-hover:shadow-[0_0_15px_rgba(123,57,252,0.3)] transition-all duration-300">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primary-500/10 flex items-center justify-center shrink-0 group-hover:bg-primary-500/20 group-hover:shadow-[0_0_15px_rgba(139,92,246,0.3)] transition-all duration-300">
                         <HiMail className="text-primary-400 group-hover:text-primary-300" size={20} />
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="text-xs text-gray-500 font-manrope font-semibold uppercase tracking-wider mb-0.5">Email Us</div>
                         <div className="text-[11px] sm:text-sm font-inter text-white font-medium group-hover:text-primary-300 transition-colors break-words" style={{ wordBreak: 'break-word' }}>
-                          startupoperations.team@gmail.com
+                          roboworkz.in@gmail.com
                         </div>
                       </div>
                     </a>
 
                     {/* Phone Link */}
                     <a 
-                      href="tel:+919345XXXXXX" 
-                      className="flex items-center gap-3 sm:gap-4 group p-3 sm:p-4 rounded-xl border border-white/[0.04] bg-white/[0.02] hover:bg-primary-500/[0.03] hover:border-primary-500/25 transition-all duration-300 w-full hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(123,57,252,0.15)] cursor-pointer"
+                      href="tel:+919381103776" 
+                      className="flex items-center gap-3 sm:gap-4 group p-3 sm:p-4 rounded-xl border border-white/[0.04] bg-white/[0.02] hover:bg-primary-500/[0.03] hover:border-primary-500/25 transition-all duration-300 w-full hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(139,92,246,0.15)] cursor-pointer"
                     >
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primary-500/10 flex items-center justify-center shrink-0 group-hover:bg-primary-500/20 group-hover:shadow-[0_0_15px_rgba(123,57,252,0.3)] transition-all duration-300">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-primary-500/10 flex items-center justify-center shrink-0 group-hover:bg-primary-500/20 group-hover:shadow-[0_0_15px_rgba(139,92,246,0.3)] transition-all duration-300">
                         <HiPhone className="text-primary-400 group-hover:text-primary-300" size={22} />
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="text-xs text-gray-500 font-manrope font-semibold uppercase tracking-wider mb-0.5">Call Directly</div>
                         <div className="text-sm font-inter text-white font-medium group-hover:text-primary-300 transition-colors">
-                          +91 9345XXXXXX
+                          +91 93811 03776
                         </div>
                       </div>
                     </a>
@@ -211,12 +213,10 @@ const ContactSection = () => {
                     )}
 
                     {/* Submit */}
-                    <motion.button
+                    <button
                       type="submit"
                       disabled={loading}
-                      className="w-full py-4 bg-primary-500 text-white font-manrope font-bold text-lg rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 relative overflow-hidden group"
-                      whileHover={{ y: -2, scale: 1.01, boxShadow: '0 0 25px rgba(123, 57, 252, 0.5)' }}
-                      whileTap={{ scale: 0.99 }}
+                      className="btn-primary w-full py-4 text-lg"
                     >
                       {loading ? (
                         <motion.div
@@ -227,10 +227,10 @@ const ContactSection = () => {
                       ) : (
                         <>
                           <HiPaperAirplane className="rotate-90" size={20} />
-                          Send Message
+                          <span>Send Message</span>
                         </>
                       )}
-                    </motion.button>
+                    </button>
                   </form>
                 )}
               </div>

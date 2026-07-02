@@ -1,0 +1,263 @@
+/* ═══════════════════════════════════════════════════
+   XERO PIPELINE HERO — RoboWorkZ Purple/Neon Theme
+═══════════════════════════════════════════════════ */
+
+:root {
+  --xero-bg: #050312;
+  --xero-surface: #0e0e11;
+  --xero-text: #f0f0f5;
+  --xero-muted: #8888a8;
+  --xero-accent: #a78bfa;
+  --xero-purple: #8b5cf6;
+  --xero-border: rgba(255, 255, 255, 0.07);
+}
+
+/* ── Wrapper ─────────────────────────────────────── */
+.xero-hero-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: var(--xero-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* ── Hero Card ───────────────────────────────────── */
+.xero-hero-card {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Gradient Arc ::before ───────────────────────── */
+.xero-hero-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: none;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── Grid overlay inside the arc ─────────────────── */
+.xero-hero-grid {
+  display: none;
+}
+
+/* ── Inner content wrapper ───────────────────────── */
+.xero-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px 40px 80px;
+}
+
+/* ════════════════════════════════════════════════════
+   ICON PIPELINE
+════════════════════════════════════════════════════ */
+.icon-pipeline {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 700px;
+  width: 100%;
+  margin-bottom: 16px;
+  z-index: 1;
+}
+
+/* Beam SVG */
+.beam-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Pipeline connecting lines */
+.pipeline-line {
+  width: 160px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.12), rgba(255,255,255,0.05));
+  flex-shrink: 0;
+}
+.pipeline-line.right {
+  background: linear-gradient(270deg, rgba(255,255,255,0.12), rgba(255,255,255,0.05));
+}
+
+/* ── Side Icon Nodes ──────────────────────────────── */
+.icon-node {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #1a1a24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 3;
+  position: relative;
+  flex-shrink: 0;
+  box-shadow:
+    6px 6px 12px rgba(0,0,0,0.5),
+    -4px -4px 10px rgba(255,255,255,0.025),
+    inset 1px 1px 1px rgba(255,255,255,0.05),
+    inset 4px 4px 8px rgba(0,0,0,0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.icon-node::after {
+  content: '';
+  position: absolute;
+  inset: -7px;
+  border-radius: 50%;
+  border: 1px dotted #2a2a38;
+  pointer-events: none;
+}
+.icon-node:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    8px 8px 16px rgba(0,0,0,0.6),
+    -5px -5px 12px rgba(255,255,255,0.035),
+    inset 1px 1px 1px rgba(255,255,255,0.06),
+    inset 4px 4px 8px rgba(0,0,0,0.4);
+}
+.icon-node:active {
+  box-shadow:
+    inset 4px 4px 8px rgba(0,0,0,0.6),
+    inset -2px -2px 6px rgba(255,255,255,0.03);
+}
+.icon-node svg {
+  width: 20px;
+  height: 20px;
+  stroke: rgba(255,255,255,0.65);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Side-light glows */
+.icon-node::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 4;
+  pointer-events: none;
+}
+.node-light-right::before {
+  background: radial-gradient(circle at right, rgba(139,92,246,0.55) 0%, transparent 70%);
+}
+.node-light-left::before {
+  background: radial-gradient(circle at left, rgba(167,139,250,0.55) 0%, transparent 70%);
+}
+.icon-node.active::before {
+  opacity: 1;
+}
+
+/* ── Center Node ──────────────────────────────────── */
+.icon-node-center-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+.splash {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.4);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.7) 0%, transparent 70%);
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+.splash.animate {
+  animation: splash-anim 0.8s ease-out forwards;
+}
+@keyframes splash-anim {
+  0%   { transform: translate(-50%, -50%) scale(0.4); opacity: 0.9; }
+  40%  { opacity: 0.6; }
+  100% { transform: translate(-50%, -50%) scale(1.4); opacity: 0; }
+}
+
+.icon-node-center {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #1e1e2c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 3;
+  position: relative;
+  flex-shrink: 0;
+  box-shadow:
+    8px 8px 16px rgba(0,0,0,0.6),
+    -6px -6px 14px rgba(255,255,255,0.03),
+    inset 1px 1px 2px rgba(255,255,255,0.06),
+    inset 6px 6px 12px rgba(0,0,0,0.55);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.icon-node-center:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    10px 10px 20px rgba(0,0,0,0.65),
+    -7px -7px 16px rgba(255,255,255,0.04),
+    inset 1px 1px 2px rgba(255,255,255,0.07),
+    inset 4px 4px 10px rgba(0,0,0,0.4),
+    0 0 30px rgba(139,92,246,0.15);
+}
+.icon-node-center svg {
+  width: 28px;
+  height: 28px;
+  fill: white;
+}
+
+/* ════════════════════════════════════════════════════
+   HERO TEXT (preserved from existing HeroSection)
+════════════════════════════════════════════════════ */
+.xero-hero-content {
+  width: 100%;
+  z-index: 1;
+}
+
+/* ── Responsive ───────────────────────────────────── */
+@media (max-width: 860px) {
+  .icon-pipeline { gap: 0; margin-bottom: 40px; }
+  .pipeline-line { width: 80px; }
+}
+@media (max-width: 768px) {
+  .icon-node { width: 38px; height: 38px; }
+  .icon-node-center { width: 52px; height: 52px; }
+  .xero-inner { padding: 100px 20px 60px; }
+  .pipeline-line { width: 50px; }
+}
+@media (max-width: 480px) {
+  .pipeline-line { width: 30px; }
+  .icon-node { width: 34px; height: 34px; }
+  .icon-node svg { width: 16px; height: 16px; }
+}

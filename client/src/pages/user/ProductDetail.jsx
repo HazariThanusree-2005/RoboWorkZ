@@ -6,6 +6,10 @@ import { useAuth } from '../../context/AuthContext';
 import GlowButton from '../../components/ui/GlowButton';
 import LoadingSpinner from '../../components/ui/LoadingSpinner';
 import { HiCheckCircle, HiCurrencyRupee, HiHeart, HiOutlineHeart, HiArrowLeft } from 'react-icons/hi';
+import armRoboImg from '../../assets/arm-robo.png';
+import roboDogImg from '../../assets/robo-dog.png';
+import tableRoboImg from '../../assets/table-robo.png';
+import roboCamImg from '../../assets/robocam.png';
 
 const fallbackProducts = {
   'robocam': { 
@@ -16,9 +20,45 @@ const fallbackProducts = {
     price: 89999, 
     rentalAvailable: true, 
     rentalPrice: 2500, 
-    images: [{ url: '/robocam.png' }], 
+    images: [{ url: roboCamImg }], 
     category: 'creative' 
   },
+  'arm-robo': {
+    _id: 'arm-robo',
+    name: 'RoboArm',
+    description: 'Advanced robotic arm solution designed for automation, training, demonstrations, industrial applications, and robotics education.',
+    features: ['Precision movement', 'Industrial automation support', 'Educational demonstrations', 'Customizable applications'],
+    price: 150000,
+    rentalAvailable: true,
+    rentalPrice: 5000,
+    images: [{ url: armRoboImg }],
+    category: 'industrial',
+    status: 'active'
+  },
+  'robo-dog': {
+    _id: 'robo-dog',
+    name: 'DogRobo',
+    description: 'Interactive robotic companion built for events, exhibitions, educational demonstrations, research projects, and customer engagement.',
+    features: ['Interactive movement', 'Smart navigation', 'Event attraction', 'Educational robotics'],
+    price: 250000,
+    rentalAvailable: true,
+    rentalPrice: 8000,
+    images: [{ url: roboDogImg }],
+    category: 'research',
+    status: 'active'
+  },
+  'table-robo': {
+    _id: 'table-robo',
+    name: 'TableRobo',
+    description: 'Smart service robot developed for hospitality, exhibitions, customer interaction, delivery assistance, and business automation.',
+    features: ['Autonomous serving', 'Customer interaction', 'Event assistance', 'Smart business applications'],
+    price: 180000,
+    rentalAvailable: true,
+    rentalPrice: 6000,
+    images: [{ url: tableRoboImg }],
+    category: 'industrial',
+    status: 'active'
+  }
 };
 
 const ProductDetail = () => {
@@ -30,8 +70,7 @@ const ProductDetail = () => {
   const isFavorite = user?.favorites?.includes(id);
 
   useEffect(() => {
-    // Enforce RoboCam as the exclusive flagship product on the site
-    setProduct(fallbackProducts['robocam']);
+    setProduct(fallbackProducts[id] || null);
     setLoading(false);
   }, [id]);
 
@@ -91,26 +130,7 @@ const ProductDetail = () => {
               </div>
             </div>
 
-            {/* Pricing */}
-            <div className="glass rounded-xl p-6 mb-8">
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-xs text-gray-500 font-inter mb-1">Purchase Price</p>
-                  <div className="flex items-center gap-1 text-white font-manrope font-bold text-2xl">
-                    <HiCurrencyRupee size={24} />
-                    {product.price?.toLocaleString('en-IN')}
-                  </div>
-                </div>
-                {product.rentalAvailable && (
-                  <div className="text-right">
-                    <p className="text-xs text-gray-500 font-inter mb-1">Rental Price</p>
-                    <div className="text-primary-400 font-manrope font-bold text-lg">
-                      ₹{product.rentalPrice?.toLocaleString('en-IN')}/day
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
+
 
             {/* Actions */}
             <div className="flex flex-col sm:flex-row gap-4">

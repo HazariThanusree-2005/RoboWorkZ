@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import SectionHeading from '../ui/SectionHeading';
 import ScrollReveal from '../ui/ScrollReveal';
+import BrandText from '../ui/BrandText';
 import { HiCursorClick, HiCalendar, HiTruck } from 'react-icons/hi';
 
 const steps = [
@@ -19,7 +20,7 @@ const steps = [
   {
     icon: HiTruck,
     step: '03',
-    title: 'RoboWorkz Delivers & Supports',
+    title: <><BrandText className="text-xl font-normal leading-none" /> Delivers & Supports</>,
     desc: 'Our expert team delivers, sets up, and provides full support throughout your event or rental period.',
   },
 ];
@@ -32,7 +33,7 @@ const HowItWorks = () => {
       <div className="max-w-6xl mx-auto relative">
         <SectionHeading 
           title="How It Works" 
-          subtitle="Getting started with RoboWorkz is simple. Three easy steps to bring robotics to your doorstep."
+          subtitle={<>Getting started with <BrandText className="text-base font-normal leading-none" /> is simple. Three easy steps to bring robotics to your doorstep.</>}
         />
 
         <div className="relative">
