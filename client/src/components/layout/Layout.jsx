@@ -21,16 +21,18 @@ const Layout = ({ children }) => {
   }, []);
 
   const isAdminRoute = location.pathname.startsWith('/admin');
+  const isAuthRoute = ['/login', '/signin', '/signup'].includes(location.pathname);
+  const hideNavAndFooter = isAdminRoute || isAuthRoute;
 
   return (
     <div className="min-h-screen bg-[#050312] relative">
-      {!isAdminRoute && <Navbar />}
+      {!hideNavAndFooter && <Navbar />}
       
       <main>
         {children}
       </main>
 
-      {!isAdminRoute && <Footer />}
+      {!hideNavAndFooter && <Footer />}
 
       {/* Scroll to Top */}
       <AnimatePresence>

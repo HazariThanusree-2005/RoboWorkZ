@@ -56,15 +56,13 @@ const MobileMenu = ({ links, onClose, openAuthModal }) => {
           </motion.div>
         ))}
 
-        {/* Divider */}
-        <motion.div variants={itemVariants} className="pt-6">
-          <div className="h-px bg-white/10 w-full" />
-        </motion.div>
-
         {/* Auth Buttons */}
-        <motion.div variants={itemVariants} className="pt-4 flex flex-col gap-3">
-          {isAuthenticated ? (
-            <>
+        {isAuthenticated && (
+          <>
+            <motion.div variants={itemVariants} className="pt-6">
+              <div className="h-px bg-white/10 w-full" />
+            </motion.div>
+            <motion.div variants={itemVariants} className="pt-4 flex flex-col gap-3">
               <Link
                 to={isAdmin ? '/admin' : '/dashboard'}
                 onClick={onClose}
@@ -78,18 +76,9 @@ const MobileMenu = ({ links, onClose, openAuthModal }) => {
               >
                 Logout
               </button>
-            </>
-          ) : (
-            <>
-              <button
-                onClick={() => { onClose(); openAuthModal('signup'); }}
-                className="w-full py-3 text-center text-lg font-manrope font-semibold text-white bg-primary-500 rounded-xl hover:bg-primary-600 transition-colors"
-              >
-                Get Started
-              </button>
-            </>
-          )}
-        </motion.div>
+            </motion.div>
+          </>
+        )}
       </motion.div>
     </motion.div>
   );

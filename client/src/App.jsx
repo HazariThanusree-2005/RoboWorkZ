@@ -13,6 +13,7 @@ import ProductsPage from './pages/ProductsPage';
 import RentalsPage from './pages/RentalsPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
+import LoginPage from './pages/LoginPage';
 
 // User Pages
 import UserDashboard from './pages/user/UserDashboard';
@@ -64,6 +65,9 @@ function App() {
               <Route path="/rentals" element={<PageTransition><RentalsPage /></PageTransition>} />
               <Route path="/about" element={<PageTransition><AboutPage /></PageTransition>} />
               <Route path="/contact" element={<PageTransition><ContactPage /></PageTransition>} />
+              <Route path="/login" element={<PageTransition><LoginPage defaultMode="signin" /></PageTransition>} />
+              <Route path="/signin" element={<PageTransition><LoginPage defaultMode="signin" /></PageTransition>} />
+              <Route path="/signup" element={<PageTransition><LoginPage defaultMode="signup" /></PageTransition>} />
 
               {/* Protected User Routes */}
               <Route path="/dashboard" element={

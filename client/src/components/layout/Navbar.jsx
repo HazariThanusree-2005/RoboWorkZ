@@ -154,7 +154,7 @@ const Navbar = () => {
 
             {/* Desktop CTA Buttons */}
             <div className="hidden lg:flex items-center gap-3">
-              {isAuthenticated ? (
+              {isAuthenticated && (
                 <>
                   <Link
                     to={isAdmin ? '/admin' : '/dashboard'}
@@ -170,17 +170,6 @@ const Navbar = () => {
                   >
                     Logout
                   </motion.button>
-                </>
-              ) : (
-                <>
-                  <MagneticButton>
-                    <button
-                      onClick={() => openAuthModal('signup')}
-                      className="btn-primary px-6 py-2.5 text-sm whitespace-nowrap rounded-full"
-                    >
-                      <span>Get Started</span>
-                    </button>
-                  </MagneticButton>
                 </>
               )}
             </div>

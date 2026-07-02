@@ -101,15 +101,13 @@ const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.72, ease: EASE_OUT_EXPO }}
               >
-                <Link to="/products">
-                  <button className="btn-primary">
-                    <span>Explore Products</span> <HiArrowRight className="w-4 h-4" />
-                  </button>
-                </Link>
-                <Link to="/services">
-                  <button className="btn-outline">
-                    <span>Explore Services</span> <HiArrowRight className="w-4 h-4" />
-                  </button>
+                <Link to="/login">
+                  <MagneticButton>
+                    <button className="btn-primary px-8 py-4 text-base sm:text-lg font-space font-bold tracking-wide whitespace-nowrap rounded-full shadow-[0_0_35px_rgba(139,92,246,0.6)] hover:shadow-[0_0_55px_rgba(168,85,247,0.9)] transition-all duration-300 flex items-center gap-3 group border border-primary-400/30">
+                      <span>Explore the Future</span>
+                      <HiArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform duration-300" />
+                    </button>
+                  </MagneticButton>
                 </Link>
               </motion.div>
             </motion.div>
@@ -129,29 +127,31 @@ const HeroSection = () => {
                   filter: 'blur(60px)',
                 }}
               />
-              <div className="relative w-full max-w-[600px] lg:max-w-[800px] xl:max-w-[900px] aspect-[4/5] sm:aspect-[4/5] md:aspect-square flex items-center justify-center overflow-visible">
-                <SplineScene
-                  scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-                  className="w-full h-full object-contain pointer-events-auto"
-                />
-                <motion.div
-                  className="absolute pointer-events-none select-none z-30 flex items-center justify-center"
-                  initial={{ opacity: 0, scale: 0, x: '-50%', y: '-50%', filter: 'blur(8px)' }}
-                  animate={{ opacity: 1, scale: 1, x: '-50%', y: '-50%', filter: 'blur(0px)' }}
-                  transition={{ duration: 1.2, delay: 4.5, ease: [0.16, 1, 0.3, 1] }}
-                  style={{ top: '44%', left: '42%', width: '6%', maxWidth: '30px', minWidth: '18px' }}
-                >
-                  <img
-                    src={`${import.meta.env.BASE_URL}oz-logo.png`}
-                    alt=""
-                    className="w-full h-auto object-contain"
-                    style={{
-                      filter: 'drop-shadow(0 0 5px rgba(168,85,247,0.7)) brightness(1.8) contrast(1.15)',
-                      animation: 'chestGlow 4s ease-in-out infinite, robotBreathing 6s ease-in-out infinite',
-                      opacity: 0.92,
-                    }}
+              <div className="relative w-full max-w-[650px] lg:max-w-[850px] xl:max-w-[950px] aspect-[3.8/5] md:aspect-[4/4.5] flex items-center justify-center overflow-visible">
+                <div className="w-full h-full relative flex items-center justify-center transition-transform duration-700" style={{ transform: 'scale(1.18) scaleY(1.18) translateY(3%)' }}>
+                  <SplineScene
+                    scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+                    className="w-full h-full object-contain pointer-events-auto"
                   />
-                </motion.div>
+                  <motion.div
+                    className="absolute pointer-events-none select-none z-30 flex items-center justify-center"
+                    initial={{ opacity: 0, scale: 0, x: '-50%', y: '-50%', filter: 'blur(8px)' }}
+                    animate={{ opacity: 1, scale: 1, x: '-50%', y: '-50%', filter: 'blur(0px)' }}
+                    transition={{ duration: 1.2, delay: 4.5, ease: [0.16, 1, 0.3, 1] }}
+                    style={{ top: '44%', left: '42%', width: '6%', maxWidth: '30px', minWidth: '18px' }}
+                  >
+                    <img
+                      src={`${import.meta.env.BASE_URL}oz_logo.png`}
+                      alt=""
+                      className="w-full h-auto object-contain"
+                      style={{
+                        filter: 'drop-shadow(0 0 5px rgba(168,85,247,0.7)) brightness(1.8) contrast(1.15)',
+                        animation: 'chestGlow 4s ease-in-out infinite, robotBreathing 6s ease-in-out infinite',
+                        opacity: 0.92,
+                      }}
+                    />
+                  </motion.div>
+                </div>
               </div>
             </motion.div>
           </div>{/* end split layout */}
