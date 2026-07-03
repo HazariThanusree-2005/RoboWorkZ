@@ -85,7 +85,7 @@ export function Component({ defaultMode = 'signin' }: { defaultMode?: 'signin' |
         navigate('/');
       }
     } catch (err: any) {
-      setErrorMessage(err.response?.data?.message || (mode === 'signin' ? 'Invalid credentials' : 'Registration failed. Please try again.'));
+      setErrorMessage(err.response?.data?.message || err.message || (mode === 'signin' ? 'Invalid credentials' : 'Registration failed. Please try again.'));
     } finally {
       setIsLoading(false);
     }
