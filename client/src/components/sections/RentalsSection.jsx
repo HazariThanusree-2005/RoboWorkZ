@@ -1,9 +1,6 @@
-import { Link } from 'react-router-dom';
-import { HiArrowRight, HiCalendar, HiTruck, HiClock } from 'react-icons/hi';
-import Spline from '@splinetool/react-spline';
+import { HiCalendar, HiTruck, HiClock } from 'react-icons/hi';
 import SectionHeading from '../ui/SectionHeading';
 import ScrollReveal from '../ui/ScrollReveal';
-import MagneticButton from '../ui/MagneticButton';
 import BrandText from '../ui/BrandText';
 
 const RentalsSection = () => {
@@ -15,46 +12,18 @@ const RentalsSection = () => {
 
       <div className="max-w-[1400px] mx-auto relative px-6 md:px-8">
         
-        {/* Heading Right Aligned */}
-        <div className="flex flex-col items-end text-right mb-10">
+        {/* Heading Centered */}
+        <div className="flex flex-col items-center text-center mb-12">
           <ScrollReveal direction="up">
             <SectionHeading
               title="Robot Rentals"
-              align="right"
+              align="center"
               subtitle={<>Bring tomorrow's tech to your events, exhibitions, or business promotions with <BrandText className="text-base font-normal leading-none" />.</>}
             />
           </ScrollReveal>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
-          
-          {/* Left Column - Spline Robot */}
-          <div className="lg:col-span-4 h-full min-h-[400px] lg:min-h-full rounded-3xl overflow-hidden relative border border-white/5 bg-[#0e0e11] hero-grid">
-            {/* Subtle background glow from previous design */}
-            <div className="absolute top-0 right-0 w-96 h-96 bg-violet-600/10 rounded-full blur-[80px] pointer-events-none" />
-            
-            <ScrollReveal direction="up" delay={0.1} className="w-full h-full absolute inset-0 z-10">
-              <style>{`
-                .spline-hide-logo a {
-                  display: none !important;
-                  opacity: 0 !important;
-                  pointer-events: none !important;
-                }
-              `}</style>
-              <div className="w-full h-full relative spline-hide-logo">
-                <Spline scene="https://prod.spline.design/J5jdB1z34B7OO0A0/scene.splinecode" className="w-full h-full" />
-                <div 
-                  className="absolute bottom-0 left-0 w-full h-[100px] z-[99] pointer-events-none" 
-                  style={{ 
-                    background: 'linear-gradient(to top, #0e0e11 0%, #0e0e11 50%, transparent 100%)',
-                  }} 
-                />
-              </div>
-            </ScrollReveal>
-          </div>
-
-          {/* Right Column - Grid */}
-          <div className="lg:col-span-8 flex flex-col gap-6 lg:gap-8">
+        <div className="flex flex-col gap-6 lg:gap-8 max-w-5xl mx-auto">
             
             {/* Sub-grid for features */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 h-full flex-1">
@@ -138,7 +107,6 @@ const RentalsSection = () => {
               </div>
             </ScrollReveal>
 
-          </div>
         </div>
       </div>
     </section>
