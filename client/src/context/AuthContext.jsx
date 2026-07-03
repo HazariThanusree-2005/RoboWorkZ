@@ -38,16 +38,6 @@ export const AuthProvider = ({ children }) => {
           };
           setUser(userData);
           setToken(session.access_token);
-          localStorage.setItem('RoboWorkZ_token', session.access_token);
-        } else if (token && !import.meta.env.VITE_SUPABASE_ANON_KEY) {
-          // Fallback to Express backend if Supabase is not configured yet
-          try {
-            const res = await axios.get('/auth/me');
-            setUser(res.data);
-          } catch (error) {
-            console.error('Token expired or invalid');
-            logout();
-          }
         }
       } catch (error) {
         console.error('Error initializing auth:', error);
@@ -111,15 +101,6 @@ export const AuthProvider = ({ children }) => {
       }
       return data;
     } catch (err) {
-      // If Supabase fails or is unconfigured, fallback to express API
-      if (!import.meta.env.VITE_SUPABASE_ANON_KEY) {
-        const res = await axios.post('/auth/signup', { username, email, password });
-        setToken(res.data.token);
-        setUser(res.data.user);
-        localStorage.setItem('RoboWorkZ_token', res.data.token);
-        axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.token}`;
-        return res.data;
-      }
       throw err;
     }
   };
@@ -148,14 +129,6 @@ export const AuthProvider = ({ children }) => {
       }
       return data;
     } catch (err) {
-      if (!import.meta.env.VITE_SUPABASE_ANON_KEY) {
-        const res = await axios.post('/auth/login', { email, password });
-        setToken(res.data.token);
-        setUser(res.data.user);
-        localStorage.setItem('RoboWorkZ_token', res.data.token);
-        axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.token}`;
-        return res.data;
-      }
       throw err;
     }
   };
