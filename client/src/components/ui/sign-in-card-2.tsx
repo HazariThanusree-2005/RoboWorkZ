@@ -25,7 +25,7 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
 export function Component({ defaultMode = 'signin' }: { defaultMode?: 'signin' | 'signup' } = {}) {
   const location = useLocation();
   const navigate = useNavigate();
-  const { login, signup, isAuthenticated, user } = useAuth();
+  const { login, signup, loginWithGoogle, isAuthenticated, user } = useAuth();
 
   const initialMode = location.pathname === '/signup' ? 'signup' : defaultMode;
   const [mode, setMode] = useState<'signin' | 'signup'>(initialMode);
@@ -569,7 +569,15 @@ export function Component({ defaultMode = 'signin' }: { defaultMode?: 'signin' |
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   type="button"
-                  onClick={() => alert("Google Sign-In integration is simulated in demo mode.")}
+                  onClick={async () => {
+                    try {
+                      setIsLoading(true);
+                      await loginWithGoogle();
+                    } catch (err: any) {
+                      setErrorMessage(err.message || "Failed to initiate Google Sign-In");
+                      setIsLoading(false);
+                    }
+                  }}
                   className="w-full relative group/google"
                 >
                   <div className="absolute inset-0 bg-white/5 rounded-lg blur opacity-0 group-hover/google:opacity-70 transition-opacity duration-300" />

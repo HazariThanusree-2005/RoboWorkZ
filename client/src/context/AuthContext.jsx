@@ -157,6 +157,17 @@ export const AuthProvider = ({ children }) => {
     });
   };
 
+  const loginWithGoogle = async () => {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: `${window.location.origin}/dashboard`
+      }
+    });
+    if (error) throw error;
+    return data;
+  };
+
   return (
     <AuthContext.Provider value={{
       user,
@@ -164,6 +175,7 @@ export const AuthProvider = ({ children }) => {
       loading,
       signup,
       login,
+      loginWithGoogle,
       logout,
       toggleFavorite,
       isAuthenticated: !!user,
