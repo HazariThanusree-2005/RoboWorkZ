@@ -30,7 +30,7 @@ jobs:
           node-version: 24
       - name: Install dependencies
         working-directory: ./client
-        run: npm ci
+        run: npm install --no-package-lock --legacy-peer-deps
       - name: Build
         working-directory: ./client
         run: npm run build
