@@ -148,12 +148,13 @@ export const AuthProvider = ({ children }) => {
   };
 
   const toggleFavorite = async (productId) => {
-    try {
-      const res = await axios.post(`/auth/favorites/${productId}`);
-      setUser(prev => ({ ...prev, favorites: res.data.favorites }));
-    } catch (error) {
-      console.error('Error toggling favorite:', error);
-    }
+    setUser(prev => {
+      if (!prev) return prev;
+      const favs = prev.favorites || [];
+      const exists = favs.includes(productId);
+      const updated = exists ? favs.filter(id => id !== productId) : [...favs, productId];
+      return { ...prev, favorites: updated };
+    });
   };
 
   return (
