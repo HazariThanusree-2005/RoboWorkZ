@@ -92,12 +92,12 @@ export function Component({ defaultMode = 'signin' }: { defaultMode?: 'signin' |
   };
 
   return (
-    <div className="min-h-screen w-full bg-black relative overflow-hidden flex items-center justify-center py-12 px-4 sm:px-6">
+    <div className="min-h-screen w-full bg-black relative overflow-hidden flex items-center justify-center pt-24 pb-12 px-4 sm:py-12 sm:px-6">
       {/* Back to Home Button */}
-      <div className="absolute top-6 left-6 z-30">
+      <div className="absolute top-6 left-4 sm:top-8 sm:left-8 z-50">
         <Link
           to="/"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white/70 hover:text-white text-xs font-medium transition-all duration-300 backdrop-blur-md"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white/70 hover:text-white text-xs font-medium transition-all duration-300 backdrop-blur-md shadow-lg"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           <span>Back to Home</span>
