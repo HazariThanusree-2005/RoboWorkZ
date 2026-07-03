@@ -72,9 +72,10 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const signup = async (username, email, password) => {
+    const cleanEmail = email?.trim() || '';
     try {
       const { data, error } = await supabase.auth.signUp({
-        email,
+        email: cleanEmail,
         password,
         options: {
           data: {
@@ -106,9 +107,10 @@ export const AuthProvider = ({ children }) => {
   };
 
   const login = async (email, password) => {
+    const cleanEmail = email?.trim() || '';
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
-        email,
+        email: cleanEmail,
         password
       });
       if (error) throw error;
