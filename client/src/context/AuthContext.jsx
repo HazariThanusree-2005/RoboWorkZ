@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import { supabase } from '../lib/supabase';
 
 const AuthContext = createContext(null);
 
@@ -22,42 +23,149 @@ export const AuthProvider = ({ children }) => {
     }
   }, [token]);
 
-  // Load user on mount
+  // Load user on mount using Supabase session or fallback
   useEffect(() => {
-    const loadUser = async () => {
-      if (token) {
-        try {
-          const res = await axios.get('/auth/me');
-          setUser(res.data);
-        } catch (error) {
-          console.error('Token expired or invalid');
-          logout();
+    const initSession = async () => {
+      try {
+        const { data: { session }, error } = await supabase.auth.getSession();
+        if (session && session.user) {
+          const userData = {
+            id: session.user.id,
+            email: session.user.email,
+            username: session.user.user_metadata?.username || session.user.email?.split('@')[0] || 'User',
+            role: session.user.user_metadata?.role || 'user',
+            favorites: []
+          };
+          setUser(userData);
+          setToken(session.access_token);
+          localStorage.setItem('RoboWorkZ_token', session.access_token);
+        } else if (token && !import.meta.env.VITE_SUPABASE_ANON_KEY) {
+          // Fallback to Express backend if Supabase is not configured yet
+          try {
+            const res = await axios.get('/auth/me');
+            setUser(res.data);
+          } catch (error) {
+            console.error('Token expired or invalid');
+            logout();
+          }
         }
+      } catch (error) {
+        console.error('Error initializing auth:', error);
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     };
-    loadUser();
+    initSession();
+
+    const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+      if (session && session.user) {
+        const userData = {
+          id: session.user.id,
+          email: session.user.email,
+          username: session.user.user_metadata?.username || session.user.email?.split('@')[0] || 'User',
+          role: session.user.user_metadata?.role || 'user',
+          favorites: []
+        };
+        setUser(userData);
+        setToken(session.access_token);
+        localStorage.setItem('RoboWorkZ_token', session.access_token);
+      } else if (event === 'SIGNED_OUT') {
+        setUser(null);
+        setToken(null);
+        localStorage.removeItem('RoboWorkZ_token');
+      }
+    });
+
+    return () => {
+      authListener?.subscription?.unsubscribe();
+    };
   }, []);
 
   const signup = async (username, email, password) => {
-    const res = await axios.post('/auth/signup', { username, email, password });
-    setToken(res.data.token);
-    setUser(res.data.user);
-    localStorage.setItem('RoboWorkZ_token', res.data.token);
-    axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.token}`;
-    return res.data;
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            username,
+            role: 'user'
+          }
+        }
+      });
+      if (error) throw error;
+      if (data.user) {
+        const userData = {
+          id: data.user.id,
+          email: data.user.email,
+          username: username || data.user.email?.split('@')[0] || 'User',
+          role: 'user',
+          favorites: []
+        };
+        setUser(userData);
+        setToken(data.session?.access_token || null);
+        if (data.session?.access_token) {
+          localStorage.setItem('RoboWorkZ_token', data.session.access_token);
+        }
+        return { user: userData, token: data.session?.access_token };
+      }
+      return data;
+    } catch (err) {
+      // If Supabase fails or is unconfigured, fallback to express API
+      if (!import.meta.env.VITE_SUPABASE_ANON_KEY) {
+        const res = await axios.post('/auth/signup', { username, email, password });
+        setToken(res.data.token);
+        setUser(res.data.user);
+        localStorage.setItem('RoboWorkZ_token', res.data.token);
+        axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.token}`;
+        return res.data;
+      }
+      throw err;
+    }
   };
 
   const login = async (email, password) => {
-    const res = await axios.post('/auth/login', { email, password });
-    setToken(res.data.token);
-    setUser(res.data.user);
-    localStorage.setItem('RoboWorkZ_token', res.data.token);
-    axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.token}`;
-    return res.data;
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password
+      });
+      if (error) throw error;
+      if (data.user) {
+        const userData = {
+          id: data.user.id,
+          email: data.user.email,
+          username: data.user.user_metadata?.username || data.user.email?.split('@')[0] || 'User',
+          role: data.user.user_metadata?.role || 'user',
+          favorites: []
+        };
+        setUser(userData);
+        setToken(data.session?.access_token || null);
+        if (data.session?.access_token) {
+          localStorage.setItem('RoboWorkZ_token', data.session.access_token);
+        }
+        return { user: userData, token: data.session?.access_token };
+      }
+      return data;
+    } catch (err) {
+      if (!import.meta.env.VITE_SUPABASE_ANON_KEY) {
+        const res = await axios.post('/auth/login', { email, password });
+        setToken(res.data.token);
+        setUser(res.data.user);
+        localStorage.setItem('RoboWorkZ_token', res.data.token);
+        axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.token}`;
+        return res.data;
+      }
+      throw err;
+    }
   };
 
-  const logout = () => {
+  const logout = async () => {
+    try {
+      await supabase.auth.signOut();
+    } catch (e) {
+      console.error(e);
+    }
     setUser(null);
     setToken(null);
     localStorage.removeItem('RoboWorkZ_token');
