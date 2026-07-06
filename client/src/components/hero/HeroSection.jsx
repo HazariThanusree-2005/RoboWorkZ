@@ -133,24 +133,6 @@ const HeroSection = () => {
                     scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
                     className="w-full h-full object-contain pointer-events-auto"
                   />
-                  <motion.div
-                    className="absolute pointer-events-none select-none z-30 flex items-center justify-center"
-                    initial={{ opacity: 0, scale: 0, x: '-50%', y: '-50%', filter: 'blur(8px)' }}
-                    animate={{ opacity: 1, scale: 1, x: '-50%', y: '-50%', filter: 'blur(0px)' }}
-                    transition={{ duration: 1.2, delay: 4.5, ease: [0.16, 1, 0.3, 1] }}
-                    style={{ top: '44%', left: '42%', width: '6%', maxWidth: '30px', minWidth: '18px' }}
-                  >
-                    <img
-                      src={`${import.meta.env.BASE_URL}oz_logo.png`}
-                      alt=""
-                      className="w-full h-auto object-contain"
-                      style={{
-                        filter: 'drop-shadow(0 0 5px rgba(168,85,247,0.7)) brightness(1.8) contrast(1.15)',
-                        animation: 'chestGlow 4s ease-in-out infinite, robotBreathing 6s ease-in-out infinite',
-                        opacity: 0.92,
-                      }}
-                    />
-                  </motion.div>
                 </div>
               </div>
             </motion.div>
