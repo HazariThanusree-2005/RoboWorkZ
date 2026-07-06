@@ -103,7 +103,7 @@ const HeroSection = () => {
               >
                 <Link to="/login">
                   <MagneticButton>
-                    <button className="btn-primary px-8 py-4 text-base sm:text-lg font-space font-bold tracking-wide whitespace-nowrap rounded-full shadow-[0_0_35px_rgba(139,92,246,0.6)] hover:shadow-[0_0_55px_rgba(168,85,247,0.9)] transition-all duration-300 flex items-center gap-3 group border border-primary-400/30">
+                    <button className="btn-primary text-base sm:text-lg tracking-wide whitespace-nowrap flex items-center gap-3 group">
                       <span>Login</span>
                       <HiArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform duration-300" />
                     </button>

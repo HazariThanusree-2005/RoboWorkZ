@@ -164,7 +164,7 @@ const Navbar = () => {
                   </Link>
                   <motion.button
                     onClick={() => { logout(); navigate('/'); }}
-                    className="px-5 py-2.5 text-sm font-manrope font-semibold text-white bg-white/5 hover:bg-white/10 rounded-full transition-all duration-300 border border-white/10 hover:border-primary-500/30"
+                    className="btn-outline px-5 py-2 text-sm"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >

@@ -13,47 +13,47 @@ import { InteractiveRobotSpline } from '../components/ui/interactive-3d-robot';
 const ROBOT_SCENE_URL = "https://prod.spline.design/PyzDhpQ9E5f1E3MT/scene.splinecode";
 
 const categories = [
-  { value: '', label: 'All Categories' },
-  { value: 'healthcare', label: 'Healthcare & Rehab' },
-  { value: 'research', label: 'Research & Development' },
-  { value: 'industrial', label: 'Industrial Automation' },
+  { value: '', label: 'All Products' },
+  { value: 'Mobility', label: '🐾 Robot Dog' },
+  { value: 'Automation', label: '🦾 Robot Arm' },
+  { value: 'AI Service', label: '🤖 Smart Service' },
 ];
 
 const fallbackProducts = [
   {
-    _id: 'arm-robo',
-    name: 'Industrial Automation Arm',
-    description: 'High-precision robotic arm designed for automation, manufacturing support, engineering demonstrations, research projects, and robotics training.',
-    features: ['Precision movement', 'Industrial automation support', 'Educational demonstrations', 'Customizable applications'],
-    price: 150000,
-    rentalAvailable: true,
-    rentalPrice: 5000,
-    images: [{ url: armRoboImg }],
-    category: 'industrial',
-    status: 'active'
-  },
-  {
     _id: 'robo-dog',
-    name: 'Portable Quadruped Robot',
-    description: 'Advanced robotic dog platform built for research, educational demonstrations, autonomous navigation, smart mobility, and interactive robotics applications.',
-    features: ['Interactive movement', 'Smart navigation', 'Event attraction', 'Educational robotics'],
+    name: 'Quadruped Robot Dog',
+    description: 'Advanced four-legged robotic platform engineered for autonomous navigation, terrain adaptability, research demonstrations, smart mobility showcases, and interactive event experiences.',
+    features: ['Autonomous navigation', 'Terrain adaptability', 'Smart mobility', 'Event experiences', 'Research platform'],
     price: 250000,
     rentalAvailable: true,
     rentalPrice: 8000,
     images: [{ url: roboDogImg }],
-    category: 'research',
+    category: 'Mobility',
+    status: 'active'
+  },
+  {
+    _id: 'arm-robo',
+    name: 'Industrial Robot Arm',
+    description: 'High-precision 6-axis robotic arm built for industrial automation, manufacturing workflows, assembly line support, engineering labs, and precision robotics training programs.',
+    features: ['6-axis precision', 'Industrial automation', 'Manufacturing support', 'Assembly line ready', 'Training programs'],
+    price: 150000,
+    rentalAvailable: true,
+    rentalPrice: 5000,
+    images: [{ url: armRoboImg }],
+    category: 'Automation',
     status: 'active'
   },
   {
     _id: 'table-robo',
-    name: 'Smart Service Assistant',
-    description: 'Intelligent service robot developed for customer interaction, exhibitions, hospitality support, smart delivery assistance, and business automation.',
-    features: ['Autonomous serving', 'Customer interaction', 'Event assistance', 'Smart business applications'],
+    name: 'Smart Service Robot',
+    description: 'AI-powered service robot designed for customer interaction, hospitality delivery, exhibition assistance, front-desk automation, and intelligent business workflow integration.',
+    features: ['AI interaction', 'Autonomous serving', 'Front-desk automation', 'Exhibition ready', 'Business integration'],
     price: 180000,
     rentalAvailable: true,
     rentalPrice: 6000,
     images: [{ url: tableRoboImg }],
-    category: 'industrial',
+    category: 'AI Service',
     status: 'active'
   }
 ];

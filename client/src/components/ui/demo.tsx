@@ -1,11 +1,11 @@
-import { Component } from "@/components/ui/sign-in-card-2";
+"use client";
 
-const DemoOne = () => {
+import { BrutalButton } from "@/components/ui/brutal-button";
+
+export default function Default() {
   return (
-    <div className="flex w-full h-screen justify-center items-center">
-      <Component />
+    <div className="flex min-h-screen w-full items-center justify-center bg-background p-12">
+      <BrutalButton>Deploy Doom</BrutalButton>
     </div>
   );
-};
-
-export { DemoOne };
+}

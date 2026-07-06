@@ -14,25 +14,25 @@ import tableRobo from '../../assets/table-robo.png';
 
 export const products = [
   {
-    id: 'arm-robo',
-    title: 'Industrial Automation Arm',
-    image: armRobo,
-    tag: 'Automation',
-    tagline: 'High-precision robotic arm designed for automation, manufacturing support, engineering demonstrations, research projects, and robotics training.',
-  },
-  {
     id: 'robo-dog',
-    title: 'Portable Quadruped Robot',
+    title: 'Quadruped Robot Dog',
     image: roboDog,
     tag: 'Mobility',
-    tagline: 'Advanced robotic dog platform built for research, educational demonstrations, autonomous navigation, smart mobility, and interactive robotics applications.',
+    tagline: 'Advanced four-legged robotic platform engineered for autonomous navigation, terrain adaptability, research demonstrations, smart mobility showcases, and interactive event experiences.',
+  },
+  {
+    id: 'arm-robo',
+    title: 'Industrial Robot Arm',
+    image: armRobo,
+    tag: 'Automation',
+    tagline: 'High-precision 6-axis robotic arm built for industrial automation, manufacturing workflows, assembly line support, engineering labs, and precision robotics training programs.',
   },
   {
     id: 'table-robo',
-    title: 'Smart Service Assistant',
+    title: 'Smart Service Robot',
     image: tableRobo,
     tag: 'AI Service',
-    tagline: 'Intelligent service robot developed for customer interaction, exhibitions, hospitality support, smart delivery assistance, and business automation.',
+    tagline: 'AI-powered service robot designed for customer interaction, hospitality delivery, exhibition assistance, front-desk automation, and intelligent business workflow integration.',
   },
 ];
 

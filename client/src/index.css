@@ -142,75 +142,48 @@
     text-shadow: 0 0 20px rgba(139, 92, 246, 0.5), 0 0 40px rgba(139, 92, 246, 0.2);
   }
 
-  /* Button Styles (Neon Sweep) */
+  /* Button Styles (Brutal Button) */
   .btn-primary, .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 text-white font-manrope font-semibold rounded-full overflow-hidden relative cursor-pointer;
-    background-color: #8B5CF6; /* Neon background default */
-    border: 2px solid #8B5CF6; /* Neon border */
-    padding: 0.875rem 2.5rem;
-    box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+    @apply inline-flex items-center justify-center gap-2 font-bold transition-all duration-200 ease-in-out border-2 cursor-pointer;
+    padding: 0.75rem 1.75rem;
+    border-radius: 0px;
     -webkit-tap-highlight-color: transparent;
     z-index: 1;
-    transition: all 0.3s ease;
   }
 
-  .btn-primary *, .btn-outline * {
-    position: relative;
-    z-index: 10; /* Keep text/icons above the sweeping background */
+  .btn-primary {
+    background-color: #8B5CF6;
+    color: #ffffff;
+    border-color: #ffffff;
+    box-shadow: 4px 4px 0px #ffffff;
   }
 
-  .btn-primary::after,
-  .btn-primary::before,
-  .btn-outline::after,
-  .btn-outline::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    /* Sweeping blocks are black */
-    background: linear-gradient(
-      90deg,
-      #050312 25%,
-      transparent 0,
-      transparent 50%,
-      #050312 0,
-      #050312 75%,
-      transparent 0
-    );
-    transform: translateY(var(--progress, 100%));
-    transition: transform 0.2s ease;
+  .btn-primary:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #ffffff;
   }
 
-  .btn-primary::after,
-  .btn-outline::after {
-    --progress: -100%;
-    /* Sweeping blocks are black */
-    background: linear-gradient(
-      90deg,
-      transparent 0,
-      transparent 25%,
-      #050312 0,
-      #050312 50%,
-      transparent 0,
-      transparent 75%,
-      #050312 0
-    );
+  .btn-primary:active {
+    transform: translate(4px, 4px);
+    box-shadow: none;
   }
 
-  .btn-primary:hover, .btn-outline:hover {
-    box-shadow: 0 0 25px rgba(139, 92, 246, 0.8), inset 0 0 10px rgba(0, 0, 0, 0.5);
+  .btn-outline {
+    background-color: transparent;
+    color: #a855f7;
+    border-color: #a855f7;
+    box-shadow: 4px 4px 0px #a855f7;
   }
 
-  .btn-primary:hover::after,
-  .btn-primary:hover::before,
-  .btn-outline:hover::after,
-  .btn-outline:hover::before {
-    --progress: 0;
+  .btn-outline:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #a855f7;
+    background-color: rgba(139, 92, 246, 0.1);
   }
-  
-  .btn-primary:active, .btn-outline:active {
-    transform: scale(0.97);
-    background-color: #050312;
+
+  .btn-outline:active {
+    transform: translate(4px, 4px);
+    box-shadow: none;
   }
 
 

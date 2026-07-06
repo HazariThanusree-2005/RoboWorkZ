@@ -19,10 +19,10 @@ const HOME_DEMO_VIDEOS = [
     description: 'Watch our robotic arm perform delicate pick-and-place operations for industrial automation and public demonstrations.',
   },
   {
-    src: `${import.meta.env.BASE_URL}picker_video.mp4`,
-    title: 'Smart Picker — Product Showcase',
+    src: `${import.meta.env.BASE_URL}new_demo_video.mp4`,
+    title: 'New Robot Demo — Live Showcase',
     label: 'Interactive Experience',
-    description: 'Our smart picker robot identifies and retrieves objects effortlessly — ideal for retail displays, trade shows, and brand activations.',
+    description: 'Experience our latest robot innovation in action — a live demonstration showcasing cutting-edge automation and robotics technology.',
   },
 ];
 
@@ -45,9 +45,9 @@ const HomePage = () => {
     <div className="relative w-full">
       <HeroSection />
       <RobotVideoSection />
-      <FeaturedProducts />
-      <RentalsSection />
       <HomeVideoDemo videos={HOME_DEMO_VIDEOS} />
+      <RentalsSection />
+      <FeaturedProducts />
     </div>
   );
 };
