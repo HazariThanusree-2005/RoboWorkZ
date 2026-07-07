@@ -7,16 +7,16 @@ import { HomeVideoDemo } from '../components/sections/HomeVideoDemo';
 
 const HOME_DEMO_VIDEOS = [
   {
-    src: `${import.meta.env.BASE_URL}dog_video.mp4`,
-    title: 'Robot Dog — Field Navigation',
-    label: 'Autonomous Navigation',
-    description: 'Our quadruped robot dog autonomously navigates complex terrains with real-time object detection — perfect for exhibitions and live demos.',
-  },
-  {
     src: `${import.meta.env.BASE_URL}hand_video.mp4`,
     title: 'Robotic Arm — Precision Handling',
     label: 'Industrial Demo',
     description: 'Watch our robotic arm perform delicate pick-and-place operations for industrial automation and public demonstrations.',
+  },
+  {
+    src: `${import.meta.env.BASE_URL}dog_video.mp4`,
+    title: 'Robot Dog — Field Navigation',
+    label: 'Autonomous Navigation',
+    description: 'Our quadruped robot dog autonomously navigates complex terrains with real-time object detection — perfect for exhibitions and live demos.',
   },
   {
     src: `${import.meta.env.BASE_URL}new_demo_video.mp4`,

@@ -120,7 +120,6 @@ const LabelBadge: React.FC<{ label: string }> = ({ label }) => (
       backdropFilter: 'blur(8px)',
     }}
   >
-    <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#ef4444', boxShadow: '0 0 6px #ef4444', animation: 'vcPulse 1.5s infinite', flexShrink: 0 }} />
     {label}
   </span>
 );
@@ -371,17 +370,6 @@ export const HomeVideoDemo: React.FC<HomeVideoDemoProps> = ({ videos }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <span
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-manrope font-semibold tracking-widest uppercase mb-5"
-            style={{
-              background: 'rgba(139,92,246,0.1)',
-              border: '1px solid rgba(139,92,246,0.3)',
-              color: '#a78bfa',
-            }}
-          >
-            <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#ef4444', boxShadow: '0 0 8px #ef4444', animation: 'vcPulse 1.5s infinite' }} />
-            Live Demonstrations
-          </span>
 
           <h2 className="font-space font-bold text-white mb-3" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', lineHeight: 1.15 }}>
             See Our Robots{' '}

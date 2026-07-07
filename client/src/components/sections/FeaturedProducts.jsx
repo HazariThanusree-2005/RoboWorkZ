@@ -14,18 +14,18 @@ import tableRobo from '../../assets/table-robo.png';
 
 export const products = [
   {
-    id: 'robo-dog',
-    title: 'Quadruped Robot Dog',
-    image: roboDog,
-    tag: 'Mobility',
-    tagline: 'Advanced four-legged robotic platform engineered for autonomous navigation, terrain adaptability, research demonstrations, smart mobility showcases, and interactive event experiences.',
-  },
-  {
     id: 'arm-robo',
     title: 'Industrial Robot Arm',
     image: armRobo,
     tag: 'Automation',
     tagline: 'High-precision 6-axis robotic arm built for industrial automation, manufacturing workflows, assembly line support, engineering labs, and precision robotics training programs.',
+  },
+  {
+    id: 'robo-dog',
+    title: 'Quadruped Robot Dog',
+    image: roboDog,
+    tag: 'Mobility',
+    tagline: 'Advanced four-legged robotic platform engineered for autonomous navigation, terrain adaptability, research demonstrations, smart mobility showcases, and interactive event experiences.',
   },
   {
     id: 'table-robo',

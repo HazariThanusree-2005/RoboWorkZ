@@ -159,16 +159,6 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, title, description, tag, i
                 padding: '4px 12px',
               }}
             >
-              <div
-                style={{
-                  width: '8px',
-                  height: '8px',
-                  borderRadius: '50%',
-                  background: '#ef4444',
-                  boxShadow: '0 0 8px #ef4444',
-                  animation: 'pulse 1.5s infinite',
-                }}
-              />
               <span style={{ color: 'white', fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em' }}>
                 LIVE DEMO
               </span>
@@ -346,27 +336,6 @@ export const GlassVideoDemos: React.FC<VideoDemoProps> = ({
         />
 
         <div style={{ position: 'relative', zIndex: 1 }}>
-          {/* Eyebrow tag */}
-          <span
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              padding: '6px 16px',
-              borderRadius: '20px',
-              background: 'rgba(139,92,246,0.1)',
-              border: '1px solid rgba(139,92,246,0.3)',
-              fontSize: '12px',
-              fontWeight: 700,
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase',
-              color: '#a78bfa',
-              marginBottom: '24px',
-            }}
-          >
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#ef4444', boxShadow: '0 0 8px #ef4444' }} />
-            Live Demonstrations
-          </span>
 
           <h2
             style={{

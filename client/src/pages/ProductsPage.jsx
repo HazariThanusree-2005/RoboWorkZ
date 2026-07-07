@@ -21,18 +21,6 @@ const categories = [
 
 const fallbackProducts = [
   {
-    _id: 'robo-dog',
-    name: 'Quadruped Robot Dog',
-    description: 'Advanced four-legged robotic platform engineered for autonomous navigation, terrain adaptability, research demonstrations, smart mobility showcases, and interactive event experiences.',
-    features: ['Autonomous navigation', 'Terrain adaptability', 'Smart mobility', 'Event experiences', 'Research platform'],
-    price: 250000,
-    rentalAvailable: true,
-    rentalPrice: 8000,
-    images: [{ url: roboDogImg }],
-    category: 'Mobility',
-    status: 'active'
-  },
-  {
     _id: 'arm-robo',
     name: 'Industrial Robot Arm',
     description: 'High-precision 6-axis robotic arm built for industrial automation, manufacturing workflows, assembly line support, engineering labs, and precision robotics training programs.',
@@ -42,6 +30,18 @@ const fallbackProducts = [
     rentalPrice: 5000,
     images: [{ url: armRoboImg }],
     category: 'Automation',
+    status: 'active'
+  },
+  {
+    _id: 'robo-dog',
+    name: 'Quadruped Robot Dog',
+    description: 'Advanced four-legged robotic platform engineered for autonomous navigation, terrain adaptability, research demonstrations, smart mobility showcases, and interactive event experiences.',
+    features: ['Autonomous navigation', 'Terrain adaptability', 'Smart mobility', 'Event experiences', 'Research platform'],
+    price: 250000,
+    rentalAvailable: true,
+    rentalPrice: 8000,
+    images: [{ url: roboDogImg }],
+    category: 'Mobility',
     status: 'active'
   },
   {
