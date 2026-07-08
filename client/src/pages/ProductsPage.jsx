@@ -23,7 +23,7 @@ const fallbackProducts = [
   {
     _id: 'arm-robo',
     name: 'Industrial Robot Arm',
-    description: 'High-precision 6-axis robotic arm built for industrial automation, manufacturing workflows, assembly line support, engineering labs, and precision robotics training programs.',
+    description: 'High-precision 6-axis robotic arm for industrial automation, lab workflows, and training.',
     features: ['6-axis precision', 'Industrial automation', 'Manufacturing support', 'Assembly line ready', 'Training programs'],
     price: 150000,
     rentalAvailable: true,
@@ -35,7 +35,7 @@ const fallbackProducts = [
   {
     _id: 'robo-dog',
     name: 'Quadruped Robot Dog',
-    description: 'Advanced four-legged robotic platform engineered for autonomous navigation, terrain adaptability, research demonstrations, smart mobility showcases, and interactive event experiences.',
+    description: 'Autonomous quadruped platform for smart mobility, research demos, and interactive events.',
     features: ['Autonomous navigation', 'Terrain adaptability', 'Smart mobility', 'Event experiences', 'Research platform'],
     price: 250000,
     rentalAvailable: true,
@@ -47,7 +47,7 @@ const fallbackProducts = [
   {
     _id: 'table-robo',
     name: 'Smart Service Robot',
-    description: 'AI-powered service robot designed for customer interaction, hospitality delivery, exhibition assistance, front-desk automation, and intelligent business workflow integration.',
+    description: 'AI-powered service robot for hospitality, customer interaction, and front-desk automation.',
     features: ['AI interaction', 'Autonomous serving', 'Front-desk automation', 'Exhibition ready', 'Business integration'],
     price: 180000,
     rentalAvailable: true,

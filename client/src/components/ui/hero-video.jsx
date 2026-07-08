@@ -161,4 +161,4 @@ const ContainerInset = React.forwardRef(
 )
 ContainerInset.displayName = "ContainerInset"
 
-export { ContainerAnimated, ContainerStagger, ContainerScroll, ContainerInset }
+export { ContainerAnimated, ContainerStagger, ContainerScroll, ContainerInset, useContainerScrollContext }

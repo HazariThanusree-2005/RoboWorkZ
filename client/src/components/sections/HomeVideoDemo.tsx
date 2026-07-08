@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useTransform } from 'framer-motion';
 import { HiX, HiArrowsExpand, HiArrowRight } from 'react-icons/hi';
 import {
   ContainerScroll,
   ContainerInset,
+  useContainerScrollContext,
 } from '@/components/ui/hero-video';
 
 interface VideoItem {
@@ -123,6 +124,24 @@ const LabelBadge: React.FC<{ label: string }> = ({ label }) => (
     {label}
   </span>
 );
+
+const ScrollResponsiveCaption: React.FC<{ label: string; title: string }> = ({ label, title }) => {
+  const { scrollYProgress } = useContainerScrollContext();
+  // Visible in the first image state, disappears when scrolling down to the second image state
+  const opacity = useTransform(scrollYProgress, [0, 0.25, 0.45, 1], [1, 1, 0, 0]);
+
+  return (
+    <motion.div
+      style={{ opacity }}
+      className="absolute bottom-0 left-0 right-0 z-20 px-4 pb-4 pt-8 pointer-events-none"
+    >
+      <div className="mb-1.5">
+        <LabelBadge label={label} />
+      </div>
+      <p className="font-space font-semibold text-white text-sm truncate">{title}</p>
+    </motion.div>
+  );
+};
 
 const VideoOverlays: React.FC<{ onExpand: () => void }> = ({ onExpand }) => (
   <>
@@ -253,13 +272,8 @@ const DesktopTripleGrid: React.FC<{ videos: VideoItem[] }> = ({ videos }) => {
                   <HiArrowsExpand size={13} className="text-white" />
                 </button>
 
-                {/* Label + title at bottom */}
-                <div className="absolute bottom-0 left-0 right-0 z-20 px-4 pb-4 pt-8">
-                  <div className="mb-1.5">
-                    <LabelBadge label={vid.label} />
-                  </div>
-                  <p className="font-space font-semibold text-white text-sm truncate">{vid.title}</p>
-                </div>
+                {/* Label + title at bottom — fades out when container morphs into oval shape */}
+                <ScrollResponsiveCaption label={vid.label} title={vid.title} />
               </div>
             ))}
           </div>

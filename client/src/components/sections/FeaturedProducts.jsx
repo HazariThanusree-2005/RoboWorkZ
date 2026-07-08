@@ -18,21 +18,21 @@ export const products = [
     title: 'Industrial Robot Arm',
     image: armRobo,
     tag: 'Automation',
-    tagline: 'High-precision 6-axis robotic arm built for industrial automation, manufacturing workflows, assembly line support, engineering labs, and precision robotics training programs.',
+    tagline: 'High-precision 6-axis robotic arm for industrial automation, lab workflows, and training.',
   },
   {
     id: 'robo-dog',
     title: 'Quadruped Robot Dog',
     image: roboDog,
     tag: 'Mobility',
-    tagline: 'Advanced four-legged robotic platform engineered for autonomous navigation, terrain adaptability, research demonstrations, smart mobility showcases, and interactive event experiences.',
+    tagline: 'Autonomous quadruped platform for smart mobility, research demos, and interactive events.',
   },
   {
     id: 'table-robo',
     title: 'Smart Service Robot',
     image: tableRobo,
     tag: 'AI Service',
-    tagline: 'AI-powered service robot designed for customer interaction, hospitality delivery, exhibition assistance, front-desk automation, and intelligent business workflow integration.',
+    tagline: 'AI-powered service robot for hospitality, customer interaction, and front-desk automation.',
   },
 ];
 
@@ -173,9 +173,20 @@ const ProductCardContent = ({ product, onClick }) => (
           {product.tag}
         </span>
       </div>
-      {/* Tap hint */}
-      <div className="absolute bottom-3 right-3 z-10 opacity-60">
-        <span className="text-[9px] text-primary-300 font-manrope tracking-wider">TAP TO EXPAND</span>
+      {/* Tap hint badge */}
+      <div className="absolute bottom-3 right-3 z-10">
+        <span
+          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-manrope font-semibold tracking-wider uppercase shadow-lg transition-transform group-hover:scale-105"
+          style={{
+            background: 'rgba(15, 10, 30, 0.88)',
+            border: '1px solid rgba(192, 132, 252, 0.6)',
+            color: '#ffffff',
+            backdropFilter: 'blur(8px)',
+            boxShadow: '0 0 12px rgba(192, 132, 252, 0.4)',
+          }}
+        >
+          Tap to Expand ↗
+        </span>
       </div>
       <img
         src={product.image}
