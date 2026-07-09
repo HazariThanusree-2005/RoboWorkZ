@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import { HiX } from 'react-icons/hi';
 
 const MobileMenu = ({ links, onClose, openAuthModal }) => {
   const location = useLocation();
@@ -29,6 +30,19 @@ const MobileMenu = ({ links, onClose, openAuthModal }) => {
     >
       {/* Background Glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl pointer-events-none" />
+
+      {/* Close Button */}
+      <motion.button
+        className="absolute top-6 right-6 z-50 p-2.5 rounded-full bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 hover:border-purple-400/40 transition-all duration-200"
+        onClick={onClose}
+        aria-label="Close menu"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.15, type: 'spring', stiffness: 300, damping: 20 }}
+        whileTap={{ scale: 0.9 }}
+      >
+        <HiX size={22} />
+      </motion.button>
       
       <motion.div 
         className="px-8 space-y-2"

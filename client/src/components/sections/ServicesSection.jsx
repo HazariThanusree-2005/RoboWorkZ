@@ -42,7 +42,7 @@ const SERVICES_DATA = [
     titleHighlight: 'Robot Dog',
     description:
       'Engage audiences with our quadruped robot dog featuring autonomous navigation, dynamic stunts, and intelligent field interaction for events and showcases.',
-    videoSrc: 'dog_vedio.mp4',
+    videoSrc: 'dog_vedio1.mp4',
     reverseLayout: false,
   },
   {

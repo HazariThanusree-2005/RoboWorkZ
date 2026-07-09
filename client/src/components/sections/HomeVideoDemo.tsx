@@ -8,6 +8,7 @@ import {
   ContainerInset,
   useContainerScrollContext,
 } from '@/components/ui/hero-video';
+import CurvedLoop from '@/components/ui/CurvedLoop';
 
 interface VideoItem {
   src: string;
@@ -375,8 +376,19 @@ export const HomeVideoDemo: React.FC<HomeVideoDemoProps> = ({ videos }) => {
       <div className="absolute top-1/4 left-0 w-[600px] h-[600px] bg-primary-500/[0.04] rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-accent/[0.03] rounded-full blur-3xl pointer-events-none" />
 
+      {/* Straight marquee above section heading — hidden on mobile */}
+      <div className="hidden sm:block w-full overflow-hidden mb-2">
+        <CurvedLoop
+          marqueeText="RoboWorkZ ✦ Robotics in Action ✦ Automation ✦ Innovation ✦ AI Powered ✦ Smart Robots ✦ Future Ready ✦ Precision ✦ Intelligence ✦"
+          speed={1.5}
+          curveAmount={0}
+          direction="left"
+          interactive={false}
+        />
+      </div>
+
       {/* Section header */}
-      <div className="max-w-7xl mx-auto px-4 md:px-8 pt-20 pb-10">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 pt-4 pb-10">
         <motion.div
           className="text-center"
           initial={{ opacity: 0, y: 30 }}

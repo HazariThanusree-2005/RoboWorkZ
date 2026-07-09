@@ -5,6 +5,7 @@ import FloatingParticles from './FloatingParticles';
 import MagneticButton from '../ui/MagneticButton';
 import RotatingText from '../ui/RotatingText';
 import { SplineScene } from '../ui/splite';
+import GradientBlinds from '../ui/GradientBlinds';
 
 const EASE_OUT_EXPO = [0.16, 1, 0.3, 1];
 
@@ -16,22 +17,27 @@ const HeroSection = () => {
   const rightOpacity = useTransform(scrollY, [0, 400], [1, 0]);
 
   return (
-    <div id="hero" className="xero-hero-wrapper">
+    <div id="hero" className="xero-hero-wrapper relative overflow-hidden">
+      {/* Hero Section Background Only */}
+      <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
+        <GradientBlinds
+          gradientColors={['#FF9FFC', '#5227FF']}
+          angle={0}
+          noise={0.3}
+          blindCount={12}
+          blindMinWidth={50}
+          spotlightRadius={0.5}
+          spotlightSoftness={1}
+          spotlightOpacity={1}
+          mouseDampening={0.15}
+          distortAmount={0}
+          shineDirection="left"
+          mixBlendMode="lighten"
+        />
+      </div>
 
       {/* ── Xero gradient arc card ── */}
-      <div className="xero-hero-card relative overflow-hidden">
-        {/* Background Video */}
-        <video
-          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260210_031346_d87182fb-b0af-4273-84d1-c6fd17d6bf0f.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover z-0"
-        />
-        
-        {/* Dark overlay to ensure text readability against the video */}
-        <div className="absolute inset-0 bg-black/40 z-0 pointer-events-none" />
+      <div className="xero-hero-card relative overflow-hidden z-10 w-full">
 
         <div className="xero-hero-grid" />
 
