@@ -26,7 +26,7 @@ const LoadingSpinner = ({ fullScreen = false }) => {
             transition={{ duration: 2, repeat: Infinity }}
           >
             <span className="text-white">Robo</span>
-            <span className="text-primary-500">Workz</span>
+            <span className="text-primary-500">WorkZ</span>
           </motion.div>
 
           {/* Loading Bar */}

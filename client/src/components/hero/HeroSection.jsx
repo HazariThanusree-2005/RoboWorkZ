@@ -1,104 +1,176 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { HiArrowRight } from 'react-icons/hi';
 import FloatingParticles from './FloatingParticles';
-import GlowButton from '../ui/GlowButton';
 import MagneticButton from '../ui/MagneticButton';
+import RotatingText from '../ui/RotatingText';
+import FloatingLines from '../ui/FloatingLines';
+import { SplineScene } from '../ui/splite';
+
+const EASE_OUT_EXPO = [0.16, 1, 0.3, 1];
 
 const HeroSection = () => {
+  const { scrollY } = useScroll();
+  const leftY        = useTransform(scrollY, [0, 500], [0, -100]);
+  const leftOpacity  = useTransform(scrollY, [0, 400], [1, 0]);
+  const rightY       = useTransform(scrollY, [0, 500], [0, -60]);
+  const rightOpacity = useTransform(scrollY, [0, 400], [1, 0]);
+
   return (
-    <section id="hero" className="relative w-full h-screen overflow-hidden">
-      {/* Video Background */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0"
-        src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260210_031346_d87182fb-b0af-4273-84d1-c6fd17d6bf0f.mp4"
-      />
+    <div id="hero" className="xero-hero-wrapper">
 
-      {/* Floating Particles */}
-      <FloatingParticles count={25} />
+      {/* ── Xero gradient arc card ── */}
+      <div className="xero-hero-card relative overflow-hidden">
 
-      {/* Bottom gradient for transition to next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-dark-900 to-transparent z-10" />
+        {/* FloatingLines Background */}
+        <div className="absolute inset-0 w-full h-full z-0 bg-[#050312]" />
+        <div className="absolute inset-0 w-full h-full z-0 pointer-events-auto">
+          <FloatingLines
+            enabledWaves={['top', 'middle', 'bottom']}
+            lineCount={[4, 5, 6]}
+            lineDistance={[12, 9, 7]}
+            animationSpeed={0.7}
+            bendRadius={4.0}
+            bendStrength={-0.35}
+            interactive={true}
+            parallax={true}
+            parallaxStrength={0.08}
+            mouseDamping={0.04}
+            mixBlendMode="screen"
+            linesGradient={['#7c3aed', '#a855f7', '#c026d3', '#8b5cf6']}
+          />
+        </div>
+        {/* Subtle overlay */}
+        <div className="absolute inset-0 bg-[#050312]/40 z-0 pointer-events-none" />
 
-      {/* Content */}
-      <div className="relative z-20 flex flex-col items-center justify-center h-full px-6 text-center">
-        {/* Glassmorphism Tag */}
-        <motion.div
-          className="glass rounded-full px-6 py-2.5 mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <span className="text-sm md:text-base font-manrope font-medium text-primary-300 tracking-wide">
-            ✦ India's Next Generation Robotics Startup
-          </span>
-        </motion.div>
+        <div className="xero-hero-grid" />
 
-        {/* Headline */}
-        <motion.h1
-          className="font-space text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.15] max-w-4xl mb-6"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-        >
-          Building Interactive{' '}
-          <span className="text-gradient">Robots</span>{' '}
-          for Businesses, Events, and the Future
-        </motion.h1>
+        <div className="xero-inner">
 
-        {/* Subtext */}
-        <motion.p
-          className="text-base md:text-lg lg:text-xl text-gray-300 max-w-2xl mb-10 font-inter leading-relaxed"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.7 }}
-        >
-          RoboWorkz creates smart robotics solutions for businesses, student innovation, 
-          events, rentals, and interactive experiences across India.
-        </motion.p>
+          {/* Floating Particles */}
+          <FloatingParticles count={30} />
 
-        {/* CTA Buttons */}
-        <motion.div
-          className="flex flex-col sm:flex-row items-center gap-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.9 }}
-        >
-          <Link to="/products">
-            <MagneticButton>
-              <GlowButton variant="primary" floating>
-                Explore Products
-              </GlowButton>
-            </MagneticButton>
-          </Link>
-          <Link to="/contact">
-            <MagneticButton>
-              <GlowButton variant="outline" floating>
-                Book a Demo
-              </GlowButton>
-            </MagneticButton>
-          </Link>
-        </motion.div>
+          {/* Bottom gradient */}
+          <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#050312] to-transparent z-10 pointer-events-none" />
 
-        {/* Scroll indicator */}
-        <motion.div
-          className="absolute bottom-24 left-1/2 -translate-x-1/2"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <div className="w-6 h-10 rounded-full border-2 border-white/20 flex items-start justify-center p-1.5">
+          {/* ══ SPLIT LAYOUT ══ */}
+          <div className="relative z-20 max-w-[1400px] mx-auto w-full flex flex-col lg:flex-row items-center justify-between px-6 lg:px-12 pt-6 pb-16 gap-8 lg:gap-4">
+
+            {/* LEFT: Content */}
             <motion.div
-              className="w-1.5 h-1.5 bg-primary-400 rounded-full"
-              animate={{ y: [0, 16, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-          </div>
-        </motion.div>
-      </div>
-    </section>
+              className="flex flex-col items-start text-left w-full lg:w-[50%] max-w-2xl"
+              style={{ y: leftY, opacity: leftOpacity }}
+            >
+              <motion.h1
+                className="font-space text-3xl sm:text-4xl md:text-5xl lg:text-[2.75rem] xl:text-[3.25rem] font-bold text-white leading-[1.15] mb-6 tracking-tight"
+                initial={{ opacity: 0, y: 40, filter: 'blur(6px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                transition={{ duration: 0.9, delay: 0.35, ease: EASE_OUT_EXPO }}
+              >
+                BUILDING{' '}
+                <RotatingText
+                  texts={['INTELLIGENT', 'ADVANCED', 'AUTONOMOUS', 'INNOVATIVE']}
+                  elementLevelClassName="rotate-gradient-char"
+                  splitBy="characters"
+                  staggerFrom="last"
+                  initial={{ y: '110%', opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: '-110%', opacity: 0 }}
+                  staggerDuration={0.025}
+                  transition={{ type: 'spring', damping: 22, stiffness: 300 }}
+                  rotationInterval={2400}
+                />{' '}
+                <br className="hidden md:block" />
+                ROBOTICS FOR{' '}
+                <RotatingText
+                  texts={['THE FUTURE', 'TOMORROW', 'INDUSTRY', 'RESEARCH']}
+                  elementLevelClassName="rotate-gradient-char"
+                  splitBy="characters"
+                  staggerFrom="first"
+                  initial={{ y: '110%', opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: '-110%', opacity: 0 }}
+                  staggerDuration={0.025}
+                  transition={{ type: 'spring', damping: 22, stiffness: 300 }}
+                  rotationInterval={2400}
+                />
+              </motion.h1>
+
+              <motion.p
+                className="text-sm sm:text-base md:text-lg text-gray-400 max-w-md md:max-w-xl mb-10 font-inter leading-relaxed tracking-wide opacity-90"
+                initial={{ opacity: 0, y: 24, filter: 'blur(3px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                transition={{ duration: 0.7, delay: 0.55, ease: EASE_OUT_EXPO }}
+              >
+                Custom robots, automation solutions, rentals, and AI-powered experiences for businesses, events, and innovation.
+              </motion.p>
+
+              <motion.div
+                className="flex flex-col sm:flex-row items-start gap-4 w-full sm:w-auto pt-4 relative z-20"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.72, ease: EASE_OUT_EXPO }}
+              >
+                <Link to="/login">
+                  <MagneticButton>
+                    <button className="btn-primary text-base sm:text-lg tracking-wide whitespace-nowrap flex items-center gap-3 group">
+                      <span>Login</span>
+                      <HiArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform duration-300" />
+                    </button>
+                  </MagneticButton>
+                </Link>
+              </motion.div>
+            </motion.div>
+
+            {/* RIGHT: 3D Spline Robot */}
+            <motion.div
+              className="w-full lg:w-[50%] flex items-center justify-center relative"
+              initial={{ opacity: 0, scale: 0.9, x: 60 }}
+              animate={{ opacity: 1, scale: 1, x: 0 }}
+              transition={{ duration: 1, delay: 0.5, ease: EASE_OUT_EXPO }}
+              style={{ y: rightY, opacity: rightOpacity }}
+            >
+              <div
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] pointer-events-none rounded-full"
+                style={{
+                  background: 'radial-gradient(circle, rgba(139,92,246,0.3) 0%, rgba(168,85,247,0.1) 50%, transparent 75%)',
+                  filter: 'blur(60px)',
+                }}
+              />
+              <div className="relative w-full max-w-[650px] lg:max-w-[850px] xl:max-w-[950px] aspect-[3.8/5] md:aspect-[4/4.5] flex items-center justify-center overflow-visible">
+                <div className="w-full h-full relative flex items-center justify-center transition-transform duration-700" style={{ transform: 'scale(1.18) scaleY(1.18) translateY(3%)' }}>
+                  <SplineScene
+                    scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+                    className="w-full h-full object-contain pointer-events-auto"
+                  />
+                </div>
+              </div>
+            </motion.div>
+
+          </div>{/* end split layout */}
+
+          {/* Scroll indicator */}
+          <motion.div
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 hidden md:block"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, y: [0, 8, 0] }}
+            transition={{
+              opacity: { duration: 0.5, delay: 1.2 },
+              y: { duration: 2, repeat: Infinity, ease: 'easeInOut' },
+            }}
+          >
+            <div className="w-6 h-10 rounded-full border-2 border-white/20 flex items-start justify-center p-1.5">
+              <motion.div
+                className="w-1.5 h-1.5 bg-primary-400 rounded-full"
+                animate={{ y: [0, 16, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+              />
+            </div>
+          </motion.div>
+
+        </div>{/* end xero-inner */}
+      </div>{/* end xero-hero-card */}
+    </div>
   );
 };
 

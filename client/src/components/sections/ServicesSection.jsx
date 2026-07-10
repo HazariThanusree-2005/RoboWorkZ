@@ -1,141 +1,257 @@
-import { motion } from 'framer-motion';
-import SectionHeading from '../ui/SectionHeading';
-import ScrollReveal from '../ui/ScrollReveal';
-import GlassCard from '../ui/GlassCard';
-import { 
-  Megaphone, CalendarDays, Package, Home, 
-  Wrench, BrainCircuit, ArrowRight 
-} from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
-const services = [
+const CATEGORIES = [
+  { id: 'all', label: 'All Services' },
+  { id: 'workshops', label: 'Workshops' },
+  { id: 'events', label: 'Events' },
+  { id: 'business', label: 'Business Solutions' },
+];
+
+const SERVICES_DATA = [
   {
-    icon: Megaphone,
-    title: 'Business Promotion Robots',
-    desc: 'Deploy intelligent robots at your store or office to attract customers, provide information, and create memorable brand experiences that drive foot traffic.',
-    gradient: 'from-violet-500/20 to-purple-600/20',
-    borderGlow: 'rgba(139, 92, 246, 0.4)',
+    category: 'workshops',
+    categoryTitle: 'Workshops & Education',
+    categoryBadge: 'WORKSHOPS',
+    id: 'interactive-workshops',
+    titleMain: 'Interactive',
+    titleHighlight: 'Workshops',
+    description:
+      'Empower students and teams with hands-on robotics training, engaging demonstrations, and future-ready tech workshops.',
+    videoSrc: 'workshop-new.mp4',
+    reverseLayout: false,
   },
   {
-    icon: CalendarDays,
-    title: 'Event & Function Robots',
-    desc: 'Make your events unforgettable with interactive robots that greet guests, serve refreshments, perform dances, and entertain audiences at weddings and corporate functions.',
-    gradient: 'from-blue-500/20 to-cyan-600/20',
-    borderGlow: 'rgba(59, 130, 246, 0.4)',
+    category: 'events',
+    categoryTitle: 'Event Entertainment & Robotics',
+    categoryBadge: 'EVENTS',
+    id: 'flower-shower-robot',
+    titleMain: 'Flower Shower',
+    titleHighlight: 'Robot',
+    description:
+      'Elevate your events with our beautiful and innovative flower shower robots, perfect for weddings, parties, and grand openings.',
+    videoSrc: 'flower_new.mp4',
+    reverseLayout: true,
   },
   {
-    icon: Package,
-    title: 'Robot Rental Services',
-    desc: 'Affordable and flexible rental plans for robots of all types. Perfect for temporary events, business demos, exhibitions, and trial periods.',
-    gradient: 'from-emerald-500/20 to-teal-600/20',
-    borderGlow: 'rgba(16, 185, 129, 0.4)',
+    category: 'events',
+    categoryTitle: 'Event Entertainment & Robotics',
+    categoryBadge: 'EVENTS',
+    id: 'interactive-robot-dog',
+    titleMain: 'Interactive',
+    titleHighlight: 'Robot Dog',
+    description:
+      'Engage audiences with our quadruped robot dog featuring autonomous navigation, dynamic stunts, and intelligent field interaction for events and showcases.',
+    videoSrc: 'dog_vedio1.mp4',
+    reverseLayout: false,
   },
   {
-    icon: Home,
-    title: 'Domestic Utility Robots',
-    desc: 'Smart home robots designed for daily life — from automated cleaning to personal assistance, bringing futuristic convenience to your household.',
-    gradient: 'from-amber-500/20 to-orange-600/20',
-    borderGlow: 'rgba(245, 158, 11, 0.4)',
-  },
-  {
-    icon: Wrench,
-    title: 'Custom Robotics Projects',
-    desc: 'Bespoke robotics solutions tailored to your specific industry needs. Full-cycle development from concept design to production-ready prototypes.',
-    gradient: 'from-pink-500/20 to-rose-600/20',
-    borderGlow: 'rgba(236, 72, 153, 0.4)',
-  },
-  {
-    icon: BrainCircuit,
-    title: 'AI & Automation Solutions',
-    desc: 'Advanced AI integration, machine learning models, and automation pipelines that supercharge your business operations and decision-making.',
-    gradient: 'from-indigo-500/20 to-blue-600/20',
-    borderGlow: 'rgba(99, 102, 241, 0.4)',
+    category: 'business',
+    categoryTitle: 'Commercial & Enterprise Automation',
+    categoryBadge: 'BUSINESS SOLUTIONS',
+    id: 'smart-business-solutions',
+    titleMain: 'Smart Business',
+    titleHighlight: 'Solutions',
+    description:
+      'Attract customers, automate tasks, and enhance engagement using intelligent robotic solutions tailored for modern businesses.',
+    videoSrc: 'services-business.mp4',
+    reverseLayout: true,
   },
 ];
 
-const ServicesSection = () => {
+const ServicesSection = ({ hideHeader = false }) => {
+  const [activeCategory, setActiveCategory] = useState('all');
+
+  const filteredServices = SERVICES_DATA.filter((item) =>
+    activeCategory === 'all' ? true : item.category === activeCategory
+  );
+
+  // Group items by category when showing all or selected section
+  const groupedCategories = ['workshops', 'events', 'business'].filter((cat) =>
+    activeCategory === 'all' ? true : activeCategory === cat
+  );
+
   return (
-    <section id="services" className="section-padding relative overflow-hidden">
-      {/* Background neon accents */}
-      <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-primary-500/[0.04] rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-primary-500/[0.03] rounded-full blur-3xl" />
-
-      <div className="max-w-7xl mx-auto relative">
-        {/* Header */}
-        <ScrollReveal>
-          <div className="text-center mb-16">
-            <motion.div
-              className="inline-flex items-center gap-2 glass rounded-full px-5 py-2 mb-6"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-            >
-              <Wrench size={16} className="text-primary-400" />
-              <span className="text-xs font-manrope font-semibold text-primary-300 tracking-wider uppercase">What We Offer</span>
-            </motion.div>
-
-            <h2 className="font-space text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+    <section id="services" className="relative w-full overflow-hidden bg-[#050312] py-14 md:py-20">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        
+        {/* Main Heading */}
+        {!hideHeader && (
+          <div className="text-center mb-10 md:mb-14">
+            <h2 className="font-orbitron text-3xl md:text-5xl font-bold text-white mb-4">
               Our <span className="text-gradient">Services</span>
             </h2>
-            <p className="text-lg text-gray-400 font-inter max-w-2xl mx-auto">
-              Comprehensive robotics solutions designed for every need — from business automation to immersive event experiences.
+            <p className="text-gray-400 font-inter max-w-xl mx-auto text-sm md:text-base">
+              Explore our innovative robotic services structured across education, event showcases, and intelligent enterprise automation.
             </p>
           </div>
-        </ScrollReveal>
+        )}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
-            <ScrollReveal key={service.title} staggerIndex={index}>
-              <GlassCard
-                className="h-full relative overflow-hidden flex flex-col group p-7"
-                hover={true}
-                glow={false}
-                tilt={true}
+        {/* Futuristic Category Navigation Tabs */}
+        <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-2 sm:gap-3 mb-12 sm:mb-16 w-full max-w-[360px] sm:max-w-none mx-auto px-1 sm:px-0">
+          {CATEGORIES.map((cat) => {
+            const isActive = activeCategory === cat.id;
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                className={`relative w-full sm:w-auto px-2 sm:px-6 py-2.5 rounded-full text-[10.5px] sm:text-xs md:text-sm font-orbitron tracking-wide sm:tracking-wider text-center whitespace-nowrap transition-all duration-300 ${
+                  isActive
+                    ? 'text-white shadow-[0_0_25px_rgba(192,132,252,0.6)]'
+                    : 'text-gray-400 hover:text-white bg-white/5 border border-white/10 hover:border-purple-500/40'
+                }`}
               >
-                {/* Gradient background on hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-40 transition-opacity duration-500`} />
-                <div className="absolute inset-0 bg-dark-900/95 group-hover:bg-dark-900/85 transition-colors duration-300" />
-
-                {/* Neon glow corner */}
-                <div
-                  className="absolute -top-16 -right-16 w-32 h-32 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-700 blur-2xl pointer-events-none"
-                  style={{ background: service.borderGlow }}
-                />
-
-                {/* Content */}
-                <div className="relative z-10 flex-1 flex flex-col">
+                {isActive && (
                   <motion.div
-                    className="w-14 h-14 rounded-xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center mb-5 group-hover:border-primary-500/20 group-hover:shadow-[0_0_20px_rgba(123,57,252,0.15)] transition-all duration-300"
-                    whileHover={{ scale: 1.1, rotate: [0, -8, 8, 0] }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <service.icon 
-                      size={26} 
-                      className="text-primary-400 group-hover:text-primary-300 transition-colors duration-300" 
-                      strokeWidth={1.5}
-                    />
-                  </motion.div>
-
-                  <h3 className="font-manrope font-bold text-white text-lg mb-3 group-hover:text-primary-100 transition-colors duration-300">
-                    {service.title}
-                  </h3>
-
-                  <p className="text-gray-500 text-sm font-inter leading-relaxed flex-1 group-hover:text-gray-400 transition-colors duration-300">
-                    {service.desc}
-                  </p>
-
-                  {/* Learn More Link */}
-                  <motion.div
-                    className="flex items-center gap-2 mt-5 text-primary-400/60 text-sm font-manrope font-semibold opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0"
-                  >
-                    Learn More
-                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
-                  </motion.div>
-                </div>
-              </GlassCard>
-            </ScrollReveal>
-          ))}
+                    layoutId="serviceTabActiveBg"
+                    className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 -z-10"
+                    transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                  />
+                )}
+                {cat.label.toUpperCase()}
+              </button>
+            );
+          })}
         </div>
+
+        {/* Categorized Sections Display */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeCategory}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4 }}
+            className="space-y-24 md:space-y-32"
+          >
+            {groupedCategories.map((catKey) => {
+              const categoryItems = filteredServices.filter((item) => item.category === catKey);
+              if (categoryItems.length === 0) return null;
+
+              const sectionSubtitle =
+                catKey === 'workshops'
+                  ? 'Hands-on training, technical education & live lab experiences'
+                  : catKey === 'events'
+                  ? 'Stunning robotics entertainment featuring Flower Shower & Robot Dog'
+                  : 'Intelligent automation & customer engagement for enterprise';
+
+              return (
+                <div key={catKey} className="relative">
+                  {/* Category Section Header */}
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-purple-500/20 pb-6 mb-12">
+                    <div>
+                      <h3 className="font-orbitron text-2xl md:text-3xl font-bold text-white">
+                        {catKey === 'workshops' && 'Robotics Workshops'}
+                        {catKey === 'events' && 'Event Robotics Showcase'}
+                        {catKey === 'business' && 'Smart Business Solutions'}
+                      </h3>
+                    </div>
+                    <p className="text-gray-400 text-xs md:text-sm font-inter max-w-md">
+                      {sectionSubtitle}
+                    </p>
+                  </div>
+
+                  {/* Items inside this section */}
+                  <div className="space-y-20 md:space-y-28">
+                    {categoryItems.map((service, idx) => {
+                      const isReverse = idx % 2 === 1;
+
+                      return (
+                        <div
+                          key={service.id}
+                          className={`flex flex-col ${
+                            isReverse ? 'lg:flex-row-reverse' : 'lg:flex-row'
+                          } gap-8 lg:gap-12 items-center`}
+                        >
+                          {/* Text Column */}
+                          <div className="flex flex-col justify-center lg:w-[36%] w-full">
+                            <motion.div
+                              initial={{ opacity: 0, x: isReverse ? 30 : -30 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              viewport={{ once: true, margin: '-80px' }}
+                              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                            >
+                              <span className="text-purple-400 text-xs font-orbitron tracking-widest uppercase mb-2 block">
+                                #{idx + 1} — {service.categoryBadge}
+                              </span>
+                              <h4
+                                className="font-bold leading-tight mb-4"
+                                style={{
+                                  fontFamily: '"Orbitron", sans-serif',
+                                  fontSize: 'clamp(1.5rem, 3.2vw, 2.5rem)',
+                                }}
+                              >
+                                <span style={{ color: '#ffffff', textShadow: '0 0 20px rgba(255,255,255,0.15)' }}>
+                                  {service.titleMain}
+                                </span>
+                                <br />
+                                <span
+                                  style={{
+                                    color: '#C084FC',
+                                    textShadow:
+                                      '0 0 18px rgba(192,132,252,0.8), 0 0 40px rgba(139,92,246,0.5)',
+                                  }}
+                                >
+                                  {service.titleHighlight}
+                                </span>
+                              </h4>
+
+                              <p className="text-gray-300 text-sm md:text-base font-inter leading-relaxed max-w-sm mb-6">
+                                {service.description}
+                              </p>
+
+                              {/* Neon accent bar */}
+                              <div
+                                className="h-[2px] w-16 rounded-full"
+                                style={{
+                                  background: 'linear-gradient(90deg, #C084FC, #7C3AED)',
+                                  boxShadow: '0 0 10px rgba(139,92,246,0.7)',
+                                }}
+                              />
+                            </motion.div>
+                          </div>
+
+                          {/* Video Column */}
+                          <motion.div
+                            className="lg:w-[64%] w-full"
+                            initial={{ opacity: 0, x: isReverse ? -40 : 40, scale: 0.96 }}
+                            whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                            viewport={{ once: true, margin: '-80px' }}
+                            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                          >
+                            <div
+                              className="relative w-full rounded-2xl sm:rounded-[36px] overflow-hidden isolate shadow-[0_0_35px_rgba(139,92,246,0.25)] hover:shadow-[0_0_55px_rgba(139,92,246,0.55)] hover:scale-[1.015] transition-all duration-500 ease-out group cursor-pointer border border-purple-500/20"
+                              style={{
+                                WebkitMaskImage: '-webkit-radial-gradient(white, black)',
+                                transform: 'translateZ(0)',
+                              }}
+                            >
+                              <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
+                              <video
+                                src={`${import.meta.env.BASE_URL}${service.videoSrc}`}
+                                className="w-full h-full object-cover rounded-2xl sm:rounded-[36px] max-h-[520px]"
+                                style={{ display: 'block', width: '100%', height: 'auto' }}
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                              />
+                            </div>
+                          </motion.div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })}
+          </motion.div>
+        </AnimatePresence>
       </div>
+
+      {/* Ambient Glows */}
+      <div className="absolute top-1/3 left-0 w-[400px] h-[400px] bg-purple-600/10 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-indigo-600/10 rounded-full blur-3xl pointer-events-none -z-10" />
     </section>
   );
 };

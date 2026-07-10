@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../../context/AuthContext';
+import { supabase } from '../../lib/supabase';
 import ScrollReveal from '../../components/ui/ScrollReveal';
 import { HiCalendar, HiHeart, HiCube, HiClock } from 'react-icons/hi';
 
@@ -14,13 +15,15 @@ const UserDashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get('/bookings/my');
-        setBookings(res.data);
+        if (user?.id) {
+          const { data, error } = await supabase.from('bookings').select('*').eq('user_id', user.id);
+          if (!error && data) setBookings(data);
+        }
       } catch { /* ignore */ }
       setLoading(false);
     };
     fetchData();
-  }, []);
+  }, [user]);
 
   const statusColors = {
     pending: 'bg-amber-500/20 text-amber-400',

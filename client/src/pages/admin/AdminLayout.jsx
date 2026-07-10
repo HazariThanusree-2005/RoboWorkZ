@@ -28,7 +28,7 @@ const AdminLayout = () => {
         <div className="p-6 border-b border-white/5">
           <span className="text-xl font-manrope font-extrabold">
             <span className="text-white">Robo</span>
-            <span className="text-primary-500">Workz</span>
+            <span className="text-primary-500">WorkZ</span>
           </span>
           <p className="text-xs text-gray-500 font-inter mt-1">Admin Dashboard</p>
         </div>
