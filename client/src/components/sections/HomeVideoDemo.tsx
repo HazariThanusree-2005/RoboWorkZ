@@ -396,6 +396,15 @@ export const HomeVideoDemo: React.FC<HomeVideoDemoProps> = ({ videos }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
+          <motion.div
+            className="inline-block mb-4"
+            initial={{ width: 0 }}
+            whileInView={{ width: '60px' }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <div className="h-1 bg-gradient-to-r from-primary-500 to-glow rounded-full mx-auto" style={{ width: '60px' }} />
+          </motion.div>
 
           <h2 className="font-space font-bold text-white mb-3" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', lineHeight: 1.15 }}>
             See Our Robots{' '}

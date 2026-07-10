@@ -12,32 +12,34 @@ const RentalsSection = () => {
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-accent/[0.02] rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-[1400px] mx-auto relative px-6 md:px-8">
-        
-        {/* Heading Centered */}
-        <div className="flex flex-col items-center text-center mb-12">
-          <ScrollReveal direction="up">
-            <SectionHeading
-              title="Robot Rentals"
-              align="center"
-              subtitle={<>Bring tomorrow's tech to your events, exhibitions, or business promotions with <BrandText className="text-base font-normal leading-none" />.</>}
-            />
-          </ScrollReveal>
-        </div>
+        {/* Main layout: centered heading + cards */}
+        <div className="w-full">
+          {/* Heading Centered */}
+          <div className="flex flex-col items-center text-center mb-12">
+            <ScrollReveal direction="up">
+              <SectionHeading
+                title="Robot Rentals"
+                align="center"
+                subtitle={<>Bring tomorrow’s tech to your events, exhibitions, or business promotions with <BrandText className="text-base font-normal leading-none" />.</>}
+              />
+            </ScrollReveal>
+          </div>
 
-        {/* MagicBento feature cards */}
-        <div className="w-full max-w-5xl mx-auto">
-          <MagicBento
-            textAutoHide={false}
-            enableStars={true}
-            enableSpotlight={true}
-            enableBorderGlow={true}
-            enableTilt={false}
-            enableMagnetism={true}
-            clickEffect={true}
-            spotlightRadius={280}
-            particleCount={8}
-            glowColor="139, 92, 246"
-          />
+          {/* MagicBento feature cards */}
+          <div className="w-full max-w-6xl mx-auto">
+            <MagicBento
+              textAutoHide={false}
+              enableStars={true}
+              enableSpotlight={true}
+              enableBorderGlow={true}
+              enableTilt={false}
+              enableMagnetism={true}
+              clickEffect={true}
+              spotlightRadius={280}
+              particleCount={8}
+              glowColor="139, 92, 246"
+            />
+          </div>
         </div>
       </div>
     </section>

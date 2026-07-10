@@ -4,8 +4,8 @@ import { HiArrowRight } from 'react-icons/hi';
 import FloatingParticles from './FloatingParticles';
 import MagneticButton from '../ui/MagneticButton';
 import RotatingText from '../ui/RotatingText';
+import FloatingLines from '../ui/FloatingLines';
 import { SplineScene } from '../ui/splite';
-import GradientBlinds from '../ui/GradientBlinds';
 
 const EASE_OUT_EXPO = [0.16, 1, 0.3, 1];
 
@@ -17,27 +17,31 @@ const HeroSection = () => {
   const rightOpacity = useTransform(scrollY, [0, 400], [1, 0]);
 
   return (
-    <div id="hero" className="xero-hero-wrapper relative overflow-hidden">
-      {/* Hero Section Background Only */}
-      <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
-        <GradientBlinds
-          gradientColors={['#FF9FFC', '#5227FF']}
-          angle={0}
-          noise={0.3}
-          blindCount={12}
-          blindMinWidth={50}
-          spotlightRadius={0.5}
-          spotlightSoftness={1}
-          spotlightOpacity={1}
-          mouseDampening={0.15}
-          distortAmount={0}
-          shineDirection="left"
-          mixBlendMode="lighten"
-        />
-      </div>
+    <div id="hero" className="xero-hero-wrapper">
 
       {/* ── Xero gradient arc card ── */}
-      <div className="xero-hero-card relative overflow-hidden z-10 w-full">
+      <div className="xero-hero-card relative overflow-hidden">
+
+        {/* FloatingLines Background */}
+        <div className="absolute inset-0 w-full h-full z-0 bg-[#050312]" />
+        <div className="absolute inset-0 w-full h-full z-0 pointer-events-auto">
+          <FloatingLines
+            enabledWaves={['top', 'middle', 'bottom']}
+            lineCount={[4, 5, 6]}
+            lineDistance={[12, 9, 7]}
+            animationSpeed={0.7}
+            bendRadius={4.0}
+            bendStrength={-0.35}
+            interactive={true}
+            parallax={true}
+            parallaxStrength={0.08}
+            mouseDamping={0.04}
+            mixBlendMode="screen"
+            linesGradient={['#7c3aed', '#a855f7', '#c026d3', '#8b5cf6']}
+          />
+        </div>
+        {/* Subtle overlay */}
+        <div className="absolute inset-0 bg-[#050312]/40 z-0 pointer-events-none" />
 
         <div className="xero-hero-grid" />
 
@@ -118,7 +122,7 @@ const HeroSection = () => {
               </motion.div>
             </motion.div>
 
-            {/* RIGHT: 3D Robot */}
+            {/* RIGHT: 3D Spline Robot */}
             <motion.div
               className="w-full lg:w-[50%] flex items-center justify-center relative"
               initial={{ opacity: 0, scale: 0.9, x: 60 }}
@@ -142,6 +146,7 @@ const HeroSection = () => {
                 </div>
               </div>
             </motion.div>
+
           </div>{/* end split layout */}
 
           {/* Scroll indicator */}

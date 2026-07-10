@@ -72,7 +72,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between w-full max-w-[1400px] px-6 lg:px-12 h-20 gap-8">
 
           {/* LEFT GROUP: Logo + Nav Links side by side */}
-          <div className="flex items-center gap-28">
+          <div className="flex items-center gap-20">
 
             {/* Logo */}
             <Link to="/" className="flex flex-col items-start group shrink-0">
@@ -108,8 +108,8 @@ const Navbar = () => {
               </span>
             </Link>
 
-            {/* Desktop Nav Links — left-aligned after logo */}
-            <div className="hidden lg:flex items-center">
+            {/* Desktop Nav Links — shifted right */}
+            <div className="hidden lg:flex items-center ml-8">
               <div className="flex items-center gap-1 xl:gap-2 backdrop-blur-2xl bg-white/[0.07] border border-white/15 rounded-full px-6 py-2 shadow-[0_8px_32px_rgba(139,92,246,0.2)] hover:border-purple-400/40 transition-all duration-300">
                 {navLinks.map((link) => (
                   <Link

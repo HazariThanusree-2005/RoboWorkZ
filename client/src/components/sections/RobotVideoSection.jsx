@@ -17,6 +17,9 @@ const RobotVideoSection = () => {
 
       <ContainerStagger className="relative z-10">
         <ContainerAnimated animation="top">
+          <div className="inline-block mb-4">
+            <div className="h-1 bg-gradient-to-r from-primary-500 to-glow rounded-full mx-auto" style={{ width: '60px' }} />
+          </div>
           <h2 className="text-3xl md:text-5xl lg:text-6xl font-space font-bold mb-2">
             Witness the <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-glow">Evolution</span>
           </h2>
