@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Analytics } from '@vercel/analytics/react';
 import Layout from './components/layout/Layout';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import AdminRoute from './components/auth/AdminRoute';
@@ -88,6 +89,7 @@ function App() {
           </AnimatePresence>
         </Layout>
       </motion.div>
+      <Analytics />
     </>
   );
 }

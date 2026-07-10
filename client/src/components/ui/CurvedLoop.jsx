@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState, useMemo, useId } from 'react';
+import React, { useRef, useEffect, useState, useMemo, useId } from 'react';
 import './CurvedLoop.css';
 
 const CurvedLoop = ({
@@ -104,6 +104,20 @@ const CurvedLoop = ({
 
   const cursorStyle = interactive ? (dragRef.current ? 'grabbing' : 'grab') : 'auto';
 
+  const renderStyledMarqueeText = (str) => {
+    if (!str || !str.includes('✦')) return str;
+    const parts = str.split('✦');
+    const neonPalette = ['#ffffff', '#d8b4fe', '#ffffff', '#e879f9', '#ffffff', '#38bdf8'];
+    return parts.map((part, idx) => (
+      <React.Fragment key={idx}>
+        <tspan fill={neonPalette[idx % neonPalette.length]}>{part}</tspan>
+        {idx < parts.length - 1 && (
+          <tspan fill="#a855f7">✦</tspan>
+        )}
+      </React.Fragment>
+    ));
+  };
+
   return (
     <div
       className="curved-loop-jacket"
@@ -123,7 +137,7 @@ const CurvedLoop = ({
         {ready && (
           <text fontWeight="bold" xmlSpace="preserve" className={className}>
             <textPath ref={textPathRef} href={`#${pathId}`} startOffset={offset + 'px'} xmlSpace="preserve">
-              {totalText}
+              {renderStyledMarqueeText(totalText)}
             </textPath>
           </text>
         )}
